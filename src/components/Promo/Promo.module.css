@@ -9,10 +9,17 @@
 
 .promo__row {
     display: flex;
-    /* justify-content: space-between; */
     justify-content: center;
     column-gap: 50px;
+    position: relative;
+}
 
+.download {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    width: 150px;
 }
 
 @media (max-width: 1024px) {
@@ -46,6 +53,11 @@
         transform: translateX(-48%);
         z-index: -1;
         opacity: 0.4;
+    }
+
+    .download {
+        margin-top: 100px;
+        width: 100px;
     }
 
 }

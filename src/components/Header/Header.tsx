@@ -1,6 +1,7 @@
 import styles from './Header.module.css'
 import { routesConfig } from '../../routes/routesConfig'
 import { Link } from 'react-router'
+import { motion } from 'motion/react'
 
 import logoImg from '../../img/logo.svg'
 import profileImg from '../../img/profile.svg'
@@ -11,11 +12,22 @@ import type { IRoutes } from '../../types'
 const Header: React.FC = () => {
     return (
         <>
-            <header className={styles.header}>
+            <motion.header
+                initial={{ top: -100 }}
+                animate={{ top: 0 }}
+                transition={{
+                    duration: 0.5,
+                }}
+                className={styles.header}
+            >
                 <div className={styles.header__row}>
                     <div className={styles.main__row}>
                         <Link to="/" className={styles.header__logo}>
-                            <img src={logoImg} alt="logo" />
+                            <motion.img
+                                whileHover={{ scale: 1.15 }}
+                                src={logoImg}
+                                alt="logo"
+                            />
                         </Link>
                         <nav className={styles.header__nav}>
                             {routesConfig.map(
@@ -36,14 +48,16 @@ const Header: React.FC = () => {
                     </div>
                     <div className={styles.profile}>
                         <button className={styles.profile__search}>
-                            <img
+                            <motion.img
+                                whileHover={{ scale: 1.15 }}
                                 src={searchImg}
                                 alt="search"
                                 className={styles.profile__icon}
                             />
                         </button>
                         <Link to="/profile" className={styles.profile__open}>
-                            <img
+                            <motion.img
+                                whileHover={{ scale: 1.15 }}
                                 src={profileImg}
                                 alt="profile"
                                 className={styles.profile__icon}
@@ -51,7 +65,7 @@ const Header: React.FC = () => {
                         </Link>
                     </div>
                 </div>
-            </header>
+            </motion.header>
         </>
     )
 }
