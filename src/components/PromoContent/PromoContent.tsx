@@ -17,6 +17,7 @@ const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
                 <p className={styles.content__description}>
                     {film.description}
                 </p>
+                <p className={styles.content__dop}>{film.shortDescription}</p>
                 <div className={styles.film__rating}>
                     {film.ratingImdb && (
                         <div className={styles.imdb}>

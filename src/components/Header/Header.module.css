@@ -1,7 +1,7 @@
 .header {
     margin-top: 20px;
     border-radius: 20px;
-    padding: 0px 40px 0px 15px;
+    padding: 0px 40px 0px 20px;
     backdrop-filter: blur(8px);
     background: rgba(26, 25, 25, 0.3);
     box-shadow: 0px 0px 2px var(--color-blue);
@@ -12,7 +12,6 @@
     top: 0;
     font-family: var(--font-family-3);
 }
-
 
 .header__row {
     display: flex;
@@ -27,7 +26,7 @@
 }
 
 .header__logo {
-    width: 100px;
+    width: 85px;
 }
 
 .header__nav {
@@ -37,7 +36,7 @@
 
 .nav__item {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 19px;
     text-align: center;
     color: var(--color-white);
 }

@@ -27,6 +27,7 @@ export interface Films {
     ratingImdb: number | null
     ratingKinopoisk: number
     description: string
+    shortDescription: string
     type: 'FILM' | 'VIDEO' | 'TV_SHOW' | 'TV_SERIES' | 'MINI_SERIES' | 'UNKNOWN'
     year: number
 }

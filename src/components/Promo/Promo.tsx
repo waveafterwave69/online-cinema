@@ -10,7 +10,7 @@ const Promo: React.FC = () => {
 
     return (
         <>
-            {film ? (
+            {film && (
                 <section className={styles.promo}>
                     <div className={styles.promo__row}>
                         <Link to="/">
@@ -23,8 +23,6 @@ const Promo: React.FC = () => {
                         <PromoContent film={film} />
                     </div>
                 </section>
-            ) : (
-                <p>Добро пожаловать!</p>
             )}
         </>
     )

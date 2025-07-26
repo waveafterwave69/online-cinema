@@ -9,9 +9,10 @@
 
 .promo__row {
     display: flex;
-    justify-content: space-between;
-    column-gap: 50px;
+    /* justify-content: space-between; */
     justify-content: center;
+    column-gap: 50px;
+
 }
 
 @media (max-width: 1024px) {
