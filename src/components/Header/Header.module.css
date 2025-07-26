@@ -23,7 +23,7 @@
 .main__row {
     display: flex;
     align-items: center;
-    column-gap: 42px;
+    column-gap: 40px;
 }
 
 .header__logo {
@@ -32,7 +32,7 @@
 
 .header__nav {
     display: flex;
-    column-gap: 24px;
+    column-gap: 25px;
 }
 
 .nav__item {

@@ -1,6 +1,5 @@
 import styles from './Promo.module.css'
 import useGetRandomFilms from '../hooks/useGetRandomFilms'
-import { Link } from 'react-router'
 import PromoContent from '../PromoContent/PromoContent'
 import { motion } from 'motion/react'
 
@@ -14,20 +13,23 @@ const Promo: React.FC = () => {
             {film ? (
                 <section className={styles.promo}>
                     <motion.div
-                        initial={{ left: -200 }}
-                        animate={{ left: 0 }}
+                        initial={{ left: -100, opacity: 0 }}
+                        animate={{ left: 0, opacity: 1 }}
                         transition={{
-                            duration: 0.5,
+                            duration: 0.6,
                         }}
                         className={styles.promo__row}
                     >
-                        <Link to="/">
-                            <img
+                        <a href={`/movie/${film.kinopoiskId}`}>
+                            <motion.img
+                                whileHover={{
+                                    scale: 1.02,
+                                }}
                                 src={film.posterUrl}
                                 alt={film.nameOriginal}
                                 className={styles.promo__bg}
                             />
-                        </Link>
+                        </a>
                         <PromoContent film={film} />
                     </motion.div>
                 </section>

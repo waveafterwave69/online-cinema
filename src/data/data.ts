@@ -7,7 +7,7 @@ export const getAllFilms = async (page: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '58814f74-a5de-44bb-9148-24e4c4a80c9e',
+                    'X-API-KEY': '80af68cc-294c-468e-bf7e-0a804d3282c0',
                 },
             }
         )
@@ -24,7 +24,7 @@ export const getOneFilm = async (id: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '58814f74-a5de-44bb-9148-24e4c4a80c9e',
+                    'X-API-KEY': '80af68cc-294c-468e-bf7e-0a804d3282c0',
                 },
             }
         )
