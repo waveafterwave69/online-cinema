@@ -10,7 +10,7 @@ const useGetFilms = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true)
-                const data = await getAllFilms()
+                const data = await getAllFilms(1)
                 setFilms(data?.data.items)
                 setIsLoading(false)
             } catch (error) {
