@@ -4,6 +4,7 @@ import styles from './Trends.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import { motion } from 'framer-motion'
+// @ts-ignore
 import 'swiper/css'
 
 import type { Films } from '../../types'
@@ -14,8 +15,8 @@ import { useMediaQuery } from 'react-responsive'
 const Trends: React.FC = () => {
     const data = useSelector((state: RootState) => state.data.data) as Films[]
     const loading = useSelector((state: RootState) => state.data.loading)
-    const isSmallScreen = useMediaQuery({ maxWidth: 475 }) // Check for very small screens
-    const isMediumScreen = useMediaQuery({ maxWidth: 1023 }) // Check for screens up to 1023px
+    const isSmallScreen = useMediaQuery({ maxWidth: 475 })
+    const isMediumScreen = useMediaQuery({ maxWidth: 1024 })
 
     console.log(data)
 
