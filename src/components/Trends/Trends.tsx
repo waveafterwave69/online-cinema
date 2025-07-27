@@ -14,15 +14,8 @@ import { useMediaQuery } from 'react-responsive'
 
 const Trends: React.FC = () => {
     const data = useSelector((state: RootState) => state.data.data) as Films[]
-    const loading = useSelector((state: RootState) => state.data.loading)
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
     const isMediumScreen = useMediaQuery({ maxWidth: 1024 })
-
-    console.log(data)
-
-    if (loading) {
-        return <p>Loading...</p>
-    }
 
     return (
         <>
