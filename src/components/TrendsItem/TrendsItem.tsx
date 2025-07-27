@@ -9,14 +9,28 @@ interface TrendsItemProps {
 const TrendsItem: React.FC<TrendsItemProps> = ({ film }) => {
     return (
         <>
-            <motion.li className={styles.item}>
-                <button className={styles.item__button}>+</button>
+            <li className={styles.item}>
+                <motion.button
+                    className={styles.item__button}
+                    whileHover={{
+                        fontSize: '42px',
+                        padding: '5px 18px',
+                        background:
+                            'linear-gradient(228deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.30) 100%)',
+                        borderRadius: '60px',
+                    }}
+                    transition={{
+                        duration: 0.1,
+                    }}
+                >
+                    +
+                </motion.button>
                 <img
                     src={film.posterUrlPreview}
                     alt={film.nameOriginal}
                     className={styles.item__image}
                 />
-            </motion.li>
+            </li>
         </>
     )
 }

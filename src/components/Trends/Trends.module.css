@@ -1,7 +1,7 @@
 .trends {
     margin-top: 200px;
     position: relative;
-    margin-bottom: 100px;
+    margin-bottom: 350px;
 }
 
 .trends__title {
@@ -24,24 +24,10 @@
     }
 }
 
-.trends {
-    margin-top: 200px;
-    position: relative;
-    margin-bottom: 100px;
-}
-
-.trends__title {
-    font-weight: 500;
-    font-size: 48px;
-    margin-bottom: 30px;
-    color: var(--color-white);
-    font-family: var(--font-family-2);
-}
-
 @media (max-width: 768px) {
     .trends {
         margin-top: 450px;
-        margin-bottom: 100px;
+        margin-bottom: 350px;
     }
 
     .trends__title {
@@ -53,7 +39,7 @@
 @media (max-width: 475px) {
     .trends {
         margin-top: 200px;
-        margin-bottom: 100px;
+        margin-bottom: 350px;
     }
 
     .trends__title {
