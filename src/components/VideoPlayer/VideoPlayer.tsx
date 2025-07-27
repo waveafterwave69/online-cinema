@@ -57,13 +57,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({}) => {
     }, [id])
 
     return (
-        <section className={styles.video}>
-            <div className="uitools" id="videoplayers" ref={videoContainerRef}>
-                {!scriptLoaded.current && (
-                    <img src={download} className={styles.download} />
-                )}
-            </div>
-        </section>
+        <>
+            <section className={styles.video}>
+                <p className={styles.title__error}>
+                    {'К сожалению, видеоплеер временно не работает :('}
+                </p>
+                <div
+                    className="uitools"
+                    id="videoplayers"
+                    ref={videoContainerRef}
+                >
+                    {!scriptLoaded.current && (
+                        <img src={download} className={styles.download} />
+                    )}
+                </div>
+            </section>
+        </>
     )
 }
 

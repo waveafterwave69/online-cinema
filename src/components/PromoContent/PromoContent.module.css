@@ -56,6 +56,7 @@
     font-weight: 500;
     font-size: 18px;
     text-align: center;
+    color: var(--color-white);
 }
 
 .watch__button {
@@ -132,6 +133,8 @@
     }
 
     .content__title {
+        text-align: center;
+        max-width: 500px;
         margin-top: 40px;
         font-size: 38px;
         margin-bottom: 20px;

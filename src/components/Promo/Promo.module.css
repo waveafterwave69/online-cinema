@@ -39,7 +39,7 @@
 
 @media (max-width: 768px) {
     .promo {
-        margin-top: 50px;
+        margin-top: 80px;
     }
 
     .promo__row {
@@ -65,7 +65,7 @@
 
 @media (max-width: 475px) {
     .promo {
-        margin-top: 30px;
+        margin-top: 80px;
     }
 
     .promo__bg {

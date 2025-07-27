@@ -1,5 +1,6 @@
 import type { Films } from '../../types'
 import styles from './PromoContent.module.css'
+import { motion } from 'motion/react'
 
 import imdbImg from '../../img/imdb.svg'
 import kinopoiskImg from '../../img/kinopoiskImg.jpg'
@@ -9,6 +10,14 @@ interface PromoContentProps {
 }
 
 const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
+    const imdbHref = film.imdbId
+        ? `https://www.imdb.com/title/${film.imdbId}`
+        : undefined
+
+    const kinopoiskHref = film.kinopoiskId
+        ? `https://www.kinopoisk.ru/film/${film.kinopoiskId}`
+        : undefined
+
     return (
         <>
             <div className={styles.row__content}>
@@ -19,8 +28,15 @@ const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
                 <p className={styles.content__dop}>{film.shortDescription}</p>
                 <div className={styles.film__rating}>
                     {film.ratingImdb && (
-                        <div className={styles.imdb}>
-                            <img
+                        <a
+                            href={imdbHref}
+                            target="_blank"
+                            className={styles.imdb}
+                        >
+                            <motion.img
+                                whileHover={{
+                                    scale: 1.1,
+                                }}
                                 src={imdbImg}
                                 alt="imdbImg"
                                 className={styles.imdb__img}
@@ -28,11 +44,18 @@ const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
                             <p className={styles.imdb__text}>
                                 {film.ratingImdb}
                             </p>
-                        </div>
+                        </a>
                     )}
                     {film.ratingKinopoisk && (
-                        <div className={styles.ratingKinopoisk}>
-                            <img
+                        <a
+                            href={kinopoiskHref}
+                            target="_blank"
+                            className={styles.ratingKinopoisk}
+                        >
+                            <motion.img
+                                whileHover={{
+                                    scale: 1.11,
+                                }}
                                 src={kinopoiskImg}
                                 alt="imdbImg"
                                 className={styles.ratingKinopoisk__img}
@@ -40,7 +63,7 @@ const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
                             <p className={styles.ratingKinopoisk__text}>
                                 {film.ratingKinopoisk}
                             </p>
-                        </div>
+                        </a>
                     )}
                 </div>
                 <a

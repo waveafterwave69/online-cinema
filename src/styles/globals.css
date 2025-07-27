@@ -12,7 +12,6 @@ body {
     font-family: var(--font-family);
     background: linear-gradient(-45deg, var(--color-blue-dark), #030a1be5, #030a1bf5, #030a1bf8, var(--color-blue-dark));
     color: var(--color-white);
-    height: 100vh;
 }
 
 .container {
