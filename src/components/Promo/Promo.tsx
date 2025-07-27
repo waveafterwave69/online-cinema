@@ -24,10 +24,7 @@ const Promo: React.FC = () => {
                         }}
                         className={styles.promo__row}
                     >
-                        <Link
-                            to={`/movie/${film.kinopoiskId}`}
-                            onClick={() => dispatch(setId(film.kinopoiskId))}
-                        >
+                        <a href={`/movie/${film.kinopoiskId}`}>
                             <motion.img
                                 whileHover={{
                                     scale: 1.02,
@@ -36,7 +33,7 @@ const Promo: React.FC = () => {
                                 alt={film.nameOriginal}
                                 className={styles.promo__bg}
                             />
-                        </Link>
+                        </a>
                         <PromoContent film={film} />
                     </motion.div>
                 </section>
