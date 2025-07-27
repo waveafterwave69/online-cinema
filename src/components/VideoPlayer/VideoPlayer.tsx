@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
 
 import download from '../../img/download.svg'
 import styles from './VideoPlayer.module.css'
