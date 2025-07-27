@@ -4,13 +4,9 @@ import PromoContent from '../PromoContent/PromoContent'
 import { motion } from 'motion/react'
 
 import download from '../../img/download.svg'
-import { Link } from 'react-router'
-import { useDispatch } from 'react-redux'
-import { setId } from '../../store/slices/idSlice/idSlice'
 
 const Promo: React.FC = () => {
     const { film } = useGetRandomFilms()
-    const dispatch = useDispatch()
 
     return (
         <>
