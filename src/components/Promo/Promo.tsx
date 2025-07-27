@@ -4,9 +4,13 @@ import PromoContent from '../PromoContent/PromoContent'
 import { motion } from 'motion/react'
 
 import download from '../../img/download.svg'
+import { Link } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setId } from '../../store/slices/idSlice/idSlice'
 
 const Promo: React.FC = () => {
     const { film } = useGetRandomFilms()
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -20,7 +24,10 @@ const Promo: React.FC = () => {
                         }}
                         className={styles.promo__row}
                     >
-                        <a href={`/movie/${film.kinopoiskId}`}>
+                        <Link
+                            to={`/movie/${film.kinopoiskId}`}
+                            onClick={() => dispatch(setId(film.kinopoiskId))}
+                        >
                             <motion.img
                                 whileHover={{
                                     scale: 1.02,
@@ -29,7 +36,7 @@ const Promo: React.FC = () => {
                                 alt={film.nameOriginal}
                                 className={styles.promo__bg}
                             />
-                        </a>
+                        </Link>
                         <PromoContent film={film} />
                     </motion.div>
                 </section>

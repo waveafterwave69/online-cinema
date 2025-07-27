@@ -14,7 +14,6 @@ const App: React.FC = () => {
                     ))}
                 </Routes>
             </div>
-            {/* <VideoPlayer /> */}
         </>
     )
 }

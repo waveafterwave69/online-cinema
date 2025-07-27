@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import download from '../../img/download.svg'
 import styles from './VideoPlayer.module.css'
+import { useSelector } from 'react-redux'
 
 interface VideoPlayerProps {
     width?: number
@@ -12,7 +13,8 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({}) => {
     const videoContainerRef = useRef<HTMLDivElement>(null)
     const scriptLoaded = useRef(false)
-    const { id } = useParams()
+    // const { id } = useParams()
+    const { id } = useSelector((state: any) => state.id)
 
     useEffect(() => {
         console.log('VideoPlayer rendered with kpId:', id)
