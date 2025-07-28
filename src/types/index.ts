@@ -31,3 +31,15 @@ export interface Films {
     type: 'FILM' | 'VIDEO' | 'TV_SHOW' | 'TV_SERIES' | 'MINI_SERIES' | 'UNKNOWN'
     year: number
 }
+
+export interface Theme {
+    theme:
+        | 'VAMPIRE_THEME'
+        | 'COMICS_THEME'
+        | 'CLOSES_RELEASE'
+        | 'FAMILY'
+        | 'LOVE_THEM'
+        | 'ZOMBIE_THEME'
+        | 'CATASTROPHE_THEME'
+        | 'KIDS_ANIMATION_THEME'
+}

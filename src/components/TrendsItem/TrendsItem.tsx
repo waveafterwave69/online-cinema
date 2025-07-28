@@ -1,6 +1,7 @@
+import React from 'react'
 import type { Films } from '../../types'
 import styles from './TrendsItem.module.css'
-import { motion } from 'motion/react'
+import { motion } from 'framer-motion'
 
 interface TrendsItemProps {
     film: Films

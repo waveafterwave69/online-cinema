@@ -8,7 +8,9 @@ const PlayerPage: React.FC = () => {
 
     return (
         <>
-            <VideoPlayer />
+            <div className="container">
+                <VideoPlayer />
+            </div>
         </>
     )
 }

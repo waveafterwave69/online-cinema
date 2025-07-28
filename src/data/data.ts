@@ -1,4 +1,5 @@
 import axios from 'axios'
+import type { Theme } from '../types'
 
 export const getAllFilms = async (page: number) => {
     try {
@@ -7,7 +8,7 @@ export const getAllFilms = async (page: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '9168d623-7b9f-4043-93a4-44eee12190b7',
+                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
                 },
             }
         )
@@ -24,7 +25,7 @@ export const getOneFilm = async (id: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '9168d623-7b9f-4043-93a4-44eee12190b7',
+                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
                 },
             }
         )
@@ -41,5 +42,58 @@ export const randomId = async () => {
             ?.kinopoiskId
     } catch (error) {
         return error
+    }
+}
+
+export const getNews = async () => {
+    try {
+        const response = await axios(
+            ` https://kinopoiskapiunofficial.tech/api/v1/media_posts?page=1`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getThemes = async (theme: Theme) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=${theme}&page=1
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getNewFilms = async () => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=1
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
     }
 }

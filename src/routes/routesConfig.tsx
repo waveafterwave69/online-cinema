@@ -1,4 +1,5 @@
 import HomePage from '../pages/HomePage/HomePage'
+import NewsPage from '../pages/NewsPage/NewsPage'
 import PlayerPage from '../pages/PlayerPage/PlayerPage'
 
 export const routesConfig = [
@@ -13,10 +14,10 @@ export const routesConfig = [
         text: 'Фильмы',
     },
     {
-        page: <HomePage />,
-        url: '/series',
+        page: <NewsPage />,
+        url: '/news',
         isNav: true,
-        text: 'Сериалы',
+        text: 'Новости',
     },
     {
         page: <HomePage />,

@@ -17,12 +17,12 @@ const App: React.FC = () => {
         <>
             <div className="container">
                 <Header />
-                <Routes>
-                    {routesConfig.map(({ page, url }: IRoutes) => (
-                        <Route path={url} element={page} />
-                    ))}
-                </Routes>
             </div>
+            <Routes>
+                {routesConfig.map(({ page, url }: IRoutes) => (
+                    <Route path={url} element={page} />
+                ))}
+            </Routes>
         </>
     )
 }
