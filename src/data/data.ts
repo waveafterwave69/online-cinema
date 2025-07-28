@@ -1,5 +1,4 @@
 import axios from 'axios'
-import type { Theme } from '../types'
 
 export const getAllFilms = async (page: number) => {
     try {
