@@ -62,7 +62,7 @@ export const getNews = async () => {
     }
 }
 
-export const getThemes = async (theme: Theme) => {
+export const getThemes = async (theme: string) => {
     try {
         const response = await axios(
             `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=${theme}&page=1

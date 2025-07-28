@@ -21,7 +21,7 @@ const useGetCategory = () => {
             } else {
                 try {
                     setIsLoading(true)
-                    const data = await getThemes(theme)
+                    const data = await getThemes('')
                     setFilms(data?.data.items)
                     setIsLoading(false)
                 } catch (error) {
