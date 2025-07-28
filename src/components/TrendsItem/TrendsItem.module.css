@@ -17,6 +17,7 @@
     background: linear-gradient(228deg, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.22) 100%);
     padding: 3px 14px;
     border-radius: 10px;
+    color: var(--color-white);
 }
 
 @media (max-width: 475px) {

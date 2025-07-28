@@ -9,14 +9,16 @@ interface TrendsItemProps {
 const TrendsItem: React.FC<TrendsItemProps> = ({ film }) => {
     return (
         <>
-            <motion.li className={styles.item}>
-                <button className={styles.item__button}>+</button>
-                <img
-                    src={film.posterUrlPreview}
-                    alt={film.nameOriginal}
-                    className={styles.item__image}
-                />
-            </motion.li>
+            <a href={`/movie/${film.kinopoiskId}`}>
+                <motion.li className={styles.item}>
+                    <button className={styles.item__button}>+</button>
+                    <img
+                        src={film.posterUrlPreview}
+                        alt={film.nameOriginal}
+                        className={styles.item__image}
+                    />
+                </motion.li>
+            </a>
         </>
     )
 }

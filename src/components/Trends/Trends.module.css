@@ -4,6 +4,24 @@
     margin-bottom: 100px;
 }
 
+.trends__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row__title {
+    column-gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.row__text {
+    color: var(--color-blue);
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .trends__title {
     font-weight: 500;
     font-size: 48px;

@@ -11,6 +11,9 @@ import type { Films } from '../../types'
 import type { RootState } from '../../store/store'
 import TrendsItem from '../TrendsItem/TrendsItem'
 import { useMediaQuery } from 'react-responsive'
+import { Link } from 'react-router'
+
+import arrowImg from '../../img/more.svg'
 
 const Trends: React.FC = () => {
     const data = useSelector((state: RootState) => state.data.data) as Films[]
@@ -27,7 +30,17 @@ const Trends: React.FC = () => {
                 }}
                 className={styles.trends}
             >
-                <h2 className={styles.trends__title}>Лучшие фильмы</h2>
+                <div className={styles.trends__row}>
+                    <h2 className={styles.trends__title}>Лучшие фильмы</h2>
+                    <Link to="/movies" className={styles.row__title}>
+                        <p className={styles.row__text}>Больше</p>
+                        <img
+                            src={arrowImg}
+                            alt="more"
+                            className={styles.row__img}
+                        />
+                    </Link>
+                </div>
 
                 <Swiper
                     modules={[Autoplay]}
