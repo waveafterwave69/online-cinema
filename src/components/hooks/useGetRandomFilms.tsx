@@ -9,7 +9,6 @@ const useGetRandomFilms = () => {
         const fetchData = async () => {
             const id = await randomId()
             const data = await getOneFilm(id)
-            console.log(data)
             setFilm(data?.data)
         }
 

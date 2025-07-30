@@ -1,4 +1,4 @@
-import styles from './Categories.module.css'
+import styles from './NewFilms.module.css'
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
@@ -13,10 +13,8 @@ import { Link } from 'react-router'
 import arrowImg from '../../img/more.svg'
 import useGetNewFilms from '../hooks/useGetNewFilms'
 
-const Categories: React.FC = () => {
+const NewFilms: React.FC = () => {
     const { films } = useGetNewFilms()
-
-    console.log(films)
 
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
     const isMediumScreen = useMediaQuery({ maxWidth: 1024 })
@@ -65,4 +63,4 @@ const Categories: React.FC = () => {
     )
 }
 
-export default Categories
+export default NewFilms

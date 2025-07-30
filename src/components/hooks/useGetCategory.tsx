@@ -1,28 +1,39 @@
 import { useEffect, useState } from 'react'
-import { getNewFilms, getThemes } from '../../data/data'
+import { getFilmsCategory } from '../../data/data'
 import type { Films } from '../../types'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    clearCategory,
+    setCategory,
+} from '../../store/slices/categorySlice/categorySlice'
 
 const useGetCategory = () => {
     const [films, setFilms] = useState<Films[]>()
-    const [theme, setTheme] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const { theme } = useSelector((state: any) => state.category)
+    console.log(theme)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchData = async () => {
-            if (theme == '') {
+            if (theme == undefined) {
                 try {
+                    setFilms([])
                     setIsLoading(true)
-                    const data = await getNewFilms()
+                    const data = await getFilmsCategory('TOP_250_MOVIES', '3')
                     setFilms(data?.data.items)
+                    dispatch(clearCategory(undefined))
                     setIsLoading(false)
                 } catch (error) {
                     console.error('Ошибка при получении данных:', error)
                 }
             } else {
                 try {
+                    setFilms([])
                     setIsLoading(true)
-                    const data = await getThemes('')
+                    const data = await getFilmsCategory(theme, '1')
                     setFilms(data?.data.items)
+                    dispatch(setCategory(theme))
                     setIsLoading(false)
                 } catch (error) {
                     console.error('Ошибка при получении данных:', error)
@@ -33,7 +44,7 @@ const useGetCategory = () => {
         fetchData()
     }, [theme])
 
-    return { setTheme, films, isLoading }
+    return { films, isLoading }
 }
 
 export default useGetCategory
