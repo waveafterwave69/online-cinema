@@ -38,8 +38,9 @@ export interface Theme {
         | 'COMICS_THEME'
         | 'CLOSES_RELEASE'
         | 'FAMILY'
-        | 'LOVE_THEM'
+        | 'LOVE_THEME'
         | 'ZOMBIE_THEME'
         | 'CATASTROPHE_THEME'
         | 'KIDS_ANIMATION_THEME'
+    name: string
 }

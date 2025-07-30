@@ -8,7 +8,7 @@ export const getAllFilms = async (page: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
                 },
             }
         )
@@ -25,7 +25,7 @@ export const getOneFilm = async (id: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
                 },
             }
         )
@@ -52,7 +52,7 @@ export const getNews = async () => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
                 },
             }
         )
@@ -70,7 +70,7 @@ export const getThemes = async (theme: string) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
                 },
             }
         )
@@ -88,7 +88,60 @@ export const getNewFilms = async () => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '0d9ad324-67a5-44f6-b801-1dc9546bcabd',
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const themes: Theme[] = [
+    {
+        theme: 'LOVE_THEME',
+        name: 'Любовь',
+    },
+    {
+        theme: 'CATASTROPHE_THEME',
+        name: 'Катастрофа',
+    },
+    {
+        theme: 'ZOMBIE_THEME',
+        name: 'Зомби',
+    },
+    {
+        theme: 'VAMPIRE_THEME',
+        name: 'Вампиры',
+    },
+    {
+        theme: 'FAMILY',
+        name: 'Для семьи',
+    },
+    {
+        theme: 'COMICS_THEME',
+        name: 'Комиксы',
+    },
+
+    {
+        theme: 'KIDS_ANIMATION_THEME',
+        name: 'Для детей',
+    },
+]
+
+export const getFilmsCategory = async (
+    theme: string = 'TOP_250_MOVIES',
+    page: string = '1'
+) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=${theme}&page=${page}
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
                 },
             }
         )
