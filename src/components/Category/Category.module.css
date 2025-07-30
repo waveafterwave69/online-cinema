@@ -38,10 +38,6 @@
     width: 150px;
 }
 
-.tags {
-    margin-bottom: 30px;
-}
-
 
 @media (max-width: 1024px) {
     .trends {

@@ -3,7 +3,6 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import { motion } from 'framer-motion'
-import { A11y } from 'swiper/modules'
 
 // @ts-ignore
 import 'swiper/css'
@@ -15,10 +14,9 @@ import { Link } from 'react-router'
 import arrowImg from '../../img/more.svg'
 import useGetCategory from '../hooks/useGetCategory'
 import { themes } from '../../data/data'
-import type { Theme } from '../../types'
-import CategoryItem from '../CategoryItem/CategoryItem'
 
 import download from '../../img/download.svg'
+import Tags from '../Tags/Tags'
 
 const Category: React.FC = () => {
     const { films, isLoading } = useGetCategory()
@@ -49,28 +47,12 @@ const Category: React.FC = () => {
                     </Link>
                 </div>
 
-                <div className={styles.tags}>
-                    <Swiper
-                        modules={[A11y]}
-                        spaceBetween={25}
-                        slidesPerView={
-                            isMedium2
-                                ? 3
-                                : isSmallScreen
-                                ? 3
-                                : isMediumScreen
-                                ? 4
-                                : 6
-                        }
-                    >
-                        {themes &&
-                            themes.map((el: Theme) => (
-                                <SwiperSlide key={el.theme}>
-                                    <CategoryItem category={el} />
-                                </SwiperSlide>
-                            ))}
-                    </Swiper>
-                </div>
+                <Tags
+                    themes={themes}
+                    isSmallScreen={isSmallScreen}
+                    isMediumScreen={isMediumScreen}
+                    isMedium2={isMedium2}
+                />
 
                 {!isLoading ? (
                     <Swiper

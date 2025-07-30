@@ -3,6 +3,7 @@ import type { Theme } from '../../types'
 import styles from './CategoryItem.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTheme } from '../../store/slices/categorySlice/categorySlice'
+import { motion } from 'framer-motion'
 
 interface CategoryItemProps {
     category: Theme
@@ -14,15 +15,16 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
     const isActive = theme === category.theme
 
     const handleClick = useCallback(() => {
-        console.log('LOCAL: ', category.theme)
-        console.log('GLOBAL: ', theme)
         dispatch(setTheme(isActive ? undefined : category.theme))
     }, [category.theme, dispatch, isActive])
 
     return (
         <>
             <li className={styles.category__item}>
-                <button
+                <motion.button
+                    whileHover={{
+                        backgroundColor: !isActive ? '#020713' : '#EC5BAA',
+                    }}
                     className={styles.category__button}
                     onClick={handleClick}
                     style={{
@@ -30,7 +32,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
                     }}
                 >
                     <p className={styles.category__text}>{category.name}</p>
-                </button>
+                </motion.button>
             </li>
         </>
     )

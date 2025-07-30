@@ -1,0 +1,10 @@
+.tags {
+    margin-bottom: 30px;
+}
+
+
+@media (max-width: 475px) {
+    .tags {
+        margin-bottom: 20px;
+    }
+}
