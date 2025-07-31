@@ -44,3 +44,12 @@ export interface Theme {
         | 'KIDS_ANIMATION_THEME'
     name: string
 }
+
+export interface News {
+    description: string
+    imageUrl: string
+    kinopoiskId: number
+    publishedAt: string
+    title: string
+    url: string
+}

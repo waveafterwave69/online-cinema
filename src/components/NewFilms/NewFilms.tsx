@@ -11,7 +11,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router'
 
 import arrowImg from '../../img/more.svg'
-import useGetNewFilms from '../hooks/useGetNewFilms'
+import useGetNewFilms from '../../hooks/useGetNewFilms'
 
 const NewFilms: React.FC = () => {
     const { films } = useGetNewFilms()

@@ -1,5 +1,5 @@
 import styles from './Promo.module.css'
-import useGetRandomFilms from '../hooks/useGetRandomFilms'
+import useGetRandomFilms from '../../hooks/useGetRandomFilms'
 import PromoContent from '../PromoContent/PromoContent'
 import { motion } from 'motion/react'
 

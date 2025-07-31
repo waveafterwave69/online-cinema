@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router'
 
 import arrowImg from '../../img/more.svg'
-import useGetCategory from '../hooks/useGetCategory'
+import useGetCategory from '../../hooks/useGetCategory'
 import { themes } from '../../data/data'
 
 import download from '../../img/download.svg'

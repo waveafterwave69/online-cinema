@@ -1,8 +1,8 @@
+import { getAllFilms } from '../data/data'
 import { useEffect, useState } from 'react'
-import { getNewFilms } from '../../data/data'
-import type { Films } from '../../types'
+import type { Films } from '../types'
 
-const useGetNewFilms = () => {
+const useGetFilms = () => {
     const [films, setFilms] = useState<Films[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -10,7 +10,7 @@ const useGetNewFilms = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true)
-                const data = await getNewFilms()
+                const data = await getAllFilms(1)
                 setFilms(data?.data.items)
                 setIsLoading(false)
             } catch (error) {
@@ -24,4 +24,4 @@ const useGetNewFilms = () => {
     return { films, isLoading }
 }
 
-export default useGetNewFilms
+export default useGetFilms

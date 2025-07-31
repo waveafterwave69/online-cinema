@@ -1,6 +1,6 @@
 import download from '../../img/download.svg'
 import styles from './VideoPlayer.module.css'
-import useVideo from '../hooks/useVideo'
+import useVideo from '../../hooks/useVideo'
 
 interface VideoPlayerProps {
     width?: number
