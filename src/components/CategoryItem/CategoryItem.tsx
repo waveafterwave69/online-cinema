@@ -25,6 +25,9 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
                     whileHover={{
                         backgroundColor: !isActive ? '#020713' : '#EC5BAA',
                     }}
+                    transition={{
+                        duration: 0.4,
+                    }}
                     className={styles.category__button}
                     onClick={handleClick}
                     style={{
