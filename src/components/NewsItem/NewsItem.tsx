@@ -35,7 +35,11 @@ const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
                         </p>
                     </div>
                     <div className={styles.arrow__content}>
-                        <a href={news.url} className={styles.item__read}>
+                        <a
+                            href={news.url}
+                            className={styles.item__read}
+                            target="_blank"
+                        >
                             <p className={styles.read__text}>читать новость</p>
                             <img
                                 src={arrow}
