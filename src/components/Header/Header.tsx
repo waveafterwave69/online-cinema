@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
 import { routesConfig } from '../../routes/routesConfig'
-import { Link, NavLink } from 'react-router' // Changed import from Link to NavLink
+import { Link, NavLink } from 'react-router'
 import { motion } from 'motion/react'
 
 import logoImg from '../../img/logo.svg'
@@ -34,11 +34,9 @@ const Header: React.FC = () => {
                                 ({ url, text, isNav }: IRoutes) => (
                                     <div key={url}>
                                         {isNav && (
-                                            <NavLink // Changed Link to NavLink
+                                            <NavLink
                                                 to={url}
-                                                className={(
-                                                    { isActive } //  Add isActive check
-                                                ) =>
+                                                className={({ isActive }) =>
                                                     `${styles.nav__item} ${
                                                         isActive
                                                             ? styles.item__active

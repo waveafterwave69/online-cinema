@@ -20,6 +20,9 @@ export interface Films {
     imdbId: string | null
     kinopoiskId: number
     nameEn: string | null
+    filmLength: number
+    ratingFilmCritics: number
+    coverUrl: string
     nameOriginal: string
     nameRu: string | null
     posterUrl: string

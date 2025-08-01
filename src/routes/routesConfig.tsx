@@ -1,6 +1,6 @@
 import HomePage from '../pages/HomePage/HomePage'
 import NewsPage from '../pages/NewsPage/NewsPage'
-import PlayerPage from '../pages/PlayerPage/PlayerPage'
+import MoviePage from '../pages/MoviePage/MoviePage'
 
 export const routesConfig = [
     {
@@ -24,7 +24,7 @@ export const routesConfig = [
         url: '/profile',
     },
     {
-        page: <PlayerPage />,
+        page: <MoviePage />,
         url: '/movie/:id',
     },
 ]

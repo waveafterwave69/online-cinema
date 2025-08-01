@@ -1,6 +1,8 @@
 import axios from 'axios'
 import type { Theme } from '../types'
 
+const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
+
 export const getAllFilms = async (page: number) => {
     try {
         const response = await axios(
@@ -8,7 +10,7 @@ export const getAllFilms = async (page: number) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
                 },
             }
         )
@@ -18,14 +20,31 @@ export const getAllFilms = async (page: number) => {
     }
 }
 
-export const getOneFilm = async (id: number) => {
+export const getOneFilm = async (id: string | undefined) => {
     try {
         const response = await axios(
             `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getFilmBg = async (id: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images?type=STILL&page=1`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
                 },
             }
         )
@@ -52,7 +71,7 @@ export const getNews = async () => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
                 },
             }
         )
@@ -70,7 +89,7 @@ export const getThemes = async (theme: string) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
                 },
             }
         )
@@ -88,7 +107,7 @@ export const getNewFilms = async () => {
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
                 },
             }
         )
@@ -141,7 +160,7 @@ export const getFilmsCategory = async (
             {
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': '196b8e3a-e32f-4799-8601-7400e701b4f3',
+                    'X-API-KEY': apiKey,
                 },
             }
         )
