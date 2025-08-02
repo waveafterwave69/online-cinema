@@ -3,12 +3,6 @@ import styles from './VideoPlayer.module.css'
 import useVideo from '../../hooks/useVideo'
 import type { FilmWatch } from '../../types'
 import { motion } from 'motion/react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-// @ts-ignore
-import 'swiper/css'
-
-import { useMediaQuery } from 'react-responsive'
 
 interface VideoPlayerProps {
     filmWatch: FilmWatch[]
@@ -16,8 +10,6 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
     const { videoContainerRef, scriptLoaded } = useVideo()
-    const isSmallScreen = useMediaQuery({ maxWidth: 475 })
-    const isMediumScreen = useMediaQuery({ maxWidth: 1440 })
 
     return (
         <>
@@ -41,47 +33,38 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
                         <img src={download} className={styles.download} />
                     )}
                 </div>
-                <div className={styles.video__platforms}>
-                    <div className="container">
-                        <h2 className={styles.platforms__title}>
-                            Другие платформы для просмотра:
-                        </h2>
-                        <Swiper
-                            modules={[Autoplay]}
-                            spaceBetween={20}
-                            slidesPerView={
-                                isSmallScreen ? 5 : isMediumScreen ? 8 : 9
-                            }
-                            autoplay={{
-                                delay: 2000,
-                                disableOnInteraction: false,
-                            }}
-                            loop
-                        >
-                            {filmWatch &&
-                                filmWatch.map(({ logoUrl, platform, url }) => (
-                                    <SwiperSlide key={logoUrl}>
-                                        <li className={styles.list__item}>
-                                            <a
-                                                href={url}
-                                                target="_blank"
-                                                className={styles.item__link}
-                                            >
-                                                <img
-                                                    src={logoUrl}
-                                                    alt="platform"
-                                                    className={styles.item__img}
-                                                />
-                                            </a>
-                                            <p className={styles.item__text}>
-                                                {platform}
-                                            </p>
-                                        </li>
-                                    </SwiperSlide>
+                {filmWatch && (
+                    <div className={styles.video__platforms}>
+                        <div className="container">
+                            <h2 className={styles.platforms__title}>
+                                Другие платформы для просмотра:
+                            </h2>
+                            <ul className={styles.platform__list}>
+                                {filmWatch.map(({ logoUrl, platform, url }) => (
+                                    <motion.li
+                                        whileHover={{ scale: 1.06 }}
+                                        className={styles.list__item}
+                                    >
+                                        <a
+                                            href={url}
+                                            target="_blank"
+                                            className={styles.item__link}
+                                        >
+                                            <img
+                                                src={logoUrl}
+                                                alt="platform"
+                                                className={styles.item__img}
+                                            />
+                                        </a>
+                                        <p className={styles.item__text}>
+                                            {platform}
+                                        </p>
+                                    </motion.li>
                                 ))}
-                        </Swiper>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                )}
             </motion.section>
         </>
     )
