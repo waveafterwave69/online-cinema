@@ -8,7 +8,8 @@ import FilmCategory from '../../components/FilmCategory/FilmCategory'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
-    const { film, filmBg, currFilm, setCurrFilm } = useGetOneFilm(id)
+    const { film, filmBg, currFilm, setCurrFilm, filmWatch } = useGetOneFilm(id)
+    console.log(filmWatch)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -22,11 +23,9 @@ const MoviePage: React.FC = () => {
                 currFilm={currFilm}
                 setCurrFilm={setCurrFilm}
             />
-            <div className="container">
-                <FilmAbout film={film} />
-                <FilmCategory film={film} />
-                <VideoPlayer />
-            </div>
+            <FilmAbout film={film} />
+            <FilmCategory film={film} />
+            <VideoPlayer filmWatch={filmWatch} />
         </>
     )
 }

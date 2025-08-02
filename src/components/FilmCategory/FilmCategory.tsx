@@ -11,24 +11,26 @@ const FilmCategory: React.FC<FilmCategoryProps> = ({ film }) => {
     return (
         <>
             <section className={styles.category}>
-                <h2 className={styles.category__title}>Категории:</h2>
-                <ul className={styles.category__list}>
-                    {film &&
-                        film?.genres.map(({ genre }) => (
-                            <motion.li
-                                whileHover={{ scale: 1.1 }}
-                                key={genre}
-                                className={styles.category__item}
-                            >
-                                <Link
-                                    to={''}
-                                    className={styles.category__button}
+                <div className="container">
+                    <h2 className={styles.category__title}>Категории:</h2>
+                    <ul className={styles.category__list}>
+                        {film &&
+                            film?.genres.map(({ genre }) => (
+                                <motion.li
+                                    whileHover={{ scale: 1.1 }}
+                                    key={genre}
+                                    className={styles.category__item}
                                 >
-                                    {genre}
-                                </Link>
-                            </motion.li>
-                        ))}
-                </ul>
+                                    <Link
+                                        to={''}
+                                        className={styles.category__button}
+                                    >
+                                        {genre}
+                                    </Link>
+                                </motion.li>
+                            ))}
+                    </ul>
+                </div>
             </section>
         </>
     )

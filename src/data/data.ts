@@ -54,23 +54,24 @@ export const getFilmBg = async (id: string | undefined) => {
     }
 }
 
-// export const getFilmVideo = async (id: string | undefined) => {
-//     try {
-//         const response = await axios(
-//             `https://kinopoiskapiunofficial.tech/api/v2.2/films/filters
-// `,
-//             {
-//                 method: 'GET',
-//                 headers: {
-//                     'X-API-KEY': apiKey,
-//                 },
-//             }
-//         )
-//         return response
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }
+export const getFilmVideo = async (id: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/external_sources?page=1
+
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 export const randomId = async () => {
     try {

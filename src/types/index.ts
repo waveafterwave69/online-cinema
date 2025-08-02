@@ -61,3 +61,9 @@ export interface News {
 export interface ScreenShots {
     imageUrl: string
 }
+
+export interface FilmWatch {
+    logoUrl: string
+    platform: string
+    url: string
+}
