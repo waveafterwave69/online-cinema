@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Theme } from '../types'
 
-const apiKey = '80af68cc-294c-468e-bf7e-0a804d3282c0'
+const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
 
 export const getAllFilms = async (page: number) => {
     try {
@@ -53,6 +53,24 @@ export const getFilmBg = async (id: string | undefined) => {
         console.error(error)
     }
 }
+
+// export const getFilmVideo = async (id: string | undefined) => {
+//     try {
+//         const response = await axios(
+//             `https://kinopoiskapiunofficial.tech/api/v2.2/films/filters
+// `,
+//             {
+//                 method: 'GET',
+//                 headers: {
+//                     'X-API-KEY': apiKey,
+//                 },
+//             }
+//         )
+//         return response
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
 
 export const randomId = async () => {
     try {

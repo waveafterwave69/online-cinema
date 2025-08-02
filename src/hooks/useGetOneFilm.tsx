@@ -4,6 +4,7 @@ import { getFilmBg, getOneFilm } from '../data/data'
 
 const useGetOneFilm = (id: string | undefined) => {
     const [film, setFilm] = useState<Films>()
+    const [currFilm, setCurrFilm] = useState<any>()
     const [filmBg, setFilmBg] = useState<any>()
 
     useEffect(() => {
@@ -13,6 +14,7 @@ const useGetOneFilm = (id: string | undefined) => {
                 const data2 = await getFilmBg(id)
                 setFilm(data?.data)
                 setFilmBg(data2?.data.items)
+                setCurrFilm(data2?.data.items[0].imageUrl)
             } catch (error) {
                 console.error('Ошибка при получении данных:', error)
             }
@@ -21,7 +23,7 @@ const useGetOneFilm = (id: string | undefined) => {
         fetchData()
     }, [])
 
-    return { film, filmBg }
+    return { film, filmBg, currFilm, setCurrFilm }
 }
 
 export default useGetOneFilm

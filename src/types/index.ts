@@ -15,6 +15,7 @@ interface Genre {
 }
 
 export interface Films {
+    slogan: string
     countries: Country[]
     genres: Genre[]
     imdbId: string | null
@@ -55,4 +56,8 @@ export interface News {
     publishedAt: string
     title: string
     url: string
+}
+
+export interface ScreenShots {
+    imageUrl: string
 }

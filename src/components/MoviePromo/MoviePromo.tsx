@@ -1,5 +1,3 @@
-import { useParams } from 'react-router'
-import useGetOneFilm from '../../hooks/useGetOneFilm'
 import styles from './MoviePromo.module.css'
 import { validatefilmLength } from '../utils/utils'
 import { motion } from 'motion/react'
@@ -9,11 +7,22 @@ import play from '../../img/play.svg'
 import fav from '../../img/addFav.svg'
 import like from '../../img/like.svg'
 import dislike from '../../img/dislike.svg'
+import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
+import type { Films, ScreenShots } from '../../types'
 
-const MoviePromo: React.FC = () => {
-    const { id } = useParams()
-    const { film, filmBg } = useGetOneFilm(id)
+interface MoviePromoProps {
+    film: Films | undefined
+    filmBg: ScreenShots[]
+    currFilm: string
+    setCurrFilm: (arg: string) => void
+}
 
+const MoviePromo: React.FC<MoviePromoProps> = ({
+    film,
+    filmBg,
+    currFilm,
+    setCurrFilm,
+}) => {
     return (
         <>
             <motion.section
@@ -25,7 +34,7 @@ const MoviePromo: React.FC = () => {
                 }}
             >
                 <img
-                    src={filmBg && filmBg[0]?.imageUrl}
+                    src={currFilm}
                     alt={film?.nameOriginal}
                     className={styles.promo__image}
                 />
@@ -116,6 +125,7 @@ const MoviePromo: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                <MovieScreenShots films={filmBg} setCurrFilm={setCurrFilm} />
             </motion.section>
         </>
     )
