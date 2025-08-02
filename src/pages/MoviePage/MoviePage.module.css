@@ -1,0 +1,13 @@
+.download {
+    margin: 0 auto;
+    display: flex;
+    margin-top: 200px;
+    margin-bottom: 2000px;
+}
+
+@media (max-width: 768px) {
+
+    .download {
+        width: 100px;
+    }
+}

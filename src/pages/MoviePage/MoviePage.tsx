@@ -5,11 +5,15 @@ import useGetOneFilm from '../../hooks/useGetOneFilm'
 import { useParams } from 'react-router'
 import FilmAbout from '../../components/FilmAbout/FilmAbout'
 import FilmCategory from '../../components/FilmCategory/FilmCategory'
+import download from '../../img/download.svg'
+
+import styles from './MoviePage.module.css'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
-    const { film, filmBg, currFilm, setCurrFilm, filmWatch } = useGetOneFilm(id)
-    console.log(filmWatch)
+    const { film, filmBg, currFilm, setCurrFilm, filmWatch, isLoading } =
+        useGetOneFilm(id)
+    console.log(film)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -17,15 +21,21 @@ const MoviePage: React.FC = () => {
 
     return (
         <>
-            <MoviePromo
-                film={film}
-                filmBg={filmBg}
-                currFilm={currFilm}
-                setCurrFilm={setCurrFilm}
-            />
-            <FilmAbout film={film} />
-            <FilmCategory film={film} />
-            <VideoPlayer filmWatch={filmWatch} />
+            {!isLoading ? (
+                <>
+                    <MoviePromo
+                        film={film}
+                        filmBg={filmBg}
+                        currFilm={currFilm}
+                        setCurrFilm={setCurrFilm}
+                    />
+                    <FilmAbout film={film} />
+                    <FilmCategory film={film} />
+                    <VideoPlayer filmWatch={filmWatch} />{' '}
+                </>
+            ) : (
+                <img src={download} className={styles.download} />
+            )}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Theme } from '../types'
 
-const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
+const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
 
 export const getAllFilms = async (page: number) => {
     try {
