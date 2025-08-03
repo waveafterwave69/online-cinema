@@ -1,5 +1,5 @@
 import type { News } from '../../types'
-import { validateTime } from '../utils/utils'
+import { validateTime } from '../../utils/utils'
 import styles from './NewsItem.module.css'
 import { motion } from 'motion/react'
 

@@ -8,12 +8,20 @@ import FilmCategory from '../../components/FilmCategory/FilmCategory'
 import download from '../../img/download.svg'
 
 import styles from './MoviePage.module.css'
+import FilmFacts from '../../components/FilmFacts/FilmFacts'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
-    const { film, filmBg, currFilm, setCurrFilm, filmWatch, isLoading } =
-        useGetOneFilm(id)
-    console.log(film)
+    const {
+        film,
+        filmBg,
+        currFilm,
+        setCurrFilm,
+        filmWatch,
+        isLoading,
+        filmFacts,
+    } = useGetOneFilm(id)
+    console.log(filmFacts)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -31,7 +39,8 @@ const MoviePage: React.FC = () => {
                     />
                     <FilmAbout film={film} />
                     <FilmCategory film={film} />
-                    <VideoPlayer filmWatch={filmWatch} />{' '}
+                    <VideoPlayer filmWatch={filmWatch} />
+                    <FilmFacts film={film} filmFacts={filmFacts} />
                 </>
             ) : (
                 <img src={download} className={styles.download} />

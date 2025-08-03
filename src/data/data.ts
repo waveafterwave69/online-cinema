@@ -188,3 +188,21 @@ export const getFilmsCategory = async (
         console.error(error)
     }
 }
+
+export const getFilmsFacts = async (id: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}

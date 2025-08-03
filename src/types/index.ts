@@ -67,3 +67,9 @@ export interface FilmWatch {
     platform: string
     url: string
 }
+
+export interface FilmFactss {
+    spoiler: boolean
+    text: string
+    type: string
+}

@@ -1,5 +1,5 @@
 import styles from './MoviePromo.module.css'
-import { validatefilmLength } from '../utils/utils'
+import { validatefilmLength } from '../../utils/utils'
 import { motion } from 'motion/react'
 
 import star from '../../img/star.svg'
