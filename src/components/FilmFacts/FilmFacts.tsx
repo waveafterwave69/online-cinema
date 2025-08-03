@@ -10,7 +10,7 @@ interface FilmCategoryProps {
 }
 
 const FilmFacts: React.FC<FilmCategoryProps> = ({ filmFacts, film }) => {
-    const [max, setMax] = useState<number>(4)
+    const [max, setMax] = useState<number>(3)
 
     return (
         <>
@@ -44,7 +44,7 @@ const FilmFacts: React.FC<FilmCategoryProps> = ({ filmFacts, film }) => {
                             ) : (
                                 <button
                                     className={styles.facts__button}
-                                    onClick={() => setMax(() => 5)}
+                                    onClick={() => setMax(() => 3)}
                                 >
                                     Скрыть факты
                                 </button>
