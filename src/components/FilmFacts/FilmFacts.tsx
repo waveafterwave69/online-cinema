@@ -4,12 +4,12 @@ import FactsItem from '../FactsItem/FactsItem'
 import { useState } from 'react'
 import { motion } from 'motion/react'
 
-interface FilmCategoryProps {
+interface FilmFactsProps {
     film: Films | undefined
     filmFacts: FilmFactss[] | undefined
 }
 
-const FilmFacts: React.FC<FilmCategoryProps> = ({ filmFacts, film }) => {
+const FilmFacts: React.FC<FilmFactsProps> = ({ filmFacts, film }) => {
     const [max, setMax] = useState<number>(3)
 
     return (

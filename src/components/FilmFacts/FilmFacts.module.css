@@ -1,8 +1,8 @@
 .facts {
     color: var(--color-white);
     border-radius: 20px;
+    margin-top: 200px;
     padding: 20px 10px;
-    margin-top: -150px;
 }
 
 .facts__title {
@@ -41,7 +41,6 @@
 @media (max-width: 1024px) {
     .facts {
         color: var(--color-white);
-        margin-top: -150px;
     }
 
     .facts__title {
@@ -71,7 +70,7 @@
 @media (max-width: 768px) {
     .facts {
         color: var(--color-white);
-        margin-top: -280px;
+        margin-top: 100px;
     }
 
     .facts__title {
@@ -101,7 +100,7 @@
 @media (max-width: 475px) {
     .facts {
         color: var(--color-white);
-        margin-top: -290px;
+        margin-top: 50px;
     }
 
     .facts__title {

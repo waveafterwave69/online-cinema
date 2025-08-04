@@ -13,8 +13,8 @@ const Header: React.FC = () => {
     return (
         <>
             <motion.header
-                initial={{ top: -100, opacity: 0 }}
-                animate={{ top: 0, opacity: 1 }}
+                initial={{ right: -100, opacity: 0 }}
+                animate={{ right: 0, opacity: 1 }}
                 transition={{
                     duration: 0.6,
                 }}

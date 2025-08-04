@@ -10,7 +10,7 @@ interface TrendsItemProps {
 const TrendsItem: React.FC<TrendsItemProps> = ({ film }) => {
     return (
         <>
-            <a href={`/movie/${film.kinopoiskId}`}>
+            <a href={`/movie/${film.filmId}`}>
                 <motion.li className={styles.item}>
                     <button className={styles.item__button}>+</button>
                     <img

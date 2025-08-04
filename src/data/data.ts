@@ -206,3 +206,39 @@ export const getFilmsFacts = async (id: string | undefined) => {
         console.error(error)
     }
 }
+
+export const getFilmsActors = async (id: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getSameFilms = async (id: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}

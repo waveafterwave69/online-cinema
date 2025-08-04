@@ -15,6 +15,7 @@ interface Genre {
 }
 
 export interface Films {
+    filmId: string
     slogan: string
     countries: Country[]
     genres: Genre[]
@@ -72,4 +73,14 @@ export interface FilmFactss {
     spoiler: boolean
     text: string
     type: string
+}
+
+export interface Actor {
+    description: null | string
+    nameEn: string
+    nameRu: string
+    posterUrl: string
+    professionKey: 'DIRECTOR' | 'ACTOR'
+    professionText: string
+    staffId: number
 }

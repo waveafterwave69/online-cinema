@@ -14,7 +14,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 350px;
+    margin-bottom: 150px;
 }
 
 .title__error {
@@ -68,7 +68,7 @@
 
 @media (max-width: 1024px) {
     .video {
-        margin-top: 150px;
+        margin-top: 50px;
         display: flex;
         justify-content: center;
     }
