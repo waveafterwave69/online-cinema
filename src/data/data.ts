@@ -76,7 +76,7 @@ export const getFilmVideo = async (id: string | undefined) => {
 export const randomId = async () => {
     try {
         const data = await getAllFilms(Math.round(Math.random() * (5 - 0) + 0))
-        return data?.data.items[Math.round(Math.random() * (1 - 19) + 19)]
+        return data?.data.items[Math.round(Math.random() * (1 - 18) + 18)]
             ?.kinopoiskId
     } catch (error) {
         return error

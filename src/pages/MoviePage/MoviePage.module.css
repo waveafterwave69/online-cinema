@@ -3,6 +3,7 @@
     display: flex;
     margin-top: 200px;
     margin-bottom: 2000px;
+    width: 130px;
 }
 
 @media (max-width: 768px) {

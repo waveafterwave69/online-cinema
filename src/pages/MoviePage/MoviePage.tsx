@@ -35,8 +35,6 @@ const MoviePage: React.FC = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    console.log(userReview)
-
     return (
         <>
             {!isLoading ? (
@@ -58,7 +56,9 @@ const MoviePage: React.FC = () => {
                         actors={getActors(actors, 'DIRECTOR')}
                         title={'Режиссёр'}
                     />
-                    <FilmFacts film={film} filmFacts={filmFacts} />
+                    {filmFacts && (
+                        <FilmFacts film={film} filmFacts={filmFacts} />
+                    )}
                     {sequalPrequal && (
                         <SequelPrequelFilm sequalPrequal={sequalPrequal} />
                     )}
