@@ -84,3 +84,14 @@ export interface Actor {
     professionText: string
     staffId: number
 }
+
+export interface Review {
+    author: string
+    date: string
+    description: string
+    kinopoiskId: number
+    negativeRating: number
+    positiveRating: number
+    title: string
+    type: 'NEGATIVE' | 'POSITIVE'
+}

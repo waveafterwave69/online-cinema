@@ -1,7 +1,9 @@
 import type { Actor } from '../types'
 
-export const validateTime = (time: string) => {
-    return time.slice(0, 10).split('-').join('.')
+export const validateTime = (time: string | undefined) => {
+    if (time) {
+        return time.slice(0, 10).split('-').join('.')
+    }
 }
 
 export const validatefilmLength = (filmLength: number | undefined) => {

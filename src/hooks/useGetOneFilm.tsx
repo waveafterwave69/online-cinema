@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Actor, Films } from '../types'
+import type { Actor, Films, Review } from '../types'
 import {
     getFilmBg,
     getFilmsActors,
@@ -7,6 +7,8 @@ import {
     getFilmVideo,
     getOneFilm,
     getSameFilms,
+    getSequelPrequelFilm,
+    getUserReview,
 } from '../data/data'
 
 const useGetOneFilm = (id: string | undefined) => {
@@ -18,6 +20,8 @@ const useGetOneFilm = (id: string | undefined) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [actors, setActors] = useState<Actor[]>()
     const [sameFilms, setSameFilms] = useState<Films[]>()
+    const [sequalPrequal, setSequalPrequal] = useState<Films[]>()
+    const [userReview, setUserReview] = useState<Review[]>()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,6 +33,8 @@ const useGetOneFilm = (id: string | undefined) => {
                 const data4 = await getFilmsFacts(id)
                 const data5 = await getFilmsActors(id)
                 const data6 = await getSameFilms(id)
+                const data7 = await getSequelPrequelFilm(id)
+                const data8 = await getUserReview(id)
                 setFilm(data?.data)
                 setFilmBg(data2?.data.items)
                 setCurrFilm(data2?.data.items[0].imageUrl)
@@ -36,6 +42,8 @@ const useGetOneFilm = (id: string | undefined) => {
                 setFilmFacts(data4?.data.items)
                 setActors(data5?.data)
                 setSameFilms(data6?.data.items)
+                setSequalPrequal(data7?.data)
+                setUserReview(data8?.data.items)
                 setIsLoading(false)
             } catch (error) {
                 console.error('Ошибка при получении данных:', error)
@@ -55,6 +63,8 @@ const useGetOneFilm = (id: string | undefined) => {
         filmFacts,
         actors,
         sameFilms,
+        sequalPrequal,
+        userReview,
     }
 }
 

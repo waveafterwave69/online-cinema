@@ -12,6 +12,8 @@ import FilmFacts from '../../components/FilmFacts/FilmFacts'
 import Actors from '../../components/Actors/Actors'
 import { getActors } from '../../utils/utils'
 import SameFilms from '../../components/SameFilms/SameFilms'
+import SequelPrequelFilm from '../../components/SequelPrequelFilm/SequelPrequelFilm'
+import UsersReviews from '../../components/UsersReviews/UsersReviews'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
@@ -25,13 +27,15 @@ const MoviePage: React.FC = () => {
         filmFacts,
         actors,
         sameFilms,
+        sequalPrequal,
+        userReview,
     } = useGetOneFilm(id)
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    console.log(sameFilms)
+    console.log(userReview)
 
     return (
         <>
@@ -55,7 +59,11 @@ const MoviePage: React.FC = () => {
                         title={'Режиссёр'}
                     />
                     <FilmFacts film={film} filmFacts={filmFacts} />
+                    {sequalPrequal && (
+                        <SequelPrequelFilm sequalPrequal={sequalPrequal} />
+                    )}
                     <SameFilms sameFilms={sameFilms} />
+                    <UsersReviews userReview={userReview} />
                 </>
             ) : (
                 <img src={download} className={styles.download} />
