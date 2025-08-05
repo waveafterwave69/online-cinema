@@ -35,6 +35,8 @@ const MoviePage: React.FC = () => {
         window.scrollTo(0, 0)
     }, [])
 
+    console.log(filmFacts)
+
     return (
         <>
             {!isLoading ? (
@@ -56,14 +58,18 @@ const MoviePage: React.FC = () => {
                         actors={getActors(actors, 'DIRECTOR')}
                         title={'Режиссёр'}
                     />
-                    {filmFacts && (
+                    {filmFacts && filmFacts?.length > 0 && (
                         <FilmFacts film={film} filmFacts={filmFacts} />
                     )}
-                    {sequalPrequal && (
+                    {sequalPrequal && sequalPrequal?.length > 0 && (
                         <SequelPrequelFilm sequalPrequal={sequalPrequal} />
                     )}
-                    <SameFilms sameFilms={sameFilms} />
-                    <UsersReviews userReview={userReview} />
+                    {sameFilms && sameFilms?.length > 0 && (
+                        <SameFilms sameFilms={sameFilms} />
+                    )}
+                    {userReview && userReview?.length > 0 && (
+                        <UsersReviews userReview={userReview} />
+                    )}
                 </>
             ) : (
                 <img src={download} className={styles.download} />
