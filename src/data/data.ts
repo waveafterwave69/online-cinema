@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Theme } from '../types'
 
-const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
+const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
 
 export const getAllFilms = async (page: number) => {
     try {
@@ -75,7 +75,7 @@ export const getFilmVideo = async (id: string | undefined) => {
 
 export const randomId = async () => {
     try {
-        const data = await getAllFilms(Math.round(Math.random() * (5 - 0) + 0))
+        const data = await getAllFilms(Math.round(Math.random() * (5 - 1) + 1))
         return data?.data.items[Math.round(Math.random() * (1 - 18) + 18)]
             ?.kinopoiskId
     } catch (error) {

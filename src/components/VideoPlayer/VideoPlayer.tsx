@@ -33,7 +33,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
                         <img src={download} className={styles.download} />
                     )}
                 </div>
-                {filmWatch && (
+                {filmWatch && filmWatch?.length > 0 && (
                     <div className={styles.video__platforms}>
                         <div className="container">
                             <h2 className={styles.platforms__title}>

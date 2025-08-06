@@ -35,6 +35,8 @@ const MoviePage: React.FC = () => {
         window.scrollTo(0, 0)
     }, [])
 
+    console.log(film)
+
     return (
         <>
             {!isLoading ? (
