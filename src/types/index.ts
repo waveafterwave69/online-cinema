@@ -15,6 +15,7 @@ interface Genre {
 }
 
 export interface Films {
+    rating: number
     filmId: string
     slogan: string
     countries: Country[]
@@ -94,4 +95,24 @@ export interface Review {
     positiveRating: number
     title: string
     type: 'NEGATIVE' | 'POSITIVE'
+}
+
+export interface ActorProfilee {
+    age: number
+    birthday: string
+    birthplace: string
+    death: null | number | string
+    deathplace: null | string
+    facts: any
+    films: Films[]
+    growth: number
+    hasAwards: number
+    nameEn: string
+    nameRu: string
+    personId: number
+    posterUrl: string
+    profession: string
+    sex: string
+    spouses: any
+    webUrl: string
 }

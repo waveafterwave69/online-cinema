@@ -6,6 +6,12 @@ export const validateTime = (time: string | undefined) => {
     }
 }
 
+export const validateBirth = (birthday: string | undefined) => {
+    if (birthday) {
+        return birthday.split('-').join('.')
+    }
+}
+
 export const validatefilmLength = (filmLength: number | undefined) => {
     if (typeof filmLength === 'number') {
         let hour = 0

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Theme } from '../types'
 
-const apiKey = '196b8e3a-e32f-4799-8601-7400e701b4f3'
+const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
 
 export const getAllFilms = async (page: number) => {
     try {
@@ -267,6 +267,24 @@ export const getUserReview = async (id: string | undefined) => {
         const response = await axios(
             `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/reviews?page=1&order=DATE_DESC
 
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getUserInfo = async (userId: string | undefined) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v1/staff/${userId}
 `,
             {
                 method: 'GET',

@@ -10,7 +10,7 @@ const ActorItem: React.FC<ActorItemProps> = ({ actor }) => {
     return (
         <>
             <li className={styles.actor}>
-                <Link to={`/${actor.staffId}`}>
+                <Link to={`/actor/${actor.staffId}`}>
                     <img
                         src={actor.posterUrl}
                         className={styles.actor__img}

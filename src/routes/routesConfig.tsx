@@ -1,6 +1,7 @@
 import HomePage from '../pages/HomePage/HomePage'
 import NewsPage from '../pages/NewsPage/NewsPage'
 import MoviePage from '../pages/MoviePage/MoviePage'
+import ActorPage from '../pages/ActorPage/ActorPage'
 
 export const routesConfig = [
     {
@@ -26,5 +27,9 @@ export const routesConfig = [
     {
         page: <MoviePage />,
         url: '/movie/:id',
+    },
+    {
+        page: <ActorPage />,
+        url: '/actor/:id',
     },
 ]
