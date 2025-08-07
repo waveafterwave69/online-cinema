@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import download from '../../img/download.svg'
 import useGetUserInfo from '../../hooks/useGetUserInfo'
 import { useParams } from 'react-router'
-import ActorProfile from '../../components/ActorProfile/ActorProfile'
 
 import styles from './ActorPage.module.css'
-import ActorFilms from '../../components/ActorFilms/ActorFilms'
+import ActorFilms from '../../components/ActorComponets/ActorFilms/ActorFilms'
+import ActorProfile from '../../components/ActorComponets/ActorProfile/ActorProfile'
 
 const ActorPage: React.FC = () => {
     const { id } = useParams()

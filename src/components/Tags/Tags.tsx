@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 // @ts-ignore
 import 'swiper/css'
-import CategoryItem from '../CategoryItem/CategoryItem'
+import CategoryItem from '../CategoyComponents/CategoryItem/CategoryItem'
 
 interface TagsProps {
     themes: Theme[]

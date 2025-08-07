@@ -1,7 +1,52 @@
 import axios from 'axios'
 import type { Theme } from '../types'
+import img1 from '../img/1.jpg'
+import img2 from '../img/2.jpg'
+import img3 from '../img/3.jpg'
+import img4 from '../img/4.jpg'
+import img5 from '../img/5.jpg'
+import img6 from '../img/6.jpg'
+import img7 from '../img/7.jpg'
 
-const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
+const apiKey = '196b8e3a-e32f-4799-8601-7400e701b4f3'
+
+export const collections: Theme[] = [
+    {
+        theme: 'CATASTROPHE_THEME',
+        name: 'Катастрофа',
+        img: img1,
+    },
+    {
+        theme: 'VAMPIRE_THEME',
+        name: 'Вампиры',
+        img: img4,
+    },
+    {
+        theme: 'ZOMBIE_THEME',
+        name: 'Зомби',
+        img: img5,
+    },
+    {
+        theme: 'COMICS_THEME',
+        name: 'Комиксы',
+        img: img6,
+    },
+    {
+        theme: 'LOVE_THEME',
+        name: 'Любовь',
+        img: img7,
+    },
+    {
+        theme: 'FAMILY',
+        name: 'Для семьи',
+        img: img2,
+    },
+    {
+        theme: 'KIDS_ANIMATION_THEME',
+        name: 'Для детей',
+        img: img3,
+    },
+]
 
 export const getAllFilms = async (page: number) => {
     try {

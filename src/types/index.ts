@@ -48,7 +48,8 @@ export interface Theme {
         | 'ZOMBIE_THEME'
         | 'CATASTROPHE_THEME'
         | 'KIDS_ANIMATION_THEME'
-    name: string
+    name?: string
+    img?: string
 }
 
 export interface News {

@@ -53,7 +53,7 @@ const NewFilms: React.FC = () => {
                 >
                     {films &&
                         films.map((film) => (
-                            <SwiperSlide key={film.nameOriginal}>
+                            <SwiperSlide key={film.filmId}>
                                 <TrendsItem film={film} />
                             </SwiperSlide>
                         ))}

@@ -1,7 +1,7 @@
 .trends {
     margin-top: 200px;
     position: relative;
-    margin-bottom: 350px;
+    margin-bottom: 120px;
 }
 
 .trends__row {
@@ -49,7 +49,7 @@
 @media (max-width: 768px) {
     .trends {
         margin-top: 450px;
-        margin-bottom: 350px;
+        margin-bottom: 50px;
     }
 
     .trends__title {
@@ -72,7 +72,7 @@
 @media (max-width: 475px) {
     .trends {
         margin-top: 150px;
-        margin-bottom: 350px;
+        margin-bottom: 40px;
     }
 
     .trends__title {

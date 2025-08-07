@@ -1,19 +1,20 @@
 import { useEffect } from 'react'
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
-import MoviePromo from '../../components/MoviePromo/MoviePromo'
+import MoviePromo from '../../components/MovieComponents/MoviePromo/MoviePromo'
 import useGetOneFilm from '../../hooks/useGetOneFilm'
 import { useParams } from 'react-router'
-import FilmAbout from '../../components/FilmAbout/FilmAbout'
-import FilmCategory from '../../components/FilmCategory/FilmCategory'
+import FilmAbout from '../../components/FilmComponents/FilmAbout/FilmAbout'
+
 import download from '../../img/download.svg'
 
 import styles from './MoviePage.module.css'
-import FilmFacts from '../../components/FilmFacts/FilmFacts'
-import Actors from '../../components/Actors/Actors'
+import Actors from '../../components/ActorComponets/Actors/Actors'
 import { getActors } from '../../utils/utils'
 import SameFilms from '../../components/SameFilms/SameFilms'
 import SequelPrequelFilm from '../../components/SequelPrequelFilm/SequelPrequelFilm'
 import UsersReviews from '../../components/UsersReviews/UsersReviews'
+import FilmFacts from '../../components/FilmComponents/FilmFacts/FilmFacts'
+import FilmCategory from '../../components/FilmComponents/FilmCategory/FilmCategory'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
@@ -34,8 +35,6 @@ const MoviePage: React.FC = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-    console.log(film)
 
     return (
         <>

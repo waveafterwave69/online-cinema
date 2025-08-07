@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import NewsContent from '../../components/NewsContent/NewsContent'
+import NewsContent from '../../components/NewsComponents/NewsContent/NewsContent'
 
 const NewsPage: React.FC = () => {
     useEffect(() => {
