@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
-import type { Films } from '../../types'
 import styles from './FilmCategory.module.css'
 import { motion } from 'motion/react'
+import type { Films } from '../../../types'
 
 interface FilmCategoryProps {
     film: Films | undefined

@@ -1,8 +1,9 @@
 import styles from './FilmFacts.module.css'
-import type { FilmFactss, Films } from '../../types'
+
 import FactsItem from '../FactsItem/FactsItem'
 import { useState } from 'react'
 import { motion } from 'motion/react'
+import type { FilmFactss, Films } from '../../../types'
 
 interface FilmFactsProps {
     film: Films | undefined
