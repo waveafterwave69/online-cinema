@@ -2,6 +2,7 @@ import HomePage from '../pages/HomePage/HomePage'
 import NewsPage from '../pages/NewsPage/NewsPage'
 import MoviePage from '../pages/MoviePage/MoviePage'
 import ActorPage from '../pages/ActorPage/ActorPage'
+import FilmsPage from '../pages/FilmsPage/FilmsPage'
 
 export const routesConfig = [
     {
@@ -9,7 +10,7 @@ export const routesConfig = [
         url: '/',
     },
     {
-        page: <HomePage />,
+        page: <FilmsPage />,
         url: '/movies',
         isNav: true,
         text: 'Фильмы',

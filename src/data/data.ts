@@ -8,7 +8,7 @@ import img5 from '../img/5.jpg'
 import img6 from '../img/6.jpg'
 import img7 from '../img/7.jpg'
 
-const apiKey = '196b8e3a-e32f-4799-8601-7400e701b4f3'
+const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
 
 export const collections: Theme[] = [
     {
@@ -215,7 +215,7 @@ export const themes: Theme[] = [
 
 export const getFilmsCategory = async (
     theme: string = 'TOP_250_MOVIES',
-    page: string = '1'
+    page: number | string = '1'
 ) => {
     try {
         const response = await axios(
