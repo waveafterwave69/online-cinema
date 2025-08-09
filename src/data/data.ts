@@ -8,7 +8,7 @@ import img5 from '../img/5.jpg'
 import img6 from '../img/6.jpg'
 import img7 from '../img/7.jpg'
 
-const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
+const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
 
 export const collections: Theme[] = [
     {
@@ -215,7 +215,7 @@ export const themes: Theme[] = [
 
 export const getFilmsCategory = async (
     theme: string = 'TOP_250_MOVIES',
-    page: number | string = '1'
+    page: number | string = 1
 ) => {
     try {
         const response = await axios(
@@ -330,6 +330,26 @@ export const getUserInfo = async (userId: string | undefined) => {
     try {
         const response = await axios(
             `https://kinopoiskapiunofficial.tech/api/v1/staff/${userId}
+`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const geFilmByWords = async (word: string, page: number) => {
+    try {
+        const response = await axios(
+            `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${word}&page=${page}
+
+
 `,
             {
                 method: 'GET',

@@ -1,42 +1,58 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { getAllFilms, getFilmsCategory } from '../data/data'
+import { geFilmByWords, getAllFilms, getFilmsCategory } from '../data/data'
 import { useSelector } from 'react-redux'
 
 const useGetFilmPage = () => {
     const { category } = useSelector((state: any) => state)
-    console.log(category.themes)
-    const [films, setFilms] = useState<Films[]>([])
+    const [films, setFilms] = useState<Films[] | undefined>(undefined)
     const [pageCount, setPageCount] = useState<number>(1)
-    const [searchCategory, setSearchCategory] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
-    console.log(pageCount)
+    const [searchWord, setSearchWord] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
 
     useEffect(() => {
-        if (category.theme === undefined) {
+        if (searchWord !== '') {
             const fetchData = async () => {
+                console.log(searchWord)
                 try {
                     setIsLoading(true)
-                    const data = await getAllFilms(pageCount)
-                    if (data?.data?.items) {
-                        // setFilms((prev) => [
-                        //     ...(prev || []),
-                        //     ...data.data.items,
-                        // ])
-                        setFilms(() => data.data.items)
+                    const data = await geFilmByWords(searchWord, pageCount)
+                    console.log(data?.data.films)
+                    if (data?.data?.films) {
+                        setFilms(data.data.films)
                     }
                     setIsLoading(false)
                 } catch (error) {
+                    setError(true)
                     console.error('Ошибка при получении данных:', error)
                 }
             }
 
             fetchData()
         }
-    }, [pageCount, category.theme])
+    }, [searchWord, pageCount])
 
-    console.log(films)
+    useEffect(() => {
+        if (category.theme === undefined && searchWord === '') {
+            const fetchData = async () => {
+                try {
+                    setIsLoading(true)
+                    const data = await getAllFilms(pageCount)
+                    console.log(data?.data.items)
+                    if (data?.data?.items) {
+                        setFilms(data.data.items)
+                    }
+                    setIsLoading(false)
+                } catch (error) {
+                    setError(true)
+                    console.error('Ошибка при получении данных:', error)
+                }
+            }
+
+            fetchData()
+        }
+    }, [pageCount, category.theme, searchWord])
 
     useEffect(() => {
         if (category.theme) {
@@ -48,11 +64,7 @@ const useGetFilmPage = () => {
                         pageCount
                     )
                     if (data?.data?.items) {
-                        // setFilms((prev) => [
-                        //     ...(prev || []),
-                        //     ...data.data.items,
-                        // ])
-                        setFilms(() => data.data.items)
+                        setFilms(data.data.items)
                     }
                     setIsLoading(false)
                 } catch (error) {
@@ -63,10 +75,26 @@ const useGetFilmPage = () => {
         }
     }, [category.theme, pageCount])
 
+    useEffect(() => {
+        if (films && films?.length === 0) {
+            setError(true)
+        } else {
+            setError(false)
+        }
+    }, [films])
+
+    useEffect(() => {
+        setPageCount(1)
+        console.log('switch')
+    }, [category.theme])
+
     return {
         films,
         isLoading,
         setPageCount,
+        setSearchWord,
+        pageCount,
+        error,
     }
 }
 

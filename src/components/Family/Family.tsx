@@ -2,8 +2,16 @@ import styles from './Family.module.css'
 import { motion } from 'motion/react'
 import bgImg from '../../img/family__bg.png'
 import { Link } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setTheme } from '../../store/slices/categorySlice/categorySlice'
 
 const Family: React.FC = () => {
+    const dispatch = useDispatch()
+
+    const handleClick = () => {
+        dispatch(setTheme('KIDS_ANIMATION_THEME'))
+    }
+
     return (
         <>
             <section className={styles.family}>
@@ -29,7 +37,11 @@ const Family: React.FC = () => {
                             whileHover={{ scale: 1.03 }}
                             className={styles.family__button}
                         >
-                            <Link to={''} className={styles.family__link}>
+                            <Link
+                                to="/movies"
+                                onClick={handleClick}
+                                className={styles.family__link}
+                            >
                                 Смотреть
                             </Link>
                         </motion.div>
