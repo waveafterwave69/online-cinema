@@ -8,7 +8,7 @@ import img5 from '../img/5.jpg'
 import img6 from '../img/6.jpg'
 import img7 from '../img/7.jpg'
 
-const apiKey = '9168d623-7b9f-4043-93a4-44eee12190b7'
+const apiKey = '196b8e3a-e32f-4799-8601-7400e701b4f3'
 
 export const collections: Theme[] = [
     {
