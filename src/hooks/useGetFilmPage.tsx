@@ -86,7 +86,7 @@ const useGetFilmPage = () => {
     useEffect(() => {
         setPageCount(1)
         console.log('switch')
-    }, [category.theme])
+    }, [category.theme, searchWord])
 
     return {
         films,
