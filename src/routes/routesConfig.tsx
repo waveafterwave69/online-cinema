@@ -3,6 +3,7 @@ import NewsPage from '../pages/NewsPage/NewsPage'
 import MoviePage from '../pages/MoviePage/MoviePage'
 import ActorPage from '../pages/ActorPage/ActorPage'
 import FilmsPage from '../pages/FilmsPage/FilmsPage'
+import ProfilePage from '../pages/ProfilePage/ProfilePage'
 
 export const routesConfig = [
     {
@@ -22,7 +23,7 @@ export const routesConfig = [
         text: 'Новости',
     },
     {
-        page: <HomePage />,
+        page: <ProfilePage />,
         url: '/profile',
     },
     {

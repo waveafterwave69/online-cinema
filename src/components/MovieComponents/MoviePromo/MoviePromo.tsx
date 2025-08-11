@@ -10,12 +10,21 @@ import dislike from '../../../img/dislike.svg'
 
 import type { Films, ScreenShots } from '../../../types'
 import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
+import { useDispatch } from 'react-redux'
+import {
+    toggleDislike,
+    toggleFav,
+    toggleLike,
+} from '../../../store/slices/profileSlice/profileSlice'
 
 interface MoviePromoProps {
     film: Films | undefined
     filmBg: ScreenShots[]
     currFilm: string
     setCurrFilm: (arg: string) => void
+    favColor: boolean
+    likeColor: boolean
+    dislikeColor: boolean
 }
 
 const MoviePromo: React.FC<MoviePromoProps> = ({
@@ -23,7 +32,29 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     filmBg,
     currFilm,
     setCurrFilm,
+    favColor,
+    likeColor,
+    dislikeColor,
 }) => {
+    const dispatch = useDispatch()
+    const handleFav = () => {
+        if (film) {
+            dispatch(toggleFav(film))
+        }
+    }
+
+    const handleLike = () => {
+        if (film) {
+            dispatch(toggleLike(film))
+        }
+    }
+
+    const handleDisLike = () => {
+        if (film) {
+            dispatch(toggleDislike(film))
+        }
+    }
+
     return (
         <>
             <motion.section
@@ -103,7 +134,14 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                 whileHover={{ scale: 1.1 }}
                                 className={styles.button}
                             >
-                                <button>
+                                <button
+                                    onClick={handleFav}
+                                    style={{
+                                        filter: favColor
+                                            ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
+                                            : 'none',
+                                    }}
+                                >
                                     <img src={fav} alt="fav" />
                                 </button>
                             </motion.div>
@@ -111,16 +149,34 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                 whileHover={{ scale: 1.1 }}
                                 className={styles.button}
                             >
-                                <button>
-                                    <img src={like} alt="like" />
+                                <button onClick={handleLike}>
+                                    <img
+                                        src={like}
+                                        alt="like"
+                                        className={styles.button__img}
+                                        style={{
+                                            filter: likeColor
+                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(90deg) brightness(96%) contrast(94%)'
+                                                : 'none',
+                                        }}
+                                    />
                                 </button>
                             </motion.div>
                             <motion.div
                                 whileHover={{ scale: 1.1 }}
                                 className={styles.button}
                             >
-                                <button>
-                                    <img src={dislike} alt="dislike" />
+                                <button onClick={handleDisLike}>
+                                    <img
+                                        src={dislike}
+                                        alt="dislike"
+                                        className={styles.button__img}
+                                        style={{
+                                            filter: dislikeColor
+                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(310deg) brightness(96%) contrast(94%)'
+                                                : 'none',
+                                        }}
+                                    />
                                 </button>
                             </motion.div>
                         </div>

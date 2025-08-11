@@ -53,14 +53,14 @@ const Header: React.FC = () => {
                         </nav>
                     </div>
                     <div className={styles.profile}>
-                        <button className={styles.profile__search}>
+                        <Link to="/movies" className={styles.profile__search}>
                             <motion.img
                                 whileHover={{ scale: 1.15 }}
                                 src={searchImg}
                                 alt="search"
                                 className={styles.profile__icon}
                             />
-                        </button>
+                        </Link>
                         <Link to="/profile" className={styles.profile__open}>
                             <motion.img
                                 whileHover={{ scale: 1.15 }}

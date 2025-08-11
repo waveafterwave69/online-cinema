@@ -10,6 +10,7 @@ import {
     getSequelPrequelFilm,
     getUserReview,
 } from '../data/data'
+import { useSelector } from 'react-redux'
 
 const useGetOneFilm = (id: string | undefined) => {
     const [film, setFilm] = useState<Films>()
@@ -22,6 +23,35 @@ const useGetOneFilm = (id: string | undefined) => {
     const [sameFilms, setSameFilms] = useState<Films[]>()
     const [sequalPrequal, setSequalPrequal] = useState<Films[]>()
     const [userReview, setUserReview] = useState<Review[]>()
+
+    const [favColor, setFavColor] = useState<boolean>(false)
+    const [likeColor, setLikeColor] = useState<boolean>(false)
+    const [dislikeColor, setDislikeColor] = useState<boolean>(false)
+
+    const { profile }: any = useSelector((state) => state)
+
+    useEffect(() => {
+        if (film) {
+            const isFavorite = profile.fav.some(
+                (el: Films) => el.kinopoiskId === film.kinopoiskId
+            )
+            setFavColor(isFavorite)
+
+            const isLiked = profile.like.some(
+                (el: Films) => el.kinopoiskId === film.kinopoiskId
+            )
+            setLikeColor(isLiked)
+
+            const isDisliked = profile.dislike.some(
+                (el: Films) => el.kinopoiskId === film.kinopoiskId
+            )
+            setDislikeColor(isDisliked)
+        } else {
+            setFavColor(false)
+            setLikeColor(false)
+            setDislikeColor(false)
+        }
+    }, [profile.fav, profile.like, profile.dislike, film])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,6 +95,9 @@ const useGetOneFilm = (id: string | undefined) => {
         sameFilms,
         sequalPrequal,
         userReview,
+        favColor,
+        likeColor,
+        dislikeColor,
     }
 }
 

@@ -40,7 +40,6 @@ const NewFilms: React.FC = () => {
                         />
                     </Link>
                 </div>
-
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={10}

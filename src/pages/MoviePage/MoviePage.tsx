@@ -30,6 +30,9 @@ const MoviePage: React.FC = () => {
         sameFilms,
         sequalPrequal,
         userReview,
+        favColor,
+        likeColor,
+        dislikeColor,
     } = useGetOneFilm(id)
 
     useEffect(() => {
@@ -45,6 +48,9 @@ const MoviePage: React.FC = () => {
                         filmBg={filmBg}
                         currFilm={currFilm}
                         setCurrFilm={setCurrFilm}
+                        favColor={favColor}
+                        likeColor={likeColor}
+                        dislikeColor={dislikeColor}
                     />
                     <FilmAbout film={film} />
                     <FilmCategory film={film} />
