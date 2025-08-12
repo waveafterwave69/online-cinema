@@ -1,6 +1,6 @@
-// import download from '../../img/download.svg'
+import download from '../../img/download.svg'
 import styles from './VideoPlayer.module.css'
-// import useVideo from '../../hooks/useVideo'
+import useVideo from '../../hooks/useVideo'
 import type { FilmWatch } from '../../types'
 import { motion } from 'motion/react'
 
@@ -9,7 +9,7 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
-    // const { videoContainerRef, scriptLoaded } = useVideo()
+    const { videoContainerRef, scriptLoaded } = useVideo()
 
     return (
         <>
@@ -21,7 +21,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
                 }}
                 className={styles.video}
             >
-                {/* <h2 className={styles.title__error}>
+                <h2 className={styles.title__error}>
                     {'К сожалению, видеоплеер временно не работает :('}
                 </h2>
                 <div
@@ -32,7 +32,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
                     {!scriptLoaded?.current && (
                         <img src={download} className={styles.download} />
                     )}
-                </div> */}
+                </div>
                 {filmWatch && filmWatch?.length > 0 && (
                     <div className={styles.video__platforms}>
                         <div className="container">
