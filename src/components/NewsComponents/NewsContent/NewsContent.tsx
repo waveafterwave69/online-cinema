@@ -1,10 +1,10 @@
-import NewsItem from '../NewsItem/NewsItem'
+import React from 'react'
 import styles from './NewsContent.module.css'
 import { motion } from 'motion/react'
-
 import download from '../../../img/download.svg'
 import useGetNews from '../../../hooks/useGetNews'
 import type { News } from '../../../types'
+import NewsItem from '../NewsItem/NewsItem'
 
 const NewsContent: React.FC = () => {
     const { news, isLoading } = useGetNews()
@@ -33,11 +33,15 @@ const NewsContent: React.FC = () => {
                     >
                         {news &&
                             news.map((el: News) => (
-                                <NewsItem news={el} key={el.kinopoiskId} />
+                                <NewsItem key={el.kinopoiskId} news={el} />
                             ))}
                     </motion.ul>
                 ) : (
-                    <img src={download} className={styles.download} />
+                    <img
+                        src={download}
+                        className={styles.download}
+                        alt="Loading..."
+                    />
                 )}
             </section>
         </>

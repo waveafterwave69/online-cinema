@@ -19,8 +19,9 @@ const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
                     className={styles.item__link}
                 >
                     <img
+                        loading="lazy"
                         src={news.imageUrl}
-                        alt=""
+                        alt={news.title}
                         className={styles.item__img}
                     />
                 </a>
