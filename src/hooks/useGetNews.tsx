@@ -1,8 +1,9 @@
-import { getNews } from '../data/data'
 import { useEffect, useState } from 'react'
+import type { News } from '../types'
+import { getNews } from '../data/newsData'
 
 const useGetNews = () => {
-    const [news, setNews] = useState<any>()
+    const [news, setNews] = useState<News[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     useEffect(() => {

@@ -1,12 +1,13 @@
 import Tags from '../../Tags/Tags'
 import styles from './FilmPagePromo.module.css'
 import { useMediaQuery } from 'react-responsive'
-import { themes } from '../../../data/data'
+
 import useGetFilmPage from '../../../hooks/useGetFilmPage'
 import promoImg from '../../../img/searchImg.png'
 import searchImg from '../../../img/searchInput.svg'
 import FilmPageList from '../FilmPageList/FilmPageList'
 import download from '../../../img/download.svg'
+import { themes } from '../../../data/categoryData'
 
 const FilmPagePromo: React.FC = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })

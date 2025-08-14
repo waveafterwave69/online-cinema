@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getFilmsCategory } from '../data/data'
 import type { Films } from '../types'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     clearCategory,
     setCategory,
 } from '../store/slices/categorySlice/categorySlice'
+import { getFilmsCategory } from '../data/categoryData'
 
 const useGetCategory = () => {
     const [films, setFilms] = useState<Films[]>()

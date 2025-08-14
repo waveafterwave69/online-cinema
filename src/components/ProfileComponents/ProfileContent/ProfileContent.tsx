@@ -24,18 +24,20 @@ const ProfileContent: React.FC<ProfileContentProps> = ({ profile }) => {
                     </div>
                 </div>
                 <div className={styles.content__list}>
-                    <ProfileContentItem
-                        films={profile?.fav}
-                        title={'Избранные'}
-                    />
-                    <ProfileContentItem
-                        films={profile?.like}
-                        title={'Понравившиеся '}
-                    />
-                    <ProfileContentItem
-                        films={profile?.dislike}
-                        title={'Непонравившиеся '}
-                    />
+                    <div className="container">
+                        <ProfileContentItem
+                            films={profile?.fav}
+                            title={'Избранные'}
+                        />
+                        <ProfileContentItem
+                            films={profile?.like}
+                            title={'Понравившиеся '}
+                        />
+                        <ProfileContentItem
+                            films={profile?.dislike}
+                            title={'Непонравившиеся '}
+                        />
+                    </div>
                 </div>
             </section>
         </>

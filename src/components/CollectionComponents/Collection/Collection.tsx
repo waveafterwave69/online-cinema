@@ -1,4 +1,3 @@
-import { collections } from '../../../data/data'
 import type { Theme } from '../../../types'
 import styles from './Collection.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -8,6 +7,7 @@ import { motion } from 'framer-motion'
 import 'swiper/css'
 import { useMediaQuery } from 'react-responsive'
 import CollectionItem from '../CollectionItem/CollectionItem'
+import { collections } from '../../../data/categoryData'
 
 const Collection: React.FC = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })

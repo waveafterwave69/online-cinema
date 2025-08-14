@@ -24,6 +24,10 @@
 }
 
 @media (max-width: 475px) {
+    .collection {
+        margin-top: 75px;
+    }
+
     .collection__title {
         font-size: 26px;
         margin-bottom: 15px;

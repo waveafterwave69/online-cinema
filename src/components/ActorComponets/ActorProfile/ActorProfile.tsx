@@ -41,7 +41,7 @@ const ActorProfile: React.FC<ActorProfileProps> = ({ actorInfo }) => {
                                 Возраст: {actorInfo.age}
                             </p>
                         )}
-                        {actorInfo.growth && (
+                        {actorInfo.growth > 0 && (
                             <p className={styles.info__prof}>
                                 Рост: {actorInfo.growth} см
                             </p>
@@ -49,9 +49,11 @@ const ActorProfile: React.FC<ActorProfileProps> = ({ actorInfo }) => {
                         <p className={styles.info__prof}>
                             Дата рождения: {validateBirth(actorInfo.birthday)}
                         </p>
-                        <p className={styles.info__prof}>
-                            Место рождения: {actorInfo.birthplace}
-                        </p>
+                        {actorInfo.birthplace && (
+                            <p className={styles.info__prof}>
+                                Место рождения: {actorInfo.birthplace}
+                            </p>
+                        )}
                     </div>
                 </div>
             </motion.section>

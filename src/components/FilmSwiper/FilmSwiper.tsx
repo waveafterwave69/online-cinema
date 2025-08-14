@@ -4,18 +4,29 @@ import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // @ts-ignore
 import 'swiper/css'
-
+import arrowImg from '../../img/more.svg'
 import { useMediaQuery } from 'react-responsive'
-import TrendsItem from '../TrendsItem/TrendsItem'
+import TrendsItem from '../TrendsItem/SwiperItem'
 import type { Films } from '../../types'
+import { Link } from 'react-router'
+import Tags from '../Tags/Tags'
+import { themes } from '../../data/categoryData'
 
 interface FilmSwiperProps {
     films: Films[] | undefined
     title: string
+    buttonMore?: boolean
+    tags?: boolean
 }
 
-const FilmSwiper: React.FC<FilmSwiperProps> = ({ films, title }) => {
+const FilmSwiper: React.FC<FilmSwiperProps> = ({
+    films,
+    title,
+    buttonMore = false,
+    tags = false,
+}) => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
+    const isMedium2 = useMediaQuery({ maxWidth: 768 })
     const isMediumScreen = useMediaQuery({ maxWidth: 1024 })
 
     return (
@@ -28,28 +39,44 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({ films, title }) => {
                 }}
                 className={styles.film}
             >
-                <div className="container">
+                <div className={styles.film__row}>
                     <h2 className={styles.film__title}>{title}</h2>
-                    <Swiper
-                        modules={[Autoplay]}
-                        spaceBetween={10}
-                        slidesPerView={
-                            isSmallScreen ? 3 : isMediumScreen ? 4 : 6
-                        }
-                        autoplay={{
-                            delay: 2500,
-                            disableOnInteraction: false,
-                        }}
-                        loop
-                    >
-                        {films &&
-                            films.map((film: Films) => (
-                                <SwiperSlide key={film.nameOriginal}>
-                                    <TrendsItem film={film} />
-                                </SwiperSlide>
-                            ))}
-                    </Swiper>
+                    {buttonMore && (
+                        <Link to="/movies" className={styles.row__title}>
+                            <p className={styles.row__text}>Больше</p>
+                            <img
+                                src={arrowImg}
+                                alt="more"
+                                className={styles.row__img}
+                            />
+                        </Link>
+                    )}
                 </div>
+                {tags && (
+                    <Tags
+                        themes={themes}
+                        isSmallScreen={isSmallScreen}
+                        isMediumScreen={isMediumScreen}
+                        isMedium2={isMedium2}
+                    />
+                )}
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={10}
+                    slidesPerView={isSmallScreen ? 3 : isMediumScreen ? 4 : 6}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    loop
+                >
+                    {films &&
+                        films.map((film: Films) => (
+                            <SwiperSlide key={film.kinopoiskId}>
+                                <TrendsItem film={film} />
+                            </SwiperSlide>
+                        ))}
+                </Swiper>
             </motion.section>
         </>
     )

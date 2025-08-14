@@ -8,9 +8,9 @@ import {
     getOneFilm,
     getSameFilms,
     getSequelPrequelFilm,
-    getUserReview,
-} from '../data/data'
+} from '../data/filmsData'
 import { useSelector } from 'react-redux'
+import { getUserReview } from '../data/userData'
 
 const useGetOneFilm = (id: string | undefined) => {
     const [film, setFilm] = useState<Films>()

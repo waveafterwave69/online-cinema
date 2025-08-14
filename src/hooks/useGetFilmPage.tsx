@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { geFilmByWords, getAllFilms, getFilmsCategory } from '../data/data'
+import { geFilmByWords, getAllFilms } from '../data/filmsData'
 import { useSelector } from 'react-redux'
+import { getFilmsCategory } from '../data/categoryData'
 
 const useGetFilmPage = () => {
     const { category } = useSelector((state: any) => state)
@@ -14,11 +15,9 @@ const useGetFilmPage = () => {
     useEffect(() => {
         if (searchWord !== '') {
             const fetchData = async () => {
-                console.log(searchWord)
                 try {
                     setIsLoading(true)
                     const data = await geFilmByWords(searchWord, pageCount)
-                    console.log(data?.data.films)
                     if (data?.data?.films) {
                         setFilms(data.data.films)
                     }
@@ -39,7 +38,6 @@ const useGetFilmPage = () => {
                 try {
                     setIsLoading(true)
                     const data = await getAllFilms(pageCount)
-                    console.log(data?.data.items)
                     if (data?.data?.items) {
                         setFilms(data.data.items)
                     }
@@ -85,7 +83,6 @@ const useGetFilmPage = () => {
 
     useEffect(() => {
         setPageCount(1)
-        console.log('switch')
     }, [category.theme, searchWord])
 
     return {

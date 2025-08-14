@@ -1,15 +1,15 @@
 import React from 'react'
 import type { Films } from '../../types'
-import styles from './TrendsItem.module.css'
+import styles from './SwiperItem.module.css'
 import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleFav } from '../../store/slices/profileSlice/profileSlice'
 
-interface TrendsItemProps {
+interface SwiperItemProps {
     film: Films
 }
 
-const TrendsItem: React.FC<TrendsItemProps> = ({ film }) => {
+const SwiperItem: React.FC<SwiperItemProps> = ({ film }) => {
     const dispatch = useDispatch()
     const { profile } = useSelector((state: any) => state)
 
@@ -57,4 +57,4 @@ const TrendsItem: React.FC<TrendsItemProps> = ({ film }) => {
     )
 }
 
-export default TrendsItem
+export default SwiperItem

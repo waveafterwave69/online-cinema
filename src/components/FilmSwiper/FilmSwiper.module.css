@@ -1,14 +1,27 @@
 .film {
     margin-top: 80px;
     position: relative;
-    margin-bottom: -50px;
+    margin-bottom: 80px;
 }
 
 .film__row {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 0px;
+}
+
+.row__title {
+    column-gap: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.row__text {
+    color: var(--color-blue);
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .film__title {
@@ -21,8 +34,8 @@
 
 @media (max-width: 1024px) {
     .film {
-        margin-top: 80px;
-        margin-bottom: -50px;
+        margin-top: 0px;
+        margin-bottom: 70px;
     }
 
     .film__title {
@@ -30,14 +43,13 @@
     }
 
     .film__row {
-        margin-bottom: 25px;
+        margin-bottom: 5px;
     }
 }
 
 @media (max-width: 768px) {
     .film {
-        margin-top: 70px;
-        margin-bottom: -50px;
+        margin-bottom: 20px;
     }
 
     .film__title {
@@ -45,7 +57,7 @@
     }
 
     .film__row {
-        margin-bottom: 20px;
+        margin-bottom: 3px;
     }
 
     .row__text {
@@ -59,8 +71,7 @@
 
 @media (max-width: 475px) {
     .film {
-        margin-top: 50px;
-        margin-bottom: -25px;
+        margin-bottom: -20px;
     }
 
     .film__title {
