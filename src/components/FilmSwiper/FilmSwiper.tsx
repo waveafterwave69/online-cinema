@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // @ts-ignore
 import 'swiper/css'
+import download from '../../img/download.svg'
 import arrowImg from '../../img/more.svg'
 import { useMediaQuery } from 'react-responsive'
 import TrendsItem from '../TrendsItem/SwiperItem'
@@ -17,6 +18,7 @@ interface FilmSwiperProps {
     title: string
     buttonMore?: boolean
     tags?: boolean
+    isLoading?: boolean
 }
 
 const FilmSwiper: React.FC<FilmSwiperProps> = ({
@@ -24,6 +26,7 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
     title,
     buttonMore = false,
     tags = false,
+    isLoading,
 }) => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
     const isMedium2 = useMediaQuery({ maxWidth: 768 })
@@ -60,23 +63,29 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                         isMedium2={isMedium2}
                     />
                 )}
-                <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={10}
-                    slidesPerView={isSmallScreen ? 3 : isMediumScreen ? 4 : 6}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                    loop
-                >
-                    {films &&
-                        films.map((film: Films) => (
-                            <SwiperSlide key={film.kinopoiskId}>
-                                <TrendsItem film={film} />
-                            </SwiperSlide>
-                        ))}
-                </Swiper>
+                {!isLoading ? (
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={10}
+                        slidesPerView={
+                            isSmallScreen ? 3 : isMediumScreen ? 4 : 6
+                        }
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        loop
+                    >
+                        {films &&
+                            films.map((film: Films) => (
+                                <SwiperSlide key={film.kinopoiskId}>
+                                    <TrendsItem film={film} />
+                                </SwiperSlide>
+                            ))}
+                    </Swiper>
+                ) : (
+                    <img src={download} className={styles.download} />
+                )}
             </motion.section>
         </>
     )

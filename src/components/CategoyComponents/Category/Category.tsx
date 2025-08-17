@@ -2,7 +2,6 @@ import styles from './Category.module.css'
 import React from 'react'
 import { motion } from 'framer-motion'
 import useGetCategory from '../../../hooks/useGetCategory'
-import download from '../../../img/download.svg'
 import FilmSwiper from '../../FilmSwiper/FilmSwiper'
 
 const Category: React.FC = () => {
@@ -18,16 +17,13 @@ const Category: React.FC = () => {
                 }}
                 className={styles.trends}
             >
-                {!isLoading ? (
-                    <FilmSwiper
-                        title="Категории"
-                        films={films}
-                        buttonMore={true}
-                        tags={true}
-                    />
-                ) : (
-                    <img src={download} className={styles.download} />
-                )}
+                <FilmSwiper
+                    isLoading={isLoading}
+                    title="Категории"
+                    films={films}
+                    buttonMore={true}
+                    tags={true}
+                />
             </motion.section>
         </>
     )
