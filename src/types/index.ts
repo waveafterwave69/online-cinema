@@ -14,6 +14,14 @@ interface Genre {
     genre: string
 }
 
+type FilmType =
+    | 'FILM'
+    | 'VIDEO'
+    | 'TV_SHOW'
+    | 'TV_SERIES'
+    | 'MINI_SERIES'
+    | 'UNKNOWN'
+
 export interface Films {
     rating: number
     filmId: string
@@ -34,20 +42,22 @@ export interface Films {
     ratingKinopoisk: number
     description: string
     shortDescription: string
-    type: 'FILM' | 'VIDEO' | 'TV_SHOW' | 'TV_SERIES' | 'MINI_SERIES' | 'UNKNOWN'
+    type: FilmType
     year: number
 }
 
+type ThemeType =
+    | 'VAMPIRE_THEME'
+    | 'COMICS_THEME'
+    | 'CLOSES_RELEASE'
+    | 'FAMILY'
+    | 'LOVE_THEME'
+    | 'ZOMBIE_THEME'
+    | 'CATASTROPHE_THEME'
+    | 'KIDS_ANIMATION_THEME'
+
 export interface Theme {
-    theme:
-        | 'VAMPIRE_THEME'
-        | 'COMICS_THEME'
-        | 'CLOSES_RELEASE'
-        | 'FAMILY'
-        | 'LOVE_THEME'
-        | 'ZOMBIE_THEME'
-        | 'CATASTROPHE_THEME'
-        | 'KIDS_ANIMATION_THEME'
+    theme: ThemeType
     name?: string
     img?: string
 }
@@ -77,15 +87,19 @@ export interface FilmFactss {
     type: string
 }
 
+type ActorPofessional = 'DIRECTOR' | 'ACTOR'
+
 export interface Actor {
     description: null | string
     nameEn: string
     nameRu: string
     posterUrl: string
-    professionKey: 'DIRECTOR' | 'ACTOR'
+    professionKey: ActorPofessional
     professionText: string
     staffId: number
 }
+
+type ReviewType = 'NEGATIVE' | 'POSITIVE'
 
 export interface Review {
     author: string
@@ -95,7 +109,7 @@ export interface Review {
     negativeRating: number
     positiveRating: number
     title: string
-    type: 'NEGATIVE' | 'POSITIVE'
+    type: ReviewType
 }
 
 export interface ActorProfilee {
