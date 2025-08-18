@@ -1,13 +1,13 @@
 import Tags from '../../Tags/Tags'
 import styles from './FilmPagePromo.module.css'
 import { useMediaQuery } from 'react-responsive'
-
 import useGetFilmPage from '../../../hooks/useGetFilmPage'
 import promoImg from '../../../img/searchImg.png'
 import searchImg from '../../../img/searchInput.svg'
 import FilmPageList from '../FilmPageList/FilmPageList'
 import download from '../../../img/download.svg'
 import { themes } from '../../../data/categoryData'
+import { useCallback } from 'react'
 
 const FilmPagePromo: React.FC = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
@@ -16,9 +16,26 @@ const FilmPagePromo: React.FC = () => {
     const { films, setPageCount, setSearchWord, pageCount, isLoading, error } =
         useGetFilmPage()
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchWord(e.target.value)
+    const debounce = (func: Function, delay: number) => {
+        let timerId: NodeJS.Timeout
+        return function (...args: any[]) {
+            clearTimeout(timerId)
+            timerId = setTimeout(() => {
+                func(...args)
+            }, delay)
+        }
     }
+
+    const handleChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchWord(e.target.value)
+        },
+        [setSearchWord]
+    )
+
+    const debouncedHandleChange = useCallback(debounce(handleChange, 350), [
+        handleChange,
+    ])
 
     return (
         <>
@@ -37,7 +54,7 @@ const FilmPagePromo: React.FC = () => {
                                 <div className={styles.search__content}>
                                     <label className={styles.form__label}>
                                         <input
-                                            onChange={handleChange}
+                                            onChange={debouncedHandleChange}
                                             type="text"
                                             placeholder="Поиск"
                                             className={styles.search__input}
