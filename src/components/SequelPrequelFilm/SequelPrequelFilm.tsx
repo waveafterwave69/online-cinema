@@ -24,6 +24,7 @@ const SequelPrequelFilm: React.FC<SequelPrequelFilmProps> = ({
                     <FilmSwiper
                         title="Сиквелы и Приквелы"
                         films={sequalPrequal}
+                        buttonFav={false}
                     />
                 </div>
             </motion.section>

@@ -19,7 +19,11 @@ const SameFilms: React.FC<SameFilmsProps> = ({ sameFilms }) => {
                 className={styles.same}
             >
                 <div className="container">
-                    <FilmSwiper title="Похожие фильмы" films={sameFilms} />
+                    <FilmSwiper
+                        title="Похожие фильмы"
+                        buttonFav={false}
+                        films={sameFilms}
+                    />
                 </div>
             </motion.section>
         </>

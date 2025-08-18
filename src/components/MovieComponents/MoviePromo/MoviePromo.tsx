@@ -46,12 +46,20 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     const handleLike = () => {
         if (film) {
             dispatch(toggleLike(film))
+
+            if (dislikeColor) {
+                dispatch(toggleDislike(film))
+            }
         }
     }
 
     const handleDisLike = () => {
         if (film) {
             dispatch(toggleDislike(film))
+
+            if (likeColor) {
+                dispatch(toggleLike(film))
+            }
         }
     }
 

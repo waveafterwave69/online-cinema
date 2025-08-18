@@ -1,8 +1,6 @@
 import styles from './FilmFacts.module.css'
-
 import FactsItem from '../FactsItem/FactsItem'
 import { useState } from 'react'
-import { motion } from 'motion/react'
 import type { FilmFactss, Films } from '../../../types'
 
 interface FilmFactsProps {
@@ -12,6 +10,7 @@ interface FilmFactsProps {
 
 const FilmFacts: React.FC<FilmFactsProps> = ({ filmFacts, film }) => {
     const [max, setMax] = useState<number>(3)
+    console.log(filmFacts)
 
     return (
         <>
@@ -31,26 +30,26 @@ const FilmFacts: React.FC<FilmFactsProps> = ({ filmFacts, film }) => {
                                 />
                             ))}
                         </ul>
-                        <motion.div
-                            className={styles.facts__btn}
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            {max < filmFacts.length ? (
-                                <button
-                                    className={styles.facts__button}
-                                    onClick={() => setMax((prev) => prev + 5)}
-                                >
-                                    Больше фактов
-                                </button>
-                            ) : (
+                        <div className={styles.buttons__row}>
+                            <div className={styles.facts__btn}>
                                 <button
                                     className={styles.facts__button}
                                     onClick={() => setMax(() => 3)}
+                                    disabled={max == 3}
                                 >
-                                    Скрыть факты
+                                    Скрыть
                                 </button>
-                            )}
-                        </motion.div>
+                            </div>
+                            <div className={styles.facts__btn}>
+                                <button
+                                    className={styles.facts__button}
+                                    onClick={() => setMax((prev) => prev + 5)}
+                                    disabled={max >= filmFacts.length}
+                                >
+                                    Больше
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

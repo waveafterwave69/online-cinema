@@ -19,12 +19,14 @@ interface FilmSwiperProps {
     buttonMore?: boolean
     tags?: boolean
     isLoading?: boolean
+    buttonFav?: boolean
 }
 
 const FilmSwiper: React.FC<FilmSwiperProps> = ({
     films,
     title,
     buttonMore = false,
+    buttonFav = true,
     tags = false,
     isLoading,
 }) => {
@@ -79,7 +81,10 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                         {films &&
                             films.map((film: Films) => (
                                 <SwiperSlide key={film.kinopoiskId}>
-                                    <TrendsItem film={film} />
+                                    <TrendsItem
+                                        film={film}
+                                        buttonFav={buttonFav}
+                                    />
                                 </SwiperSlide>
                             ))}
                     </Swiper>

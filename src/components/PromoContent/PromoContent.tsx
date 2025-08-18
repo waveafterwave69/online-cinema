@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 
 import imdbImg from '../../img/imdb.svg'
 import kinopoiskImg from '../../img/kinopoiskImg.jpg'
+import { Link } from 'react-router'
 
 interface PromoContentProps {
     film: Films
@@ -66,12 +67,12 @@ const PromoContent: React.FC<PromoContentProps> = ({ film }) => {
                         </a>
                     )}
                 </div>
-                <a
-                    href={`/movie/${film.kinopoiskId}`}
+                <Link
+                    to={`/movie/${film.kinopoiskId}`}
                     className={styles.watch__button}
                 >
                     Смотреть
-                </a>
+                </Link>
             </div>
         </>
     )

@@ -7,9 +7,10 @@ import { toggleFav } from '../../store/slices/profileSlice/profileSlice'
 
 interface SwiperItemProps {
     film: Films
+    buttonFav: boolean
 }
 
-const SwiperItem: React.FC<SwiperItemProps> = ({ film }) => {
+const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
     const dispatch = useDispatch()
     const { profile } = useSelector((state: any) => state)
 
@@ -25,20 +26,24 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film }) => {
     return (
         <>
             <motion.li className={styles.item}>
-                <motion.button
-                    whileHover={{
-                        backgroundColor: '#EC5BAA',
-                    }}
-                    style={{
-                        backgroundColor:
-                            isFavorite.length > 0 ? '#EC5BAA' : 'transparent',
-                    }}
-                    transition={{ duration: 0.1 }}
-                    className={styles.item__button}
-                    onClick={addToFav}
-                >
-                    +
-                </motion.button>
+                {buttonFav && (
+                    <motion.button
+                        whileHover={{
+                            backgroundColor: '#EC5BAA',
+                        }}
+                        style={{
+                            backgroundColor:
+                                isFavorite.length > 0
+                                    ? '#EC5BAA'
+                                    : 'transparent',
+                        }}
+                        transition={{ duration: 0.1 }}
+                        className={styles.item__button}
+                        onClick={addToFav}
+                    >
+                        +
+                    </motion.button>
+                )}
                 <a
                     href={
                         film.kinopoiskId
