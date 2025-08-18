@@ -42,7 +42,7 @@ const profileSlice = createSlice({
             const filmId = action.payload.kinopoiskId
 
             const isFavorite = state.fav.some(
-                (el: Films) => el.filmId === filmId
+                (el: Films) => el.kinopoiskId === filmId
             )
 
             if (isFavorite) {
