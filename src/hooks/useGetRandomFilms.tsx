@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { getOneFilm, randomId } from '../data/filmsData'
+import { getOneFilm, randomId } from '../api/filmsData'
 
 const useGetRandomFilms = () => {
     const [film, setFilm] = useState<Films>()

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { geFilmByWords, getAllFilms } from '../data/filmsData'
+import { geFilmByWords, getAllFilms } from '../api/filmsData'
 import { useSelector } from 'react-redux'
-import { getFilmsCategory } from '../data/categoryData'
+import { getFilmsCategory } from '../api/categoryData'
 
 const useGetFilmPage = () => {
     const { category } = useSelector((state: any) => state)

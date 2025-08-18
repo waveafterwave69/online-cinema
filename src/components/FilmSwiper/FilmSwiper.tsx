@@ -11,7 +11,7 @@ import TrendsItem from '../TrendsItem/SwiperItem'
 import type { Films } from '../../types'
 import { Link } from 'react-router'
 import Tags from '../Tags/Tags'
-import { themes } from '../../data/categoryData'
+import { themes } from '../../api/categoryData'
 
 interface FilmSwiperProps {
     films: Films[] | undefined

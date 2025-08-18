@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import 'swiper/css'
 import { useMediaQuery } from 'react-responsive'
 import CollectionItem from '../CollectionItem/CollectionItem'
-import { collections } from '../../../data/categoryData'
+import { collections } from '../../../api/categoryData'
 
 const Collection: React.FC = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })

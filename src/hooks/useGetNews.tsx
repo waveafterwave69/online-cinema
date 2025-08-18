@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { News } from '../types'
-import { getNews } from '../data/newsData'
+import { getNews } from '../api/newsData'
 
 const useGetNews = () => {
     const [news, setNews] = useState<News[]>()

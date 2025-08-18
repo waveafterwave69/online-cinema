@@ -5,7 +5,7 @@ import {
     clearCategory,
     setCategory,
 } from '../store/slices/categorySlice/categorySlice'
-import { getFilmsCategory } from '../data/categoryData'
+import { getFilmsCategory } from '../api/categoryData'
 
 const useGetCategory = () => {
     const [films, setFilms] = useState<Films[]>()

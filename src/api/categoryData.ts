@@ -81,16 +81,17 @@ export const themes: Theme[] = [
 
 export const getThemes = async (theme: string) => {
     try {
-        const response = await axios(
-            `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=${theme}&page=1
-`,
-            {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': apiKey,
-                },
-            }
-        )
+        const response = await axios({
+            method: 'GET',
+            url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+            params: {
+                type: theme,
+                page: 1,
+            },
+            headers: {
+                'X-API-KEY': apiKey,
+            },
+        })
         return response
     } catch (error) {
         console.error(error)
@@ -102,16 +103,17 @@ export const getFilmsCategory = async (
     page: number | string = 1
 ) => {
     try {
-        const response = await axios(
-            `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=${theme}&page=${page}
-`,
-            {
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': apiKey,
-                },
-            }
-        )
+        const response = await axios({
+            method: 'GET',
+            url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+            params: {
+                type: theme,
+                page: page,
+            },
+            headers: {
+                'X-API-KEY': apiKey,
+            },
+        })
         return response
     } catch (error) {
         console.error(error)

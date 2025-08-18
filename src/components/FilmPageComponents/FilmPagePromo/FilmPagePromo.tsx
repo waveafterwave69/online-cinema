@@ -6,7 +6,7 @@ import promoImg from '../../../img/searchImg.png'
 import searchImg from '../../../img/searchInput.svg'
 import FilmPageList from '../FilmPageList/FilmPageList'
 import download from '../../../img/download.svg'
-import { themes } from '../../../data/categoryData'
+import { themes } from '../../../api/categoryData'
 import { useCallback } from 'react'
 
 const FilmPagePromo: React.FC = () => {

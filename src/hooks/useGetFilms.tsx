@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { getAllFilms } from '../data/filmsData'
+import { getAllFilms } from '../api/filmsData'
 
 const useGetFilms = () => {
     const [films, setFilms] = useState<Films[]>()

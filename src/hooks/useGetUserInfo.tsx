@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getUserInfo } from '../data/userData'
+import { getUserInfo } from '../api/userData'
 
 const useGetUserInfo = (id: string | undefined) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)

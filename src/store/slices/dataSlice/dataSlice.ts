@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { Films } from '../../../types'
-import { getAllFilms } from '../../../data/filmsData'
+import { getAllFilms } from '../../../api/filmsData'
 
 interface DataState {
     data: Films[]
