@@ -3,7 +3,10 @@ import type { Films } from '../../types'
 import styles from './SwiperItem.module.css'
 import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleFav } from '../../store/slices/profileSlice/profileSlice'
+import { switchForm } from '../../store/slices/loginSlice/loginSlice'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../../firebase/firebase'
+import useGetMoviesFromDb from '../../hooks/useGetMoviesFromDb'
 
 interface SwiperItemProps {
     film: Films
@@ -12,14 +15,27 @@ interface SwiperItemProps {
 
 const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
     const dispatch = useDispatch()
-    const { profile } = useSelector((state: any) => state)
+    const { login }: any = useSelector((state) => state)
+    const { movieFav } = useGetMoviesFromDb()
 
-    const addToFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const addToFav = async (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
         e.stopPropagation()
-        dispatch(toggleFav(film))
+        if (!login.userProfile) {
+            dispatch(switchForm())
+        }
+        try {
+            const docRef = await addDoc(collection(db, 'movieFav'), {
+                ...film,
+            })
+            console.log('Document written with ID: ', docRef.id)
+        } catch (e) {
+            console.error('Error adding document: ', e)
+        }
     }
 
-    const isFavorite = profile.fav.filter(
+    const isFavorite = movieFav.filter(
         (el: Films) => el.kinopoiskId === film.kinopoiskId
     )
 

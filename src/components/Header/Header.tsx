@@ -8,8 +8,17 @@ import profileImg from '../../img/profile.svg'
 import searchImg from '../../img/search.svg'
 
 import type { IRoutes } from '../../types'
+import { useDispatch, useSelector } from 'react-redux'
+import { switchForm } from '../../store/slices/loginSlice/loginSlice'
 
 const Header: React.FC = () => {
+    const { login }: any = useSelector((state) => state)
+    const dispatch = useDispatch()
+
+    const openForm = () => {
+        dispatch(switchForm())
+    }
+
     return (
         <>
             <motion.header
@@ -61,14 +70,31 @@ const Header: React.FC = () => {
                                 className={styles.profile__icon}
                             />
                         </Link>
-                        <Link to="/profile" className={styles.profile__open}>
-                            <motion.img
-                                whileHover={{ scale: 1.15 }}
-                                src={profileImg}
-                                alt="profile"
-                                className={styles.profile__icon}
-                            />
-                        </Link>
+                        {login.userProfile ? (
+                            <Link
+                                to="/profile"
+                                className={styles.profile__open}
+                            >
+                                <motion.img
+                                    whileHover={{ scale: 1.15 }}
+                                    src={profileImg}
+                                    alt="profile"
+                                    className={styles.profile__icon}
+                                />
+                            </Link>
+                        ) : (
+                            <button
+                                onClick={openForm}
+                                className={styles.profile__open}
+                            >
+                                <motion.img
+                                    whileHover={{ scale: 1.15 }}
+                                    src={profileImg}
+                                    alt="profile"
+                                    className={styles.profile__icon}
+                                />
+                            </button>
+                        )}
                     </div>
                 </div>
             </motion.header>

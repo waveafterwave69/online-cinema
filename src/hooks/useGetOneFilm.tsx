@@ -28,21 +28,21 @@ const useGetOneFilm = (id: string | undefined) => {
     const [likeColor, setLikeColor] = useState<boolean>(false)
     const [dislikeColor, setDislikeColor] = useState<boolean>(false)
 
-    const { profile }: any = useSelector((state) => state)
+    const { login }: any = useSelector((state) => state)
 
     useEffect(() => {
         if (film) {
-            const isFavorite = profile.fav.some(
+            const isFavorite = login.fav.some(
                 (el: Films) => el.kinopoiskId === film.kinopoiskId
             )
             setFavColor(isFavorite)
 
-            const isLiked = profile.like.some(
+            const isLiked = login.like.some(
                 (el: Films) => el.kinopoiskId === film.kinopoiskId
             )
             setLikeColor(isLiked)
 
-            const isDisliked = profile.dislike.some(
+            const isDisliked = login.dislike.some(
                 (el: Films) => el.kinopoiskId === film.kinopoiskId
             )
             setDislikeColor(isDisliked)
@@ -51,7 +51,7 @@ const useGetOneFilm = (id: string | undefined) => {
             setLikeColor(false)
             setDislikeColor(false)
         }
-    }, [profile.fav, profile.like, profile.dislike, film])
+    }, [login.fav, login.like, login.dislike, film])
 
     useEffect(() => {
         const fetchData = async () => {

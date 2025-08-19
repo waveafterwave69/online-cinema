@@ -10,12 +10,14 @@ import dislike from '../../../img/dislike.svg'
 
 import type { Films, ScreenShots } from '../../../types'
 import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import {
-    toggleDislike,
-    toggleFav,
-    toggleLike,
-} from '../../../store/slices/profileSlice/profileSlice'
+    switchForm,
+    // toggleDislike,
+    // toggleFav,
+    // toggleLike,
+} from '../../../store/slices/loginSlice/loginSlice'
 
 interface MoviePromoProps {
     film: Films | undefined
@@ -37,28 +39,42 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     dislikeColor,
 }) => {
     const dispatch = useDispatch()
+    const { login }: any = useSelector((state) => state)
+
     const handleFav = () => {
         if (film) {
-            dispatch(toggleFav(film))
+            if (login.userProfile) {
+                // dispatch(toggleFav(film))
+            } else {
+                dispatch(switchForm())
+            }
         }
     }
 
     const handleLike = () => {
         if (film) {
-            dispatch(toggleLike(film))
+            if (login.userProfile) {
+                // dispatch(toggleLike(film))
 
-            if (dislikeColor) {
-                dispatch(toggleDislike(film))
+                if (dislikeColor) {
+                    // dispatch(toggleDislike(film))
+                }
+            } else {
+                dispatch(switchForm())
             }
         }
     }
 
     const handleDisLike = () => {
         if (film) {
-            dispatch(toggleDislike(film))
+            if (login.userProfile) {
+                // dispatch(toggleDislike(film))
 
-            if (likeColor) {
-                dispatch(toggleLike(film))
+                if (likeColor) {
+                    // dispatch(toggleLike(film))
+                }
+            } else {
+                dispatch(switchForm())
             }
         }
     }

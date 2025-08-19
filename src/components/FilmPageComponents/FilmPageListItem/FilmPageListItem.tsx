@@ -2,20 +2,17 @@ import React from 'react'
 import styles from './FilmPageListItem.module.css'
 import { motion } from 'framer-motion'
 import type { Films } from '../../../types'
-import { toggleFav } from '../../../store/slices/profileSlice/profileSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 interface TrendsItemProps {
     film: Films
 }
 
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
-    const dispatch = useDispatch()
     const { profile } = useSelector((state: any) => state)
 
     const addToFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation()
-        dispatch(toggleFav(film))
     }
 
     const isFavorite = profile.fav.filter(

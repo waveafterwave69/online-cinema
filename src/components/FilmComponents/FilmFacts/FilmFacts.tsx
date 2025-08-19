@@ -10,7 +10,6 @@ interface FilmFactsProps {
 
 const FilmFacts: React.FC<FilmFactsProps> = ({ filmFacts, film }) => {
     const [max, setMax] = useState<number>(3)
-    console.log(filmFacts)
 
     return (
         <>
