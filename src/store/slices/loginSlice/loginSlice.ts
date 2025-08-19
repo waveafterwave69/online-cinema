@@ -14,9 +14,20 @@ interface InitialStateType {
     formType: FormType
 }
 
+// Function to get userProfile from localStorage
+const getInitialUserProfile = (): UserProfile | undefined => {
+    try {
+        const storedUserProfile = localStorage.getItem('userProfile')
+        return storedUserProfile ? JSON.parse(storedUserProfile) : undefined
+    } catch (error) {
+        console.error('Error getting userProfile from localStorage:', error)
+        return undefined
+    }
+}
+
 const initialState: InitialStateType = {
     type: 'login',
-    userProfile: undefined,
+    userProfile: getInitialUserProfile(), // Get initial value from localStorage
     formType: 'close',
 }
 
@@ -42,9 +53,14 @@ export const loginSlice = createSlice({
             state.userProfile = action.payload
             localStorage.setItem('userProfile', JSON.stringify(action.payload))
         },
+        clearUserInfo: (state) => {
+            state.userProfile = undefined
+            localStorage.removeItem('userProfile')
+        },
     },
 })
 
-export const { switchType, switchForm, setUserInfo } = loginSlice.actions
+export const { switchType, switchForm, setUserInfo, clearUserInfo } =
+    loginSlice.actions
 
 export const loginReducer = loginSlice.reducer
