@@ -27,6 +27,12 @@ const ProfileContent: React.FC<ProfileContentProps> = () => {
         dispatch(setUserInfo(undefined))
     }
 
+    const needUser: any = movieFav.filter(
+        (el: any) => el.email === login.userProfile.email
+    )
+
+    const films = needUser[0]?.fav
+
     return (
         <>
             <section className={styles.profile}>
@@ -48,7 +54,7 @@ const ProfileContent: React.FC<ProfileContentProps> = () => {
                     <div className="container">
                         {movieFav.length > 0 && (
                             <ProfileContentItem
-                                films={movieFav}
+                                films={films}
                                 title={'Избранные'}
                             />
                         )}

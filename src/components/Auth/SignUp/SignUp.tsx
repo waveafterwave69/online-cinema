@@ -10,6 +10,7 @@ import {
     switchType,
 } from '../../../store/slices/loginSlice/loginSlice'
 import close from '../../../img/close.png'
+import { addUser } from '../../../utils/utils'
 
 const SignUp: React.FC = () => {
     const [email, setEmail] = useState<string>('')
@@ -40,6 +41,14 @@ const SignUp: React.FC = () => {
                     })
                 )
                 dispatch(switchForm())
+                addUser(
+                    {
+                        password: password,
+                        email: email,
+                        fav: [],
+                    },
+                    email
+                )
             })
             .catch((error) => {
                 console.log(error)

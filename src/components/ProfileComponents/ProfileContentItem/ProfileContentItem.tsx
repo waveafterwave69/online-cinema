@@ -16,7 +16,11 @@ const ProfileContentItem: React.FC<ProfileContentItemProps> = ({
             <div className={styles.fav}>
                 <ul className={styles.fav__list}>
                     {films?.length > 0 && (
-                        <FilmSwiper films={films} title={title} />
+                        <FilmSwiper
+                            films={films}
+                            title={title}
+                            fromDataBase={true}
+                        />
                     )}
                 </ul>
             </div>

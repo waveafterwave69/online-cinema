@@ -31,7 +31,7 @@ const useGetOneFilm = (id: string | undefined) => {
     const { login }: any = useSelector((state) => state)
 
     useEffect(() => {
-        if (film) {
+        if (film && login?.userProfile?.email) {
             const isFavorite = login.fav.some(
                 (el: Films) => el.kinopoiskId === film.kinopoiskId
             )

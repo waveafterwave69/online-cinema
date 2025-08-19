@@ -8,7 +8,7 @@ const useGetMoviesFromDb = () => {
 
     useEffect(() => {
         const getCollectionData = () => {
-            const citiesRef = collection(db, 'movieFav')
+            const citiesRef = collection(db, 'users')
             const unsubscribe = onSnapshot(citiesRef, (snapshot) => {
                 const newMovies: Films[] = []
                 snapshot.docChanges().forEach((change) => {

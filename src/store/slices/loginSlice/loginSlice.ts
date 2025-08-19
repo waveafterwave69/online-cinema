@@ -6,6 +6,7 @@ type FormType = 'open' | 'close'
 interface UserProfile {
     email: string
     password: string
+    id: string
 }
 
 interface InitialStateType {

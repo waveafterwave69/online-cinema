@@ -1,4 +1,6 @@
+import { collection, doc, setDoc } from 'firebase/firestore'
 import type { Actor } from '../types'
+import { db } from '../firebase/firebase'
 
 export const validateTime = (time: string | undefined) => {
     if (time) {
@@ -33,5 +35,22 @@ export const getActors = (
             return actor.professionKey === actorKey
         })
         return newArr
+    }
+}
+
+export const addUser = async (user: any, customId?: string) => {
+    try {
+        const collectionRef = collection(db, 'users')
+        const docRef = customId
+            ? doc(collectionRef, customId)
+            : doc(collectionRef)
+
+        await setDoc(docRef, {
+            ...user,
+        })
+
+        console.log('Document written with ID: ', docRef.id)
+    } catch (e) {
+        console.error('Error adding document: ', e)
     }
 }

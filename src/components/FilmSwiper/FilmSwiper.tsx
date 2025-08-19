@@ -20,6 +20,7 @@ interface FilmSwiperProps {
     tags?: boolean
     isLoading?: boolean
     buttonFav?: boolean
+    fromDataBase?: boolean
 }
 
 const FilmSwiper: React.FC<FilmSwiperProps> = ({
@@ -29,6 +30,7 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
     buttonFav = true,
     tags = false,
     isLoading,
+    fromDataBase = false,
 }) => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
     const isMedium2 = useMediaQuery({ maxWidth: 768 })
@@ -79,10 +81,10 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                         loop
                     >
                         {films &&
-                            films.map((film: Films) => (
+                            films.map((film: Films | any) => (
                                 <SwiperSlide key={film.kinopoiskId}>
                                     <TrendsItem
-                                        film={film}
+                                        film={fromDataBase ? film.film : film}
                                         buttonFav={buttonFav}
                                     />
                                 </SwiperSlide>
