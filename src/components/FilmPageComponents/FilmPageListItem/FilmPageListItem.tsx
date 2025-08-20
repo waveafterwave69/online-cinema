@@ -17,12 +17,18 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
 
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
+    console.log(film)
+
     useEffect(() => {
         const fav =
             filmsFav &&
-            filmsFav.filter(
-                (el: any) => el.film.kinopoiskId === film.kinopoiskId
-            )
+            filmsFav.filter((el: any) => {
+                if (el.film.kinopoiskId) {
+                    return el.film.kinopoiskId === film.kinopoiskId
+                } else {
+                    return el.film.filmId === film.filmId
+                }
+            })
 
         setIsFavorite(fav)
     }, [filmsFav])

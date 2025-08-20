@@ -27,8 +27,6 @@ const ProfileContent: React.FC<ProfileContentProps> = () => {
         dispatch(setUserInfo(undefined))
     }
 
-    console.log(filmsLike)
-
     return (
         <>
             <section className={styles.profile}>

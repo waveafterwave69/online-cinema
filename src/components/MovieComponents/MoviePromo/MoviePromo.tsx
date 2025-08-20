@@ -93,24 +93,28 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     }
 
     const handleLike = () => {
-        if (film && isDisLike?.length === 0) {
+        if (film) {
             if (isLike?.length > 0) {
                 setIsLike('')
                 deleteFromLike()
             } else {
                 setIsLike(['content'])
+                deleteFromDislike()
+                setIsDisLike('')
                 addToLike()
             }
         }
     }
 
     const handleDisLike = () => {
-        if (film && isLike?.length === 0) {
+        if (film) {
             if (isDisLike?.length > 0) {
                 setIsDisLike('')
                 deleteFromDislike()
             } else {
+                deleteFromLike()
                 setIsDisLike(['content'])
+                setIsLike('')
                 addToDisLike()
             }
         }
