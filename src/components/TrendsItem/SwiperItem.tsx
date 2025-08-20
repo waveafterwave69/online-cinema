@@ -4,6 +4,7 @@ import styles from './SwiperItem.module.css'
 import { motion } from 'framer-motion'
 import useAddFilmsToDb from '../../hooks/useAddFilmsToDb'
 import useGetUserFilms from '../../hooks/useGetUserFilms'
+import { useSelector } from 'react-redux'
 
 interface SwiperItemProps {
     film: Films
@@ -13,6 +14,7 @@ interface SwiperItemProps {
 const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
     const { filmsFav } = useGetUserFilms()
     const [isFavorite, setIsFavorite] = useState<any>()
+    const { login }: any = useSelector((state: any) => state)
 
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
@@ -36,7 +38,8 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
                         }}
                         style={{
                             backgroundColor:
-                                isFavorite?.length > 0
+                                isFavorite?.length > 0 &&
+                                login?.userProfile?.email
                                     ? '#EC5BAA'
                                     : 'transparent',
                         }}

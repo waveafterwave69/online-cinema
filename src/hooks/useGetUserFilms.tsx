@@ -6,7 +6,7 @@ const useGetUserFilms = () => {
     const { movieFav } = useGetMoviesFromDb()
 
     const needUser: any = movieFav.filter(
-        (el: any) => el.email === login.userProfile.email
+        (el: any) => el?.email === login?.userProfile?.email
     )
 
     const filmsFav = needUser[0]?.fav

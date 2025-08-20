@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import type { Films } from '../../../types'
 import useGetUserFilms from '../../../hooks/useGetUserFilms'
 import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
+import { useSelector } from 'react-redux'
 
 interface TrendsItemProps {
     film: Films
@@ -12,6 +13,7 @@ interface TrendsItemProps {
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
     const { filmsFav } = useGetUserFilms()
     const [isFavorite, setIsFavorite] = useState<any>()
+    const { login }: any = useSelector((state: any) => state)
 
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
@@ -34,7 +36,9 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
                     }}
                     style={{
                         backgroundColor:
-                            isFavorite?.length > 0 ? '#EC5BAA' : 'transparent',
+                            isFavorite?.length > 0 && login?.userProfile?.email
+                                ? '#EC5BAA'
+                                : 'transparent',
                     }}
                     transition={{ duration: 0.1 }}
                     className={styles.item__button}

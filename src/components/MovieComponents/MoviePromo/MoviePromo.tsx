@@ -11,6 +11,7 @@ import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
 import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
 import { useEffect, useState } from 'react'
 import useGetUserFilms from '../../../hooks/useGetUserFilms'
+import { useSelector } from 'react-redux'
 
 interface MoviePromoProps {
     film: Films | undefined
@@ -40,6 +41,8 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     const [isFavorite, setIsFavorite] = useState<any>(filmsFav)
     const [isLike, setIsLike] = useState<any>(filmsLike)
     const [isDisLike, setIsDisLike] = useState<any>(filmsLike)
+
+    const { login }: any = useSelector((state: any) => state)
 
     useEffect(() => {
         if (film) {
@@ -196,7 +199,8 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                     onClick={handleFav}
                                     style={{
                                         filter:
-                                            isFavorite?.length > 0
+                                            isFavorite?.length > 0 &&
+                                            login?.userProfile?.email
                                                 ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
                                                 : 'none',
                                     }}
