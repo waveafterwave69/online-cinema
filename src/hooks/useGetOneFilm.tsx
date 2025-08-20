@@ -9,10 +9,12 @@ import {
     getSameFilms,
     getSequelPrequelFilm,
 } from '../api/filmsData'
-import { useSelector } from 'react-redux'
 import { getUserReview } from '../api/userData'
+import useGetUserFilms from './useGetUserFilms'
 
 const useGetOneFilm = (id: string | undefined) => {
+    const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
+
     const [film, setFilm] = useState<Films>()
     const [currFilm, setCurrFilm] = useState<any>()
     const [filmBg, setFilmBg] = useState<any>()
@@ -28,30 +30,33 @@ const useGetOneFilm = (id: string | undefined) => {
     const [likeColor, setLikeColor] = useState<boolean>(false)
     const [dislikeColor, setDislikeColor] = useState<boolean>(false)
 
-    const { login }: any = useSelector((state) => state)
-
     useEffect(() => {
-        if (film && login?.userProfile?.email) {
-            const isFavorite = login.fav.some(
-                (el: Films) => el.kinopoiskId === film.kinopoiskId
-            )
-            setFavColor(isFavorite)
+        if (film) {
+            const fav =
+                filmsFav &&
+                filmsFav.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
 
-            const isLiked = login.like.some(
-                (el: Films) => el.kinopoiskId === film.kinopoiskId
-            )
-            setLikeColor(isLiked)
+            setFavColor(fav)
 
-            const isDisliked = login.dislike.some(
-                (el: Films) => el.kinopoiskId === film.kinopoiskId
-            )
-            setDislikeColor(isDisliked)
-        } else {
-            setFavColor(false)
-            setLikeColor(false)
-            setDislikeColor(false)
+            const like =
+                filmsLike &&
+                filmsLike.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
+
+            setLikeColor(like)
+
+            const dislike =
+                filmsDisLike &&
+                filmsDisLike.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
+
+            setDislikeColor(dislike)
         }
-    }, [login.fav, login.like, login.dislike, film])
+    }, [film])
 
     useEffect(() => {
         const fetchData = async () => {

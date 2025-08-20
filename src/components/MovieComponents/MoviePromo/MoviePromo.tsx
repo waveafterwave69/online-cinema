@@ -1,23 +1,16 @@
 import styles from './MoviePromo.module.css'
 import { validatefilmLength } from '../../../utils/utils'
 import { motion } from 'motion/react'
-
 import star from '../../../img/star.svg'
 import play from '../../../img/play.svg'
 import fav from '../../../img/addFav.svg'
 import like from '../../../img/like.svg'
 import dislike from '../../../img/dislike.svg'
-
 import type { Films, ScreenShots } from '../../../types'
 import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
-import { useDispatch, useSelector } from 'react-redux'
-
-import {
-    switchForm,
-    // toggleDislike,
-    // toggleFav,
-    // toggleLike,
-} from '../../../store/slices/loginSlice/loginSlice'
+import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
+import { useEffect, useState } from 'react'
+import useGetUserFilms from '../../../hooks/useGetUserFilms'
 
 interface MoviePromoProps {
     film: Films | undefined
@@ -34,47 +27,88 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     filmBg,
     currFilm,
     setCurrFilm,
-    favColor,
-    likeColor,
-    dislikeColor,
 }) => {
-    const dispatch = useDispatch()
-    const { login }: any = useSelector((state) => state)
+    const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
+    const {
+        addToFav,
+        addToLike,
+        addToDisLike,
+        deleteFromFav,
+        deleteFromLike,
+        deleteFromDislike,
+    } = useAddFilmsToDb(film)
+    const [isFavorite, setIsFavorite] = useState<any>(filmsFav)
+    const [isLike, setIsLike] = useState<any>(filmsLike)
+    const [isDisLike, setIsDisLike] = useState<any>(filmsLike)
+
+    useEffect(() => {
+        if (film) {
+            const fav =
+                filmsFav &&
+                filmsFav.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
+
+            setIsFavorite(fav)
+        }
+    }, [filmsFav])
+
+    useEffect(() => {
+        if (film) {
+            const like =
+                filmsLike &&
+                filmsLike.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
+
+            setIsLike(like)
+        }
+    }, [filmsLike])
+
+    useEffect(() => {
+        if (film) {
+            const dislike =
+                filmsDisLike &&
+                filmsDisLike.filter(
+                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                )
+
+            setIsDisLike(dislike)
+        }
+    }, [filmsDisLike])
 
     const handleFav = () => {
         if (film) {
-            if (login.userProfile) {
-                // dispatch(toggleFav(film))
+            if (isFavorite?.length > 0) {
+                setIsFavorite('')
+                deleteFromFav()
             } else {
-                dispatch(switchForm())
+                setIsFavorite(['content'])
+                addToLike()
             }
         }
     }
 
     const handleLike = () => {
-        if (film) {
-            if (login.userProfile) {
-                // dispatch(toggleLike(film))
-
-                if (dislikeColor) {
-                    // dispatch(toggleDislike(film))
-                }
+        if (film && isDisLike?.length === 0) {
+            if (isLike?.length > 0) {
+                setIsLike('')
+                deleteFromLike()
             } else {
-                dispatch(switchForm())
+                setIsLike(['content'])
+                addToFav()
             }
         }
     }
 
     const handleDisLike = () => {
-        if (film) {
-            if (login.userProfile) {
-                // dispatch(toggleDislike(film))
-
-                if (likeColor) {
-                    // dispatch(toggleLike(film))
-                }
+        if (film && isLike?.length === 0) {
+            if (isDisLike?.length > 0) {
+                setIsDisLike('')
+                deleteFromDislike()
             } else {
-                dispatch(switchForm())
+                setIsDisLike(['content'])
+                addToDisLike()
             }
         }
     }
@@ -161,9 +195,10 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                 <button
                                     onClick={handleFav}
                                     style={{
-                                        filter: favColor
-                                            ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
-                                            : 'none',
+                                        filter:
+                                            isFavorite?.length > 0
+                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
+                                                : 'none',
                                     }}
                                 >
                                     <img src={fav} alt="fav" />
@@ -179,9 +214,10 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                         alt="like"
                                         className={styles.button__img}
                                         style={{
-                                            filter: likeColor
-                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(90deg) brightness(96%) contrast(94%)'
-                                                : 'none',
+                                            filter:
+                                                isLike?.length > 0
+                                                    ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(90deg) brightness(96%) contrast(94%)'
+                                                    : 'none',
                                         }}
                                     />
                                 </button>
@@ -196,9 +232,10 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                                         alt="dislike"
                                         className={styles.button__img}
                                         style={{
-                                            filter: dislikeColor
-                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(310deg) brightness(96%) contrast(94%)'
-                                                : 'none',
+                                            filter:
+                                                isDisLike?.length > 0
+                                                    ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(310deg) brightness(96%) contrast(94%)'
+                                                    : 'none',
                                         }}
                                     />
                                 </button>

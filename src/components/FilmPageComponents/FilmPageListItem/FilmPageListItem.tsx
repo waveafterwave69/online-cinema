@@ -1,23 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './FilmPageListItem.module.css'
 import { motion } from 'framer-motion'
 import type { Films } from '../../../types'
-import { useSelector } from 'react-redux'
+import useGetUserFilms from '../../../hooks/useGetUserFilms'
+import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
 
 interface TrendsItemProps {
     film: Films
 }
 
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
-    const { profile } = useSelector((state: any) => state)
+    const { filmsFav } = useGetUserFilms()
+    const [isFavorite, setIsFavorite] = useState<any>()
 
-    const addToFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.stopPropagation()
-    }
+    const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
-    const isFavorite = profile.fav.filter(
-        (el: Films) => el.kinopoiskId === film.kinopoiskId
-    )
+    useEffect(() => {
+        const fav =
+            filmsFav &&
+            filmsFav.filter(
+                (el: any) => el.film.kinopoiskId === film.kinopoiskId
+            )
+
+        setIsFavorite(fav)
+    }, [filmsFav])
 
     return (
         <>
@@ -28,11 +34,22 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
                     }}
                     style={{
                         backgroundColor:
-                            isFavorite.length > 0 ? '#EC5BAA' : 'transparent',
+                            isFavorite?.length > 0 ? '#EC5BAA' : 'transparent',
                     }}
                     transition={{ duration: 0.1 }}
                     className={styles.item__button}
-                    onClick={addToFav}
+                    onClick={(
+                        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                    ) => {
+                        e.stopPropagation()
+                        if (isFavorite?.length > 0) {
+                            setIsFavorite('')
+                            deleteFromFav()
+                        } else {
+                            setIsFavorite(['content'])
+                            addToFav()
+                        }
+                    }}
                 >
                     +
                 </motion.button>

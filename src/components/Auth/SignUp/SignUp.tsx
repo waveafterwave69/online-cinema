@@ -46,6 +46,8 @@ const SignUp: React.FC = () => {
                         password: password,
                         email: email,
                         fav: [],
+                        like: [],
+                        dislike: [],
                     },
                     email
                 )

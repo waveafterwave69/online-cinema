@@ -15,7 +15,6 @@ interface InitialStateType {
     formType: FormType
 }
 
-// Function to get userProfile from localStorage
 const getInitialUserProfile = (): UserProfile | undefined => {
     try {
         const storedUserProfile = localStorage.getItem('userProfile')
@@ -28,7 +27,7 @@ const getInitialUserProfile = (): UserProfile | undefined => {
 
 const initialState: InitialStateType = {
     type: 'login',
-    userProfile: getInitialUserProfile(), // Get initial value from localStorage
+    userProfile: getInitialUserProfile(),
     formType: 'close',
 }
 

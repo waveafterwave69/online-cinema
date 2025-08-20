@@ -5,7 +5,7 @@ import ProfileContentItem from '../ProfileContentItem/ProfileContentItem'
 import styles from './ProfileContent.module.css'
 import { setUserInfo } from '../../../store/slices/loginSlice/loginSlice'
 import { Link } from 'react-router-dom'
-import useGetMoviesFromDb from '../../../hooks/useGetMoviesFromDb'
+import useGetUserFilms from '../../../hooks/useGetUserFilms'
 
 interface Profile {
     fav: Films[]
@@ -19,19 +19,13 @@ interface ProfileContentProps {
 
 const ProfileContent: React.FC<ProfileContentProps> = () => {
     const { login }: any = useSelector((state: any) => state)
-    const dispatch = useDispatch()
+    const { filmsFav, filmsLike, filmsDisLike, movieFav } = useGetUserFilms()
 
-    const { movieFav } = useGetMoviesFromDb()
+    const dispatch = useDispatch()
 
     const unLogIn = () => {
         dispatch(setUserInfo(undefined))
     }
-
-    const needUser: any = movieFav.filter(
-        (el: any) => el.email === login.userProfile.email
-    )
-
-    const films = needUser[0]?.fav
 
     return (
         <>
@@ -53,10 +47,22 @@ const ProfileContent: React.FC<ProfileContentProps> = () => {
                 <div className={styles.content__list}>
                     <div className="container">
                         {movieFav.length > 0 && (
-                            <ProfileContentItem
-                                films={films}
-                                title={'Избранные'}
-                            />
+                            <>
+                                <ProfileContentItem
+                                    films={filmsFav}
+                                    title={'Избранные'}
+                                />
+                                <ProfileContentItem
+                                    buttonFav={false}
+                                    films={filmsLike}
+                                    title={'Понравившиеся'}
+                                />
+                                <ProfileContentItem
+                                    buttonFav={false}
+                                    films={filmsDisLike}
+                                    title={'Непонравившиеся'}
+                                />
+                            </>
                         )}
                     </div>
                 </div>
