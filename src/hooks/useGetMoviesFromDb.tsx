@@ -16,10 +16,10 @@ const useGetMoviesFromDb = () => {
                         newMovies.push(change.doc.data() as Films)
                     }
                     if (change.type === 'modified') {
-                        console.log('Modified movie: ', change.doc.data())
+                        // console.log('Modified movie: ', change.doc.data())
                     }
                     if (change.type === 'removed') {
-                        console.log('Removed movie: ', change.doc.data())
+                        // console.log('Removed movie: ', change.doc.data())
                     }
                 })
                 setMovieFav((prevMovieFav) => [...prevMovieFav, ...newMovies])

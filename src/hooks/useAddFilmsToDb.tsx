@@ -43,12 +43,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayUnion(dataToAdd),
                     })
-                    console.log('Данные успешно добавлены в поле', fieldName)
                 } catch (error) {
                     console.error('Ошибка при добавлении данных:', error)
                 }
-
-                console.log('Film added to favorites with ID: ', docRef.id)
             }
 
             const documentPath = `users/${docId}`
@@ -86,12 +83,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayRemove(dataToRemove),
                     })
-                    console.log('Данные успешно удалены из поля', fieldName)
                 } catch (error) {
                     console.error('Ошибка при удалении данных:', error)
                 }
-
-                console.log('Film removed from favorites.')
             }
 
             const documentPath = `users/${docId}`
@@ -129,12 +123,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayUnion(dataToAdd),
                     })
-                    console.log('Данные успешно добавлены в поле', fieldName)
                 } catch (error) {
                     console.error('Ошибка при добавлении данных:', error)
                 }
-
-                console.log('Film added to favorites with ID: ', docRef.id)
             }
 
             const documentPath = `users/${docId}`
@@ -172,12 +163,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayRemove(dataToRemove),
                     })
-                    console.log('Данные успешно удалены из поля', fieldName)
                 } catch (error) {
                     console.error('Ошибка при удалении данных:', error)
                 }
-
-                console.log('Film removed from favorites.')
             }
 
             const documentPath = `users/${docId}`
@@ -215,12 +203,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayUnion(dataToAdd),
                     })
-                    console.log('Данные успешно добавлены в поле', fieldName)
                 } catch (error) {
                     console.error('Ошибка при добавлении данных:', error)
                 }
-
-                console.log('Film added to favorites with ID: ', docRef.id)
             }
 
             const documentPath = `users/${docId}`
@@ -258,12 +243,9 @@ const useAddFilmsToDb = (film: any) => {
                     await updateDoc(docRef, {
                         [fieldName]: arrayRemove(dataToRemove),
                     })
-                    console.log('Данные успешно удалены из поля', fieldName)
                 } catch (error) {
                     console.error('Ошибка при удалении данных:', error)
                 }
-
-                console.log('Film removed from favorites.')
             }
 
             const documentPath = `users/${docId}`

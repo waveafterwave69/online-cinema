@@ -87,7 +87,7 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                 deleteFromFav()
             } else {
                 setIsFavorite(['content'])
-                addToLike()
+                addToFav()
             }
         }
     }
@@ -99,7 +99,7 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                 deleteFromLike()
             } else {
                 setIsLike(['content'])
-                addToFav()
+                addToLike()
             }
         }
     }
