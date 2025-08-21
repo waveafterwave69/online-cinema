@@ -1,8 +1,9 @@
+import type { RootState } from '../store/store'
 import useGetMoviesFromDb from './useGetMoviesFromDb'
 import { useSelector } from 'react-redux'
 
 const useGetUserFilms = () => {
-    const { login }: any = useSelector((state: any) => state)
+    const { login }: any = useSelector((state: RootState) => state)
     const { movieFav } = useGetMoviesFromDb()
 
     const needUser: any = movieFav.filter(

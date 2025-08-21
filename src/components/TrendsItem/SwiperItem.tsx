@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import type { Films } from '../../types'
 import styles from './SwiperItem.module.css'
 import { motion } from 'framer-motion'
 import useAddFilmsToDb from '../../hooks/useAddFilmsToDb'
-import useGetUserFilms from '../../hooks/useGetUserFilms'
 import { useSelector } from 'react-redux'
+import type { RootState } from '../../store/store'
+import useIsFavoriteFilm from '../../hooks/useIsFavoriteFilm'
 
 interface SwiperItemProps {
     film: Films
@@ -12,21 +13,9 @@ interface SwiperItemProps {
 }
 
 const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
-    const { filmsFav } = useGetUserFilms()
-    const [isFavorite, setIsFavorite] = useState<any>()
-    const { login }: any = useSelector((state: any) => state)
-
+    const { login } = useSelector((state: RootState) => state)
+    const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
-
-    useEffect(() => {
-        const fav =
-            filmsFav &&
-            filmsFav.filter(
-                (el: any) => el.film.kinopoiskId === film.kinopoiskId
-            )
-
-        setIsFavorite(fav)
-    }, [filmsFav])
 
     return (
         <>

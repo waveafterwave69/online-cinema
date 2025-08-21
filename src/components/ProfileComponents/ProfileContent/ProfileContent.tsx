@@ -6,6 +6,7 @@ import styles from './ProfileContent.module.css'
 import { setUserInfo } from '../../../store/slices/loginSlice/loginSlice'
 import { Link } from 'react-router-dom'
 import useGetUserFilms from '../../../hooks/useGetUserFilms'
+import type { RootState } from '../../../store/store'
 
 interface Profile {
     fav: Films[]
@@ -18,7 +19,7 @@ interface ProfileContentProps {
 }
 
 const ProfileContent: React.FC<ProfileContentProps> = () => {
-    const { login }: any = useSelector((state: any) => state)
+    const { login } = useSelector((state: RootState) => state)
     const { filmsFav, filmsLike, filmsDisLike, movieFav } = useGetUserFilms()
 
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const ProfileContent: React.FC<ProfileContentProps> = () => {
                 <div className="container">
                     <div className={styles.profile__content}>
                         <h2 className={styles.profile__title}>
-                            Аккаунт: {login.userProfile.email}
+                            Аккаунт: {login?.userProfile?.email}
                         </h2>
                         <Link
                             to={'/'}

@@ -8,10 +8,8 @@ import like from '../../../img/like.svg'
 import dislike from '../../../img/dislike.svg'
 import type { Films, ScreenShots } from '../../../types'
 import MovieScreenShots from '../MovieScreenShots/MovieScreenShots'
-import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
-import { useEffect, useState } from 'react'
-import useGetUserFilms from '../../../hooks/useGetUserFilms'
-import { useSelector } from 'react-redux'
+import useLikeDislikeFav from '../../../hooks/useLikeDislikeFav'
+import ButtonLike from '../../../UI/ButtonLike/ButtonLike'
 
 interface MoviePromoProps {
     film: Films | undefined
@@ -29,96 +27,14 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
     currFilm,
     setCurrFilm,
 }) => {
-    const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
     const {
-        addToFav,
-        addToLike,
-        addToDisLike,
-        deleteFromFav,
-        deleteFromLike,
-        deleteFromDislike,
-    } = useAddFilmsToDb(film)
-    const [isFavorite, setIsFavorite] = useState<any>(filmsFav)
-    const [isLike, setIsLike] = useState<any>(filmsLike)
-    const [isDisLike, setIsDisLike] = useState<any>(filmsLike)
-
-    const { login }: any = useSelector((state: any) => state)
-
-    useEffect(() => {
-        if (film) {
-            const fav =
-                filmsFav &&
-                filmsFav.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
-                )
-
-            setIsFavorite(fav)
-        }
-    }, [filmsFav])
-
-    useEffect(() => {
-        if (film) {
-            const like =
-                filmsLike &&
-                filmsLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
-                )
-
-            setIsLike(like)
-        }
-    }, [filmsLike])
-
-    useEffect(() => {
-        if (film) {
-            const dislike =
-                filmsDisLike &&
-                filmsDisLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
-                )
-
-            setIsDisLike(dislike)
-        }
-    }, [filmsDisLike])
-
-    const handleFav = () => {
-        if (film) {
-            if (isFavorite?.length > 0) {
-                setIsFavorite('')
-                deleteFromFav()
-            } else {
-                setIsFavorite(['content'])
-                addToFav()
-            }
-        }
-    }
-
-    const handleLike = () => {
-        if (film) {
-            if (isLike?.length > 0) {
-                setIsLike('')
-                deleteFromLike()
-            } else {
-                setIsLike(['content'])
-                deleteFromDislike()
-                setIsDisLike('')
-                addToLike()
-            }
-        }
-    }
-
-    const handleDisLike = () => {
-        if (film) {
-            if (isDisLike?.length > 0) {
-                setIsDisLike('')
-                deleteFromDislike()
-            } else {
-                deleteFromLike()
-                setIsDisLike(['content'])
-                setIsLike('')
-                addToDisLike()
-            }
-        }
-    }
+        handleFav,
+        isFavorite,
+        handleLike,
+        isLike,
+        handleDisLike,
+        isDisLike,
+    } = useLikeDislikeFav(film)
 
     return (
         <>
@@ -195,59 +111,33 @@ const MoviePromo: React.FC<MoviePromoProps> = ({
                             </motion.button>
                         </motion.div>
                         <div className={styles.buttons__row}>
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                className={styles.button}
-                            >
-                                <button
-                                    onClick={handleFav}
-                                    style={{
-                                        filter:
-                                            isFavorite?.length > 0 &&
-                                            login?.userProfile?.email
-                                                ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
-                                                : 'none',
-                                    }}
-                                >
-                                    <img src={fav} alt="fav" />
-                                </button>
-                            </motion.div>
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                className={styles.button}
-                            >
-                                <button onClick={handleLike}>
-                                    <img
-                                        src={like}
-                                        alt="like"
-                                        className={styles.button__img}
-                                        style={{
-                                            filter:
-                                                isLike?.length > 0
-                                                    ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(90deg) brightness(96%) contrast(94%)'
-                                                    : 'none',
-                                        }}
-                                    />
-                                </button>
-                            </motion.div>
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                className={styles.button}
-                            >
-                                <button onClick={handleDisLike}>
-                                    <img
-                                        src={dislike}
-                                        alt="dislike"
-                                        className={styles.button__img}
-                                        style={{
-                                            filter:
-                                                isDisLike?.length > 0
-                                                    ? 'invert(0%) sepia(233%) saturate(665%) hue-rotate(310deg) brightness(96%) contrast(94%)'
-                                                    : 'none',
-                                        }}
-                                    />
-                                </button>
-                            </motion.div>
+                            <ButtonLike
+                                handleFn={handleFav}
+                                imgSrc={fav}
+                                imgName="Добавить в Избранное"
+                                isActive={isFavorite}
+                                hoverColor={
+                                    'invert(0%) sepia(233%) saturate(665%) hue-rotate(590deg) brightness(96%) contrast(94%)'
+                                }
+                            />
+                            <ButtonLike
+                                handleFn={handleLike}
+                                imgSrc={like}
+                                imgName="Добавить в Понравившиеся"
+                                isActive={isLike}
+                                hoverColor={
+                                    'invert(0%) sepia(233%) saturate(665%) hue-rotate(90deg) brightness(96%) contrast(94%)'
+                                }
+                            />
+                            <ButtonLike
+                                handleFn={handleDisLike}
+                                imgSrc={dislike}
+                                imgName="Добавить в Непонравившиеся"
+                                isActive={isDisLike}
+                                hoverColor={
+                                    'invert(0%) sepia(233%) saturate(665%) hue-rotate(310deg) brightness(96%) contrast(94%)'
+                                }
+                            />
                         </div>
                     </div>
                 </div>

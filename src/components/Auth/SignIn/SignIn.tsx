@@ -1,21 +1,24 @@
 import styles from './SignIn.module.css'
 import { motion } from 'motion/react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { auth } from '../../../firebase/firebase'
 import {
     setUserInfo,
     switchForm,
-    switchType,
 } from '../../../store/slices/loginSlice/loginSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import close from '../../../img/close.png'
+import type { RootState } from '../../../store/store'
+import useForm from '../../../hooks/useForm'
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [error, setError] = useState<string>('')
-    const { login }: any = useSelector((state) => state)
+    const { login } = useSelector((state: RootState) => state)
+
+    const { handleLinkClick, swithFormType } = useForm()
 
     const dispatch = useDispatch()
 
@@ -41,25 +44,6 @@ const SignIn: React.FC = () => {
                 console.log(error)
                 setError('Аккаунт не найден')
             })
-    }
-
-    useEffect(() => {
-        if (login.formType === 'open') {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = ''
-        }
-
-        return () => {
-            document.body.style.overflow = ''
-        }
-    }, [login.formType])
-
-    const handleLinkClick = () => {
-        dispatch(switchForm())
-    }
-    const swithFormType = () => {
-        dispatch(switchType())
     }
 
     return (

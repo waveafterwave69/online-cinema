@@ -3,16 +3,17 @@ import { db } from '../firebase/firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import useGetMoviesFromDb from './useGetMoviesFromDb'
 import { switchForm } from '../store/slices/loginSlice/loginSlice'
+import type { RootState } from '../store/store'
 
 const useAddFilmsToDb = (film: any) => {
     const { movieFav } = useGetMoviesFromDb()
     const dispatch = useDispatch()
-    const { login }: any = useSelector((state) => state)
+    const { login } = useSelector((state: RootState) => state)
     let docId = ''
 
     if (login?.userProfile?.email) {
         const needEl: any = movieFav.filter(
-            (el: any) => el.email === login.userProfile.email
+            (el: any) => el.email === login?.userProfile?.email
         )
 
         docId = needEl[0]?.email

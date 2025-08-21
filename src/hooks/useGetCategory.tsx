@@ -6,12 +6,12 @@ import {
     setCategory,
 } from '../store/slices/categorySlice/categorySlice'
 import { getFilmsCategory } from '../api/categoryData'
+import type { RootState } from '../store/store'
 
 const useGetCategory = () => {
     const [films, setFilms] = useState<Films[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const { theme } = useSelector((state: any) => state.category)
-    console.log(theme)
+    const { theme } = useSelector((state: RootState) => state.category)
     const dispatch = useDispatch()
 
     useEffect(() => {

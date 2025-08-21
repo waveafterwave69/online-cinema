@@ -10,9 +10,10 @@ import searchImg from '../../img/search.svg'
 import type { IRoutes } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
 import { switchForm } from '../../store/slices/loginSlice/loginSlice'
+import type { RootState } from '../../store/store'
 
 const Header: React.FC = () => {
-    const { login }: any = useSelector((state) => state)
+    const { login } = useSelector((state: RootState) => state)
     const dispatch = useDispatch()
 
     const openForm = () => {

@@ -3,9 +3,10 @@ import type { Films } from '../types'
 import { geFilmByWords, getAllFilms } from '../api/filmsData'
 import { useSelector } from 'react-redux'
 import { getFilmsCategory } from '../api/categoryData'
+import type { RootState } from '../store/store'
 
 const useGetFilmPage = () => {
-    const { category } = useSelector((state: any) => state)
+    const { category } = useSelector((state: RootState) => state)
     const [films, setFilms] = useState<Films[] | undefined>(undefined)
     const [pageCount, setPageCount] = useState<number>(1)
     const [isLoading, setIsLoading] = useState<boolean>(false)

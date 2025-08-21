@@ -4,13 +4,14 @@ import styles from './CategoryItem.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTheme } from '../../../store/slices/categorySlice/categorySlice'
 import { motion } from 'framer-motion'
+import type { RootState } from '../../../store/store'
 
 interface CategoryItemProps {
     category: Theme
 }
 
 const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
-    const { theme } = useSelector((state: any) => state.category)
+    const { theme } = useSelector((state: RootState) => state.category)
     const dispatch = useDispatch()
     const isActive = theme === category.theme
 
