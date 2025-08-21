@@ -7,8 +7,6 @@ const useVideo = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        console.log('VideoPlayer rendered with kpId:', id)
-
         if (scriptLoaded.current) {
             return
         }
@@ -30,10 +28,6 @@ const useVideo = () => {
 
         script.src = scriptUrl.toString()
         script.async = true
-
-        script.onload = () => {
-            console.log('Скрипт плеера загружен.')
-        }
 
         script.onerror = (error) => {
             console.error('Ошибка загрузки скрипта плеера!', error)

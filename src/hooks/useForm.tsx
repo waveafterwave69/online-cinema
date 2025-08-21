@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { switchForm, switchType } from '../store/slices/loginSlice/loginSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../store/store'
+import { useAppDispatch, useAppSelector } from './hooks'
 
 const useForm = () => {
-    const { login } = useSelector((state: RootState) => state)
-    const dispatch = useDispatch()
+    const { login } = useAppSelector((state) => state)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         if (login.formType === 'open') {

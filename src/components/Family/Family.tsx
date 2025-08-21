@@ -2,11 +2,11 @@ import styles from './Family.module.css'
 import { motion } from 'motion/react'
 import bgImg from '../../img/family__bg.png'
 import { Link } from 'react-router'
-import { useDispatch } from 'react-redux'
 import { setTheme } from '../../store/slices/categorySlice/categorySlice'
+import { useAppDispatch } from '../../hooks/hooks'
 
 const Family: React.FC = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleClick = () => {
         dispatch(setTheme('KIDS_ANIMATION_THEME'))

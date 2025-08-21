@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 type LogInType = 'login' | 'signin'
 type FormType = 'open' | 'close'
@@ -49,7 +49,7 @@ export const loginSlice = createSlice({
                 state.formType = 'close'
             }
         },
-        setUserInfo: (state, action) => {
+        setUserInfo: (state, action: PayloadAction<UserProfile>) => {
             state.userProfile = action.payload
             localStorage.setItem('userProfile', JSON.stringify(action.payload))
         },

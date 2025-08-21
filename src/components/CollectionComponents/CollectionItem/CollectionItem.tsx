@@ -1,15 +1,15 @@
 import { Link } from 'react-router'
 import type { Theme } from '../../../types'
 import styles from './CollectionItem.module.css'
-import { useDispatch } from 'react-redux'
 import { setTheme } from '../../../store/slices/categorySlice/categorySlice'
+import { useAppDispatch } from '../../../hooks/hooks'
 
 interface CollectionItemProps {
     collection: Theme
 }
 
 const CollectionItem: React.FC<CollectionItemProps> = ({ collection }) => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleTheme = () => {
         dispatch(setTheme(collection.theme))

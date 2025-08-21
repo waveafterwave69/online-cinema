@@ -3,16 +3,15 @@ import styles from './FilmPageListItem.module.css'
 import { motion } from 'framer-motion'
 import type { Films } from '../../../types'
 import useAddFilmsToDb from '../../../hooks/useAddFilmsToDb'
-import { useSelector } from 'react-redux'
-import type { RootState } from '../../../store/store'
 import useIsFavoriteFilm from '../../../hooks/useIsFavoriteFilm'
+import { useAppSelector } from '../../../hooks/hooks'
 
 interface TrendsItemProps {
     film: Films
 }
 
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
-    const { login } = useSelector((state: RootState) => state)
+    const { login } = useAppSelector((state) => state)
     const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 

@@ -1,18 +1,17 @@
 import React, { useCallback } from 'react'
 import type { Theme } from '../../../types'
 import styles from './CategoryItem.module.css'
-import { useDispatch, useSelector } from 'react-redux'
 import { setTheme } from '../../../store/slices/categorySlice/categorySlice'
 import { motion } from 'framer-motion'
-import type { RootState } from '../../../store/store'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 
 interface CategoryItemProps {
     category: Theme
 }
 
 const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
-    const { theme } = useSelector((state: RootState) => state.category)
-    const dispatch = useDispatch()
+    const { theme } = useAppSelector((state) => state.category)
+    const dispatch = useAppDispatch()
     const isActive = theme === category.theme
 
     const handleClick = useCallback(() => {

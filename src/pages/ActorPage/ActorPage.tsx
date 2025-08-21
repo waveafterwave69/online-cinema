@@ -15,8 +15,6 @@ const ActorPage: React.FC = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    console.log(actorInfo)
-
     return (
         <>
             <div className="container">

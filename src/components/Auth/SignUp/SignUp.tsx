@@ -3,26 +3,25 @@ import { motion } from 'motion/react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
 import { auth } from '../../../firebase/firebase'
-import { useDispatch, useSelector } from 'react-redux'
 import {
     setUserInfo,
     switchForm,
 } from '../../../store/slices/loginSlice/loginSlice'
 import close from '../../../img/close.png'
 import { addUser } from '../../../utils/utils'
-import type { RootState } from '../../../store/store'
 import useForm from '../../../hooks/useForm'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 
 const SignUp: React.FC = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [copyPassword, setCopyPassword] = useState<string>('')
     const [error, setError] = useState<string>('')
-    const { login } = useSelector((state: RootState) => state)
+    const { login } = useAppSelector((state) => state)
 
     const { handleLinkClick, swithFormType } = useForm()
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const register = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

@@ -8,13 +8,12 @@ import profileImg from '../../img/profile.svg'
 import searchImg from '../../img/search.svg'
 
 import type { IRoutes } from '../../types'
-import { useDispatch, useSelector } from 'react-redux'
 import { switchForm } from '../../store/slices/loginSlice/loginSlice'
-import type { RootState } from '../../store/store'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 
 const Header: React.FC = () => {
-    const { login } = useSelector((state: RootState) => state)
-    const dispatch = useDispatch()
+    const { login } = useAppSelector((state) => state)
+    const dispatch = useAppDispatch()
 
     const openForm = () => {
         dispatch(switchForm())

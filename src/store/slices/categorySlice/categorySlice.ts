@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+interface initialState {
+    categor: string | undefined
+    theme: string | undefined
+    loading: boolean
+}
+
+const initialState: initialState = {
     categor: undefined,
     theme: undefined,
     loading: false,

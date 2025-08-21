@@ -11,7 +11,6 @@ const useGetNews = () => {
             try {
                 setIsLoading(true)
                 const data = await getNews()
-                console.log(data)
                 setNews(data?.data.items)
                 setIsLoading(false)
             } catch (error) {

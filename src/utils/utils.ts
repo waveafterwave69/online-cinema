@@ -48,8 +48,6 @@ export const addUser = async (user: any, customId?: string) => {
         await setDoc(docRef, {
             ...user,
         })
-
-        console.log('Document written with ID: ', docRef.id)
     } catch (e) {
         console.error('Error adding document: ', e)
     }

@@ -1,15 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import styles from './Trends.module.css'
 import { motion } from 'framer-motion'
-// @ts-ignore
-import 'swiper/css'
-import type { Films } from '../../types'
-import type { RootState } from '../../store/store'
 import FilmSwiper from '../FilmSwiper/FilmSwiper'
+import { useAppSelector } from '../../hooks/hooks'
 
 const Trends: React.FC = () => {
-    const data = useSelector((state: RootState) => state.data.data) as Films[]
+    const data = useAppSelector((state) => state.data.data)
 
     return (
         <>

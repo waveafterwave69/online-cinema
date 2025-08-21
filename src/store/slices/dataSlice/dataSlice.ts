@@ -7,7 +7,7 @@ interface DataState {
     loading: boolean
 }
 
-export const fetchData: any = createAsyncThunk(
+export const fetchData = createAsyncThunk(
     'data/fetchData',
     async (page: number, { rejectWithValue }) => {
         try {

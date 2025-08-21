@@ -1,14 +1,13 @@
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase/firebase'
-import { useDispatch, useSelector } from 'react-redux'
 import useGetMoviesFromDb from './useGetMoviesFromDb'
 import { switchForm } from '../store/slices/loginSlice/loginSlice'
-import type { RootState } from '../store/store'
+import { useAppDispatch, useAppSelector } from './hooks'
 
 const useAddFilmsToDb = (film: any) => {
     const { movieFav } = useGetMoviesFromDb()
-    const dispatch = useDispatch()
-    const { login } = useSelector((state: RootState) => state)
+    const dispatch = useAppDispatch()
+    const { login } = useAppSelector((state) => state)
     let docId = ''
 
     if (login?.userProfile?.email) {

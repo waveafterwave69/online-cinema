@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import type { Films } from '../types'
-import { useDispatch, useSelector } from 'react-redux'
 import {
     clearCategory,
     setCategory,
 } from '../store/slices/categorySlice/categorySlice'
 import { getFilmsCategory } from '../api/categoryData'
-import type { RootState } from '../store/store'
+import { useAppDispatch, useAppSelector } from './hooks'
 
 const useGetCategory = () => {
     const [films, setFilms] = useState<Films[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const { theme } = useSelector((state: RootState) => state.category)
-    const dispatch = useDispatch()
+    const { theme } = useAppSelector((state) => state.category)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         const fetchData = async () => {
