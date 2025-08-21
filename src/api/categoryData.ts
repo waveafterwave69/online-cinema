@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { apiKey } from './data'
+import { apiKey, instance } from './data'
 import type { Theme } from '../types'
 import img1 from '../img/1.jpg'
 import img2 from '../img/2.jpg'
@@ -81,15 +80,10 @@ export const themes: Theme[] = [
 
 export const getThemes = async (theme: string) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+        const response = await instance.get('/collections', {
             params: {
                 type: theme,
                 page: 1,
-            },
-            headers: {
-                'X-API-KEY': apiKey,
             },
         })
         return response
@@ -103,8 +97,7 @@ export const getFilmsCategory = async (
     page: number | string = 1
 ) => {
     try {
-        const response = await axios({
-            method: 'GET',
+        const response = await instance.get('/collections', {
             url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
             params: {
                 type: theme,

@@ -1,11 +1,9 @@
 import axios from 'axios'
-import { apiKey } from './data'
+import { apiKey, instance } from './data'
 
 export const getUserReview = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/reviews`,
+        const response = await instance.get(`/${id}/reviews`, {
             params: {
                 page: 1,
                 order: 'DATE_DESC',

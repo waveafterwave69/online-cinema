@@ -1,11 +1,9 @@
 import axios from 'axios'
-import { apiKey } from './data'
+import { apiKey, instance } from './data'
 
 export const getAllFilms = async (page: number) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+        const response = await instance.get('/collections', {
             params: {
                 type: 'TOP_250_MOVIES',
                 page: page,
@@ -22,9 +20,7 @@ export const getAllFilms = async (page: number) => {
 
 export const getOneFilm = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+        const response = await instance.get(`/${id}`, {
             headers: {
                 'X-API-KEY': apiKey,
             },
@@ -37,9 +33,7 @@ export const getOneFilm = async (id: string | undefined) => {
 
 export const getFilmBg = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images`,
+        const response = await instance.get(`/${id}/images`, {
             params: {
                 type: 'STILL',
                 page: 1,
@@ -56,9 +50,7 @@ export const getFilmBg = async (id: string | undefined) => {
 
 export const getFilmVideo = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/external_sources`,
+        const response = await instance.get(`/${id}/external_sources`, {
             params: {
                 page: 1,
             },
@@ -84,9 +76,7 @@ export const randomId = async () => {
 
 export const getNewFilms = async () => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+        const response = await instance.get('/collections', {
             params: {
                 type: 'TOP_POPULAR_MOVIES',
                 page: 1,
@@ -103,9 +93,7 @@ export const getNewFilms = async () => {
 
 export const getFilmsFacts = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`,
+        const response = await instance.get(`/${id}/facts`, {
             headers: {
                 'X-API-KEY': apiKey,
             },
@@ -118,22 +106,18 @@ export const getFilmsFacts = async (id: string | undefined) => {
 
 export const getFilmsActors = async (id: string | undefined) => {
     try {
-        const response = await axios(
-            `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}
-`,
-            {
-                method: 'GET',
-                url: 'https://kinopoiskapiunofficial.tech/api/v1/staff?',
-                params: {
-                    filmId: id,
-                    type: 'TOP_POPULAR_MOVIES',
-                    page: 1,
-                },
-                headers: {
-                    'X-API-KEY': apiKey,
-                },
-            }
-        )
+        const response = await axios({
+            method: 'GET',
+            url: 'https://kinopoiskapiunofficial.tech/api/v1/staff?',
+            params: {
+                filmId: id,
+                type: 'TOP_POPULAR_MOVIES',
+                page: 1,
+            },
+            headers: {
+                'X-API-KEY': apiKey,
+            },
+        })
         return response
     } catch (error) {
         console.error(error)
@@ -142,9 +126,7 @@ export const getFilmsActors = async (id: string | undefined) => {
 
 export const getSameFilms = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`,
+        const response = await instance.get(`/${id}/similars`, {
             headers: {
                 'X-API-KEY': apiKey,
             },
@@ -157,9 +139,7 @@ export const getSameFilms = async (id: string | undefined) => {
 
 export const getSequelPrequelFilm = async (id: string | undefined) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`,
+        const response = await instance.get(`/${id}/sequels_and_prequels`, {
             headers: {
                 'X-API-KEY': apiKey,
             },
@@ -172,9 +152,7 @@ export const getSequelPrequelFilm = async (id: string | undefined) => {
 
 export const geFilmByWords = async (word: string, page: number) => {
     try {
-        const response = await axios({
-            method: 'GET',
-            url: `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword`,
+        const response = await instance.get('/search-by-keyword', {
             params: {
                 keyword: word,
                 page: page,
