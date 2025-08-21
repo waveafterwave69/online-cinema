@@ -72,7 +72,7 @@ const useGetOneFilm = (id: string | undefined) => {
                 const data8 = await getUserReview(id)
                 setFilm(data?.data)
                 setFilmBg(data2?.data.items)
-                setCurrFilm(data2?.data.items[0].imageUrl)
+                setCurrFilm(data2?.data?.items[0]?.imageUrl)
                 setFilmWatch(data3?.data.items)
                 setFilmFacts(data4?.data.items)
                 setActors(data5?.data)
