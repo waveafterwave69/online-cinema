@@ -6,7 +6,7 @@ type FormType = 'open' | 'close'
 interface UserProfile {
     email: string
     password: string
-    id: string
+    id?: string
 }
 
 interface InitialStateType {
@@ -49,7 +49,10 @@ export const loginSlice = createSlice({
                 state.formType = 'close'
             }
         },
-        setUserInfo: (state, action: PayloadAction<UserProfile>) => {
+        setUserInfo: (
+            state,
+            action: PayloadAction<UserProfile | undefined>
+        ) => {
             state.userProfile = action.payload
             localStorage.setItem('userProfile', JSON.stringify(action.payload))
         },
