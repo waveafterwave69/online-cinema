@@ -1,13 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import type { UserProfile } from '../../../types'
 
 type LogInType = 'login' | 'signin'
 type FormType = 'open' | 'close'
-
-interface UserProfile {
-    email: string
-    password: string
-    id?: string
-}
 
 interface InitialStateType {
     type: LogInType

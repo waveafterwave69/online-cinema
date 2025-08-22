@@ -9,9 +9,9 @@ import CategoryItem from '../CategoyComponents/CategoryItem/CategoryItem'
 
 interface TagsProps {
     themes: Theme[]
-    isSmallScreen: any
-    isMediumScreen: any
-    isMedium2: any
+    isSmallScreen: boolean
+    isMediumScreen: boolean
+    isMedium2: boolean
 }
 
 const Tags: React.FC<TagsProps> = ({

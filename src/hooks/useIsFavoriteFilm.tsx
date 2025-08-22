@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import useGetUserFilms from './useGetUserFilms'
+import type { Films } from '../types'
 
-const useIsFavoriteFilm = (film: any) => {
-    const [isFavorite, setIsFavorite] = useState<any>()
+const useIsFavoriteFilm = (film: Films) => {
+    const [isFavorite, setIsFavorite] = useState<Films[] | string[] | string>()
     const { filmsFav } = useGetUserFilms()
 
     useEffect(() => {
         const fav =
             filmsFav &&
-            filmsFav.filter((el: any) => {
+            filmsFav.filter((el: Films) => {
                 if (el.film.kinopoiskId) {
                     return el.film.kinopoiskId === film.kinopoiskId
                 } else {

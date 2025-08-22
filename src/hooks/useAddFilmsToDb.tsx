@@ -3,19 +3,22 @@ import { db } from '../firebase/firebase'
 import useGetMoviesFromDb from './useGetMoviesFromDb'
 import { switchForm } from '../store/slices/loginSlice/loginSlice'
 import { useAppDispatch, useAppSelector } from './hooks'
+import type { Films } from '../types'
 
-const useAddFilmsToDb = (film: any) => {
+const useAddFilmsToDb = (film: Films) => {
     const { movieFav } = useGetMoviesFromDb()
     const dispatch = useAppDispatch()
     const { login } = useAppSelector((state) => state)
     let docId = ''
 
     if (login?.userProfile?.email) {
-        const needEl: any = movieFav.filter(
-            (el: any) => el.email === login?.userProfile?.email
+        const needEl: Films[] = movieFav.filter(
+            (el: Films) => el.email === login?.userProfile?.email
         )
 
-        docId = needEl[0]?.email
+        if (needEl[0]?.email) {
+            docId = needEl[0]?.email
+        }
     }
 
     const addToFav = async () => {

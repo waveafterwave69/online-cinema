@@ -37,20 +37,26 @@ const ProfileContent: React.FC = () => {
                     <div className="container">
                         {movieFav.length > 0 && (
                             <>
-                                <ProfileContentItem
-                                    films={filmsFav}
-                                    title={'Избранные'}
-                                />
-                                <ProfileContentItem
-                                    buttonFav={false}
-                                    films={filmsLike}
-                                    title={'Понравившиеся'}
-                                />
-                                <ProfileContentItem
-                                    buttonFav={false}
-                                    films={filmsDisLike}
-                                    title={'Непонравившиеся'}
-                                />
+                                {filmsFav && (
+                                    <ProfileContentItem
+                                        films={filmsFav}
+                                        title={'Избранные'}
+                                    />
+                                )}
+                                {filmsLike && (
+                                    <ProfileContentItem
+                                        buttonFav={false}
+                                        films={filmsLike}
+                                        title={'Понравившиеся'}
+                                    />
+                                )}
+                                {filmsDisLike && (
+                                    <ProfileContentItem
+                                        buttonFav={false}
+                                        films={filmsDisLike}
+                                        title={'Непонравившиеся'}
+                                    />
+                                )}
                             </>
                         )}
                     </div>

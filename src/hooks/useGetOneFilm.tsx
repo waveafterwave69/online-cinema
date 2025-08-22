@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Actor, Films, Review } from '../types'
+import type { Actor, FilmFactss, Films, Review } from '../types'
 import {
     getFilmBg,
     getFilmsActors,
@@ -16,10 +16,10 @@ const useGetOneFilm = (id: string | undefined) => {
     const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
 
     const [film, setFilm] = useState<Films>()
-    const [currFilm, setCurrFilm] = useState<any>()
-    const [filmBg, setFilmBg] = useState<any>()
-    const [filmWatch, setFilmWatch] = useState<any>()
-    const [filmFacts, setFilmFacts] = useState<any>()
+    const [currFilm, setCurrFilm] = useState<Films>()
+    const [filmBg, setFilmBg] = useState<string>()
+    const [filmWatch, setFilmWatch] = useState<Films>()
+    const [filmFacts, setFilmFacts] = useState<FilmFactss>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [actors, setActors] = useState<Actor[]>()
     const [sameFilms, setSameFilms] = useState<Films[]>()
@@ -35,7 +35,7 @@ const useGetOneFilm = (id: string | undefined) => {
             const fav =
                 filmsFav &&
                 filmsFav.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setFavColor(fav)
@@ -43,7 +43,7 @@ const useGetOneFilm = (id: string | undefined) => {
             const like =
                 filmsLike &&
                 filmsLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setLikeColor(like)
@@ -51,7 +51,7 @@ const useGetOneFilm = (id: string | undefined) => {
             const dislike =
                 filmsDisLike &&
                 filmsDisLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setDislikeColor(dislike)

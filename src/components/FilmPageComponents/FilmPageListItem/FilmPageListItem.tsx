@@ -24,7 +24,9 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
                     }}
                     style={{
                         backgroundColor:
-                            isFavorite?.length > 0 && login?.userProfile?.email
+                            isFavorite &&
+                            isFavorite?.length > 0 &&
+                            login?.userProfile?.email
                                 ? '#EC5BAA'
                                 : 'transparent',
                     }}
@@ -34,7 +36,7 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
                         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
                     ) => {
                         e.stopPropagation()
-                        if (isFavorite?.length > 0) {
+                        if (isFavorite && isFavorite?.length > 0) {
                             setIsFavorite('')
                             deleteFromFav()
                         } else {

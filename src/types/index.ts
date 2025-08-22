@@ -23,6 +23,11 @@ type FilmType =
     | 'UNKNOWN'
 
 export interface Films {
+    film?: any
+    email?: string
+    fav?: Films[]
+    like?: Films[]
+    dislike?: Films[]
     rating: number
     filmId: string
     slogan: string
@@ -130,4 +135,10 @@ export interface ActorProfilee {
     sex: string
     spouses: any
     webUrl: string
+}
+
+export interface UserProfile {
+    email: string
+    password: string
+    id?: string
 }

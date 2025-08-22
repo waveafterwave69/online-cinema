@@ -4,7 +4,7 @@ import styles from './FilmPageList.module.css'
 
 interface FilmPageListProps {
     films: Films[] | undefined
-    setPageCount: (arg: any) => void
+    setPageCount: (page: any) => void
     pageCount: number
     error: boolean
 }

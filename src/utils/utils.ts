@@ -1,5 +1,5 @@
 import { collection, doc, setDoc } from 'firebase/firestore'
-import type { Actor } from '../types'
+import type { Actor, UserProfile } from '../types'
 import { db } from '../firebase/firebase'
 
 export const validateTime = (time: string | undefined) => {
@@ -38,7 +38,7 @@ export const getActors = (
     }
 }
 
-export const addUser = async (user: any, customId?: string) => {
+export const addUser = async (user: UserProfile, customId?: string) => {
     try {
         const collectionRef = collection(db, 'users')
         const docRef = customId

@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
 import useAddFilmsToDb from './useAddFilmsToDb'
 import useGetUserFilms from './useGetUserFilms'
+import type { Films } from '../types'
 
-const useLikeDislikeFav = (film: any) => {
+const useLikeDislikeFav = (film: Films) => {
     const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
-    const [isFavorite, setIsFavorite] = useState<any>(filmsFav)
-    const [isLike, setIsLike] = useState<any>(filmsLike)
-    const [isDisLike, setIsDisLike] = useState<any>(filmsLike)
+    const [isFavorite, setIsFavorite] = useState<Films[] | undefined | string>(
+        filmsFav
+    )
+    const [isLike, setIsLike] = useState<Films[] | undefined | string>(
+        filmsLike
+    )
+    const [isDisLike, setIsDisLike] = useState<Films[] | undefined | string>(
+        filmsLike
+    )
 
     const {
         addToFav,
@@ -22,7 +29,7 @@ const useLikeDislikeFav = (film: any) => {
             const fav =
                 filmsFav &&
                 filmsFav.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setIsFavorite(fav)
@@ -34,7 +41,7 @@ const useLikeDislikeFav = (film: any) => {
             const like =
                 filmsLike &&
                 filmsLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setIsLike(like)
@@ -46,7 +53,7 @@ const useLikeDislikeFav = (film: any) => {
             const dislike =
                 filmsDisLike &&
                 filmsDisLike.filter(
-                    (el: any) => el.film.kinopoiskId === film.kinopoiskId
+                    (el: Films) => el.film.kinopoiskId === film.kinopoiskId
                 )
 
             setIsDisLike(dislike)
@@ -55,40 +62,46 @@ const useLikeDislikeFav = (film: any) => {
 
     const handleFav = () => {
         if (film) {
-            if (isFavorite?.length > 0) {
-                setIsFavorite('')
-                deleteFromFav()
-            } else {
-                setIsFavorite(['content'])
-                addToFav()
+            if (isFavorite !== undefined) {
+                if (isFavorite?.length > 0) {
+                    setIsFavorite('')
+                    deleteFromFav()
+                } else {
+                    setIsFavorite('content')
+                    addToFav()
+                }
             }
         }
     }
 
     const handleLike = () => {
         if (film) {
-            if (isLike?.length > 0) {
-                setIsLike('')
-                deleteFromLike()
-            } else {
-                setIsLike(['content'])
-                deleteFromDislike()
-                setIsDisLike('')
-                addToLike()
+            if (isLike !== undefined) {
+                if (isLike?.length > 0) {
+                    setIsLike('')
+                    deleteFromLike()
+                } else {
+                    setIsLike('content')
+                    deleteFromDislike()
+                    setIsDisLike('')
+                    addToLike()
+                }
             }
         }
     }
 
     const handleDisLike = () => {
         if (film) {
-            if (isDisLike?.length > 0) {
-                setIsDisLike('')
-                deleteFromDislike()
-            } else {
-                deleteFromLike()
-                setIsDisLike(['content'])
-                setIsLike('')
-                addToDisLike()
+            if (isDisLike !== undefined) {
+                if (isDisLike?.length > 0) {
+                    setIsDisLike('')
+                    deleteFromDislike()
+                } else {
+                    deleteFromLike()
+                    setIsDisLike('content')
+                    setIsLike('')
+                    addToDisLike()
+                }
             }
         }
     }

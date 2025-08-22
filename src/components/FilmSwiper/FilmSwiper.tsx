@@ -81,7 +81,7 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                         loop
                     >
                         {films &&
-                            films.map((film: Films | any) => (
+                            films.map((film: Films) => (
                                 <SwiperSlide key={film.kinopoiskId}>
                                     <TrendsItem
                                         film={fromDataBase ? film.film : film}

@@ -1,6 +1,6 @@
 import type { Review } from '../../types'
 import styles from './UsersReviews.module.css'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide, type SwiperRef } from 'swiper/react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { Navigation } from 'swiper/modules'
@@ -21,7 +21,7 @@ interface UsersReviewsProps {
 const UsersReviews: React.FC<UsersReviewsProps> = ({ userReview }) => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
     const isMediumScreen = useMediaQuery({ maxWidth: 1024 })
-    const swiperRef = useRef<any>(null)
+    const swiperRef = useRef<SwiperRef>(null)
 
     const goNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
