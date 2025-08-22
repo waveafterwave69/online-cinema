@@ -5,7 +5,7 @@ import { switchForm } from '../store/slices/loginSlice/loginSlice'
 import { useAppDispatch, useAppSelector } from './hooks'
 import type { Films } from '../types'
 
-const useAddFilmsToDb = (film: Films) => {
+const useAddFilmsToDb = (film: Films | undefined) => {
     const { movieFav } = useGetMoviesFromDb()
     const dispatch = useAppDispatch()
     const { login } = useAppSelector((state) => state)

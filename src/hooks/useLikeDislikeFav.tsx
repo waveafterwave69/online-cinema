@@ -3,7 +3,7 @@ import useAddFilmsToDb from './useAddFilmsToDb'
 import useGetUserFilms from './useGetUserFilms'
 import type { Films } from '../types'
 
-const useLikeDislikeFav = (film: Films) => {
+const useLikeDislikeFav = (film: Films | undefined) => {
     const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
     const [isFavorite, setIsFavorite] = useState<Films[] | undefined | string>(
         filmsFav

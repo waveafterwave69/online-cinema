@@ -1,3 +1,4 @@
+import type { Films } from '../../types'
 import styles from './ButtonLike.module.css'
 
 import { motion } from 'motion/react'
@@ -6,7 +7,7 @@ interface ButtonLikeProps {
     handleFn: () => void
     imgSrc: string
     imgName: string
-    isActive: string
+    isActive: string | Films[] | undefined
     hoverColor: string
 }
 
@@ -27,7 +28,9 @@ const ButtonLike: React.FC<ButtonLikeProps> = ({
                         className={styles.button__img}
                         style={{
                             filter:
-                                isActive?.length > 0 ? `${hoverColor}` : 'none',
+                                isActive && isActive?.length > 0
+                                    ? `${hoverColor}`
+                                    : 'none',
                         }}
                     />
                 </button>

@@ -140,5 +140,8 @@ export interface ActorProfilee {
 export interface UserProfile {
     email: string
     password: string
+    fav?: Films[]
+    like?: Films[]
+    dislike?: Films[]
     id?: string
 }
