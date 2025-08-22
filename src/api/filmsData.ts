@@ -152,15 +152,18 @@ export const getSequelPrequelFilm = async (id: string | undefined) => {
 
 export const geFilmByWords = async (word: string, page: number) => {
     try {
-        const response = await instance.get('/search-by-keyword', {
-            params: {
-                keyword: word,
-                page: page,
-            },
-            headers: {
-                'X-API-KEY': apiKey,
-            },
-        })
+        const response = await axios.get(
+            'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword',
+            {
+                params: {
+                    keyword: word,
+                    page: page,
+                },
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            }
+        )
         return response
     } catch (error) {
         console.error(error)
