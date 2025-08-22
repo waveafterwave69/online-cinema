@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getUserInfo } from '../api/userData'
-import type { Actor } from '../types'
+import type { ActorProfilee } from '../types'
 
 const useGetUserInfo = (id: string | undefined) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [actorInfo, setActorInfo] = useState<Actor>()
+    const [actorInfo, setActorInfo] = useState<ActorProfilee>()
 
     useEffect(() => {
         const fetchData = async () => {

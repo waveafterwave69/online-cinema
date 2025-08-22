@@ -26,6 +26,7 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
                         }}
                         style={{
                             backgroundColor:
+                                isFavorite &&
                                 isFavorite?.length > 0 &&
                                 login?.userProfile?.email
                                     ? '#EC5BAA'
@@ -37,7 +38,7 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
                             e: React.MouseEvent<HTMLButtonElement, MouseEvent>
                         ) => {
                             e.stopPropagation()
-                            if (isFavorite?.length > 0) {
+                            if (isFavorite && isFavorite?.length > 0) {
                                 setIsFavorite('')
                                 deleteFromFav()
                             } else {

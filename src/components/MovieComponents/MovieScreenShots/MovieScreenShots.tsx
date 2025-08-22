@@ -9,7 +9,7 @@ import type { ScreenShots } from '../../../types'
 import ScreenShotItem from '../../ScreenShotItem/ScreenShotItem'
 
 interface MovieScreenShotsProps {
-    films: ScreenShots[]
+    films: ScreenShots[] | undefined
     setCurrFilm: (arg: string) => void
 }
 

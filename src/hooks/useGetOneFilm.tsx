@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
-import type { Actor, FilmFactss, Films, Review } from '../types'
+import type {
+    Actor,
+    FilmFactss,
+    Films,
+    FilmWatch,
+    Review,
+    ScreenShots,
+} from '../types'
 import {
     getFilmBg,
     getFilmsActors,
@@ -16,19 +23,25 @@ const useGetOneFilm = (id: string | undefined) => {
     const { filmsFav, filmsLike, filmsDisLike } = useGetUserFilms()
 
     const [film, setFilm] = useState<Films>()
-    const [currFilm, setCurrFilm] = useState<Films>()
-    const [filmBg, setFilmBg] = useState<string>()
-    const [filmWatch, setFilmWatch] = useState<Films>()
-    const [filmFacts, setFilmFacts] = useState<FilmFactss>()
+    const [currFilm, setCurrFilm] = useState<string>()
+    const [filmBg, setFilmBg] = useState<ScreenShots[]>()
+    const [filmWatch, setFilmWatch] = useState<FilmWatch[]>()
+    const [filmFacts, setFilmFacts] = useState<FilmFactss[]>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [actors, setActors] = useState<Actor[]>()
     const [sameFilms, setSameFilms] = useState<Films[]>()
     const [sequalPrequal, setSequalPrequal] = useState<Films[]>()
     const [userReview, setUserReview] = useState<Review[]>()
 
-    const [favColor, setFavColor] = useState<boolean>(false)
-    const [likeColor, setLikeColor] = useState<boolean>(false)
-    const [dislikeColor, setDislikeColor] = useState<boolean>(false)
+    const [favColor, setFavColor] = useState<Films[] | undefined | boolean>(
+        false
+    )
+    const [likeColor, setLikeColor] = useState<Films[] | undefined | boolean>(
+        false
+    )
+    const [dislikeColor, setDislikeColor] = useState<
+        Films[] | undefined | boolean
+    >(false)
 
     useEffect(() => {
         if (film) {

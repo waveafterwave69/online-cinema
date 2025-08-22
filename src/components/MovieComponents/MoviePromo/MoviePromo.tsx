@@ -13,12 +13,12 @@ import ButtonLike from '../../../UI/ButtonLike/ButtonLike'
 
 interface MoviePromoProps {
     film: Films | undefined
-    filmBg: ScreenShots[]
-    currFilm: string
+    filmBg: ScreenShots[] | undefined
+    currFilm: string | undefined
     setCurrFilm: (arg: string) => void
-    favColor: boolean
-    likeColor: boolean
-    dislikeColor: boolean
+    favColor: Films[] | undefined | boolean
+    likeColor: Films[] | undefined | boolean
+    dislikeColor: Films[] | undefined | boolean
 }
 
 const MoviePromo: React.FC<MoviePromoProps> = ({

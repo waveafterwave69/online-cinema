@@ -5,7 +5,7 @@ import type { FilmWatch } from '../../types'
 import { motion } from 'motion/react'
 
 interface VideoPlayerProps {
-    filmWatch: FilmWatch[]
+    filmWatch: FilmWatch[] | undefined
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
