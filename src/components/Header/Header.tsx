@@ -12,7 +12,7 @@ import { switchForm } from '../../store/slices/loginSlice/loginSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 
 const Header: React.FC = () => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const dispatch = useAppDispatch()
 
     const openForm = () => {
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
             >
                 <div className={styles.header__row}>
                     <div className={styles.main__row}>
-                        <Link to="/" className={styles.header__logo}>
+                        <Link to={'/'} className={styles.header__logo}>
                             <motion.img
                                 whileHover={{ scale: 1.15 }}
                                 src={logoImg}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
                         </nav>
                     </div>
                     <div className={styles.profile}>
-                        <Link to="/movies" className={styles.profile__search}>
+                        <Link to={'/movies'} className={styles.profile__search}>
                             <motion.img
                                 whileHover={{ scale: 1.15 }}
                                 src={searchImg}
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
                         </Link>
                         {login.userProfile ? (
                             <Link
-                                to="/profile"
+                                to={'/profile'}
                                 className={styles.profile__open}
                             >
                                 <motion.img

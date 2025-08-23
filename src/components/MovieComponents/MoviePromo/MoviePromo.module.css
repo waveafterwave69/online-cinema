@@ -15,13 +15,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .promo__title {
     font-weight: 700;
     font-size: 72px;
     margin-bottom: 22px;
-    text-align: center;
+    text-align: left;
 }
 
 .promo__info {

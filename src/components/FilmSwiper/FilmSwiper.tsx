@@ -49,7 +49,7 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                 <div className={styles.film__row}>
                     <h2 className={styles.film__title}>{title}</h2>
                     {buttonMore && (
-                        <Link to="/movies" className={styles.row__title}>
+                        <Link to={'/movies'} className={styles.row__title}>
                             <p className={styles.row__text}>Больше</p>
                             <img
                                 src={arrowImg}

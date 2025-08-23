@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import useAddFilmsToDb from '../../hooks/useAddFilmsToDb'
 import useIsFavoriteFilm from '../../hooks/useIsFavoriteFilm'
 import { useAppSelector } from '../../hooks/hooks'
+import { Link } from 'react-router'
 
 interface SwiperItemProps {
     film: Films
@@ -12,7 +13,7 @@ interface SwiperItemProps {
 }
 
 const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
@@ -50,8 +51,8 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
                         +
                     </motion.button>
                 )}
-                <a
-                    href={
+                <Link
+                    to={
                         film.kinopoiskId
                             ? `/movie/${film.kinopoiskId}`
                             : `/movie/${film.filmId}`
@@ -62,7 +63,7 @@ const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
                         alt={film.nameOriginal}
                         className={styles.item__image}
                     />
-                </a>
+                </Link>
             </motion.li>
         </>
     )

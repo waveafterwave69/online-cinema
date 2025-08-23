@@ -22,16 +22,16 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
         <>
             <li className={styles.category__item}>
                 <motion.button
-                    whileHover={{
-                        backgroundColor: !isActive ? '#020713' : '#EC5BAA',
-                    }}
-                    transition={{
-                        duration: 0.4,
-                    }}
                     className={styles.category__button}
                     onClick={handleClick}
                     style={{
-                        backgroundColor: isActive ? '#EC5BAA' : 'transparent',
+                        backgroundColor: isActive
+                            ? '#EC5BAA'
+                            : 'rgba(2, 7, 19, 0)',
+                    }}
+                    transition={{ duration: 0.1 }}
+                    whileHover={{
+                        backgroundColor: !isActive ? '#020713' : '#EC5BAA',
                     }}
                 >
                     <p className={styles.category__text}>{category.name}</p>
