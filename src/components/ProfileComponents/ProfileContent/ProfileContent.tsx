@@ -7,7 +7,7 @@ import useGetUserFilms from '../../../hooks/useGetUserFilms'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 
 const ProfileContent: React.FC = () => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const { filmsFav, filmsLike, filmsDisLike, movieFav } = useGetUserFilms()
 
     const dispatch = useAppDispatch()

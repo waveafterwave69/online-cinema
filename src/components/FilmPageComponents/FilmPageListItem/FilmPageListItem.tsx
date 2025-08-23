@@ -11,7 +11,7 @@ interface TrendsItemProps {
 }
 
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 

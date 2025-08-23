@@ -5,7 +5,7 @@ import { getFilmsCategory } from '../api/categoryData'
 import { useAppSelector } from './hooks'
 
 const useGetFilmPage = () => {
-    const { category } = useAppSelector((state) => state)
+    const category = useAppSelector((state) => state.category)
     const [films, setFilms] = useState<Films[] | undefined>(undefined)
     const [pageCount, setPageCount] = useState<number>(1)
     const [isLoading, setIsLoading] = useState<boolean>(false)

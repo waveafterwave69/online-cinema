@@ -12,7 +12,7 @@ interface SwiperItemProps {
 }
 
 const SwiperItem: React.FC<SwiperItemProps> = ({ film, buttonFav }) => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 

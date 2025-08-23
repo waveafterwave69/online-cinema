@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
     const [password, setPassword] = useState<string>('')
     const [copyPassword, setCopyPassword] = useState<string>('')
     const [error, setError] = useState<string>('')
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
 
     const { handleLinkClick, swithFormType } = useForm()
 

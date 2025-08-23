@@ -12,7 +12,7 @@ import { switchForm } from '../../store/slices/loginSlice/loginSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 
 const Header: React.FC = () => {
-    const { login } = useAppSelector((state) => state)
+    const login = useAppSelector((state) => state.login)
     const dispatch = useAppDispatch()
 
     const openForm = () => {
