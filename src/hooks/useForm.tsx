@@ -3,7 +3,7 @@ import { switchForm, switchType } from '../store/slices/loginSlice/loginSlice'
 import { useAppDispatch, useAppSelector } from './hooks'
 
 const useForm = () => {
-    const login = useAppSelector((state) => state.login)
+    const { login } = useAppSelector((state) => state)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

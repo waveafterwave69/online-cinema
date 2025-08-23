@@ -11,7 +11,7 @@ interface TrendsItemProps {
 }
 
 const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
-    const login = useAppSelector((state) => state.login)
+    const { login } = useAppSelector((state) => state)
     const { isFavorite, setIsFavorite } = useIsFavoriteFilm(film)
     const { addToFav, deleteFromFav } = useAddFilmsToDb(film)
 
@@ -50,8 +50,8 @@ const FilmPageListItem: React.FC<TrendsItemProps> = ({ film }) => {
                 <a
                     href={
                         film.kinopoiskId
-                            ? `movie/${film.kinopoiskId}`
-                            : `movie/${film.filmId}`
+                            ? `/movie/${film.kinopoiskId}`
+                            : `/movie/${film.filmId}`
                     }
                 >
                     <img

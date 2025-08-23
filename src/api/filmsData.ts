@@ -166,6 +166,6 @@ export const geFilmByWords = async (word: string, page: number) => {
         )
         return response
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }

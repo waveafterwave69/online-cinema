@@ -22,7 +22,7 @@ const NewsPromo: React.FC = () => {
                                 самые интересные новости
                             </p>
                         </div>
-                        <Link to={'/news'}>
+                        <Link to="/news">
                             <motion.div
                                 className={styles.news__button}
                                 whileHover={{ scale: 1.05 }}

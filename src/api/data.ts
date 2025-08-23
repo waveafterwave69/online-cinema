@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const apiKey = '875920c4-6160-4514-b749-292adf5e95d7'
+export const apiKey = '0d9ad324-67a5-44f6-b801-1dc9546bcabd'
 
 export const instance = axios.create({
     baseURL: 'https://kinopoiskapiunofficial.tech/api/v2.2/films',

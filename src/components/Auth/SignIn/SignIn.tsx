@@ -8,6 +8,7 @@ import {
     switchForm,
 } from '../../../store/slices/loginSlice/loginSlice'
 import close from '../../../img/close.png'
+import type { RootState } from '../../../store/store'
 import useForm from '../../../hooks/useForm'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 
@@ -15,7 +16,7 @@ const SignIn: React.FC = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [error, setError] = useState<string>('')
-    const login = useAppSelector((state) => state.login)
+    const { login } = useAppSelector((state: RootState) => state)
 
     const { handleLinkClick, swithFormType } = useForm()
 

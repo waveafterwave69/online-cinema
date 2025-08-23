@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styles from './NewsContent.module.css'
 import { motion } from 'motion/react'
 import download from '../../../img/download.svg'
 import useGetNews from '../../../hooks/useGetNews'
 import type { News } from '../../../types'
-import NewsItem from '../NewsItem/NewsItem'
+
+const LazyNewsItem = lazy(() => import('../NewsItem/NewsItem'))
 
 const NewsContent: React.FC = () => {
     const { news, isLoading } = useGetNews()
@@ -33,7 +34,9 @@ const NewsContent: React.FC = () => {
                     >
                         {news &&
                             news.map((el: News) => (
-                                <NewsItem key={el.kinopoiskId} news={el} />
+                                <Suspense key={el.kinopoiskId}>
+                                    <LazyNewsItem news={el} />
+                                </Suspense>
                             ))}
                     </motion.ul>
                 ) : (

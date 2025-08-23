@@ -1,9 +1,10 @@
+import type { RootState } from '../store/store'
 import type { Films } from '../types'
 import { useAppSelector } from './hooks'
 import useGetMoviesFromDb from './useGetMoviesFromDb'
 
 const useGetUserFilms = () => {
-    const login = useAppSelector((state) => state.login)
+    const { login }: any = useAppSelector((state: RootState) => state)
     const { movieFav } = useGetMoviesFromDb()
 
     const needUser: Films[] = movieFav.filter(

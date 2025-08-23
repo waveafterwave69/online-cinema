@@ -8,7 +8,7 @@ import type { Films } from '../types'
 const useAddFilmsToDb = (film: Films | undefined) => {
     const { movieFav } = useGetMoviesFromDb()
     const dispatch = useAppDispatch()
-    const login = useAppSelector((state) => state.login)
+    const { login } = useAppSelector((state) => state)
     let docId = ''
 
     if (login?.userProfile?.email) {

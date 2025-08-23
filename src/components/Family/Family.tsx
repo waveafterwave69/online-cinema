@@ -38,7 +38,7 @@ const Family: React.FC = () => {
                             className={styles.family__button}
                         >
                             <Link
-                                to={`/movies`}
+                                to="/movies"
                                 onClick={handleClick}
                                 className={styles.family__link}
                             >
