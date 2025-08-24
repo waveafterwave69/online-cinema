@@ -4,14 +4,6 @@
     margin-bottom: 80px;
 }
 
-.download {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    width: 150px;
-}
-
 .film__row {
     display: flex;
     align-items: center;
@@ -92,10 +84,5 @@
 
     .row__img {
         width: 14px;
-    }
-
-    .download {
-        margin-top: 20px;
-        width: 75px;
     }
 }
