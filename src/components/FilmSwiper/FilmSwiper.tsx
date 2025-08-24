@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // @ts-ignore
 import 'swiper/css'
-import download from '../../img/download.svg'
 import arrowImg from '../../img/more.svg'
 import { useMediaQuery } from 'react-responsive'
 import TrendsItem from '../TrendsItem/SwiperItem'
@@ -12,6 +11,7 @@ import type { Films } from '../../types'
 import { Link } from 'react-router'
 import Tags from '../Tags/Tags'
 import { themes } from '../../api/categoryData'
+import Spinner from '../../UI/Spinner/Spinner'
 
 interface FilmSwiperProps {
     films: Films[] | undefined
@@ -91,7 +91,7 @@ const FilmSwiper: React.FC<FilmSwiperProps> = ({
                             ))}
                     </Swiper>
                 ) : (
-                    <img src={download} className={styles.download} />
+                    <Spinner />
                 )}
             </motion.section>
         </>

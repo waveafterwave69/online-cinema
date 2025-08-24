@@ -1,8 +1,8 @@
-import download from '../../img/download.svg'
 import styles from './VideoPlayer.module.css'
 import useVideo from '../../hooks/useVideo'
 import type { FilmWatch } from '../../types'
 import { motion } from 'motion/react'
+import Spinner from '../../UI/Spinner/Spinner'
 
 interface VideoPlayerProps {
     filmWatch: FilmWatch[] | undefined
@@ -29,9 +29,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ filmWatch }) => {
                     id="videoplayers"
                     ref={videoContainerRef}
                 >
-                    {!scriptLoaded?.current && (
-                        <img src={download} className={styles.download} />
-                    )}
+                    {!scriptLoaded?.current && <Spinner />}
                 </div>
                 {filmWatch && filmWatch?.length > 0 && (
                     <div className={styles.video__platforms}>

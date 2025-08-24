@@ -5,9 +5,9 @@ import useGetFilmPage from '../../../hooks/useGetFilmPage'
 import promoImg from '../../../img/searchImg.png'
 import searchImg from '../../../img/searchInput.svg'
 import FilmPageList from '../FilmPageList/FilmPageList'
-import download from '../../../img/download.svg'
 import { themes } from '../../../api/categoryData'
 import { useCallback } from 'react'
+import Spinner from '../../../UI/Spinner/Spinner'
 
 const FilmPagePromo: React.FC = () => {
     const isSmallScreen = useMediaQuery({ maxWidth: 475 })
@@ -88,7 +88,7 @@ const FilmPagePromo: React.FC = () => {
                     />
                 </>
             ) : (
-                <img src={download} className={styles.download} />
+                <Spinner />
             )}
         </>
     )

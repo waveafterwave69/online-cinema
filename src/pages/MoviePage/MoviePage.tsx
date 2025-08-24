@@ -4,10 +4,6 @@ import MoviePromo from '../../components/MovieComponents/MoviePromo/MoviePromo'
 import useGetOneFilm from '../../hooks/useGetOneFilm'
 import { useParams } from 'react-router'
 import FilmAbout from '../../components/FilmComponents/FilmAbout/FilmAbout'
-
-import download from '../../img/download.svg'
-
-import styles from './MoviePage.module.css'
 import Actors from '../../components/ActorComponets/Actors/Actors'
 import { getActors } from '../../utils/utils'
 import SameFilms from '../../components/SameFilms/SameFilms'
@@ -15,6 +11,7 @@ import SequelPrequelFilm from '../../components/SequelPrequelFilm/SequelPrequelF
 import UsersReviews from '../../components/UsersReviews/UsersReviews'
 import FilmFacts from '../../components/FilmComponents/FilmFacts/FilmFacts'
 import FilmCategory from '../../components/FilmComponents/FilmCategory/FilmCategory'
+import Spinner from '../../UI/Spinner/Spinner'
 
 const MoviePage: React.FC = () => {
     const { id } = useParams()
@@ -77,7 +74,7 @@ const MoviePage: React.FC = () => {
                     )}
                 </>
             ) : (
-                <img src={download} className={styles.download} />
+                <Spinner />
             )}
         </>
     )

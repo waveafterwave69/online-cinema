@@ -2,9 +2,8 @@ import styles from './Promo.module.css'
 import useGetRandomFilms from '../../hooks/useGetRandomFilms'
 import PromoContent from '../PromoContent/PromoContent'
 import { motion } from 'motion/react'
-
-import download from '../../img/download.svg'
 import { Link } from 'react-router'
+import Spinner from '../../UI/Spinner/Spinner'
 
 const Promo: React.FC = () => {
     const { film } = useGetRandomFilms()
@@ -35,7 +34,7 @@ const Promo: React.FC = () => {
                     </motion.div>
                 </section>
             ) : (
-                <img src={download} className={styles.download} />
+                <Spinner />
             )}
         </>
     )
