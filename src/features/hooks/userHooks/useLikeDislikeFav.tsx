@@ -1,5 +1,5 @@
+import type { Films } from '@/shared/types'
 import { useEffect, useState } from 'react'
-import type { Films } from '../types'
 import useAddFilmsToDb from './useAddFilmsToDb'
 import useGetUserFilms from './useGetUserFilms'
 
