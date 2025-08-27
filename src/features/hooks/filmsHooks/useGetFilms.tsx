@@ -1,6 +1,6 @@
+import { getAllFilms } from '@/entitites/films/api/filmsApi'
+import type { Films } from '@/shared/types'
 import { useEffect, useState } from 'react'
-import type { Films } from '../types'
-import { getAllFilms } from '../entitites/films/api/filmsApi'
 
 const useGetFilms = () => {
     const [films, setFilms] = useState<Films[]>()

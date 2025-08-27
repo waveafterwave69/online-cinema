@@ -1,6 +1,6 @@
+import type { Films } from '@/shared/types'
 import { useEffect, useState } from 'react'
 import useGetUserFilms from './useGetUserFilms'
-import type { Films } from '../types'
 
 const useIsFavoriteFilm = (film: Films) => {
     const [isFavorite, setIsFavorite] = useState<Films[] | string[] | string>()

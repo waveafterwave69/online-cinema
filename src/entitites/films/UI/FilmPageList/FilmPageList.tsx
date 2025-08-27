@@ -1,4 +1,4 @@
-import type { Films } from '../../../types'
+import type { Films } from '@/shared/types'
 import FilmPageListItem from '../FilmPageListItem/FilmPageListItem'
 import styles from './FilmPageList.module.css'
 
