@@ -1,9 +1,9 @@
-import HomePage from '../pages/HomePage/HomePage'
-import NewsPage from '../pages/NewsPage/NewsPage'
-import MoviePage from '../pages/MoviePage/MoviePage'
-import ActorPage from '../pages/ActorPage/ActorPage'
-import FilmsPage from '../pages/FilmsPage/FilmsPage'
-import ProfilePage from '../pages/ProfilePage/ProfilePage'
+import ActorPage from '@/pages/ActorPage/UI/ActorPage'
+import FilmsPage from '@/pages/FilmsPage/UI/FilmsPage'
+import HomePage from '@/pages/HomePage/UI/HomePage'
+import MoviePage from '@/pages/MoviePage/UI/MoviePage'
+import NewsPage from '@/pages/NewsPage/UI/NewsPage'
+import ProfilePage from '@/pages/ProfilePage/UI/ProfilePage'
 
 export const routesConfig = [
     {
