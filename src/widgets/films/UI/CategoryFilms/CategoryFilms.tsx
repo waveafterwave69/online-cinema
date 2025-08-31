@@ -5,7 +5,7 @@ import FilmSwiper from '@/entitites/films/UI/FilmSwiper/FilmSwiper'
 import useGetCategory from '@/features/hooks/categoryHooks/useGetCategory'
 
 const CategoryFilms: React.FC = () => {
-    const { films } = useGetCategory()
+    const { films, isLoading } = useGetCategory()
 
     return (
         <>
@@ -22,6 +22,7 @@ const CategoryFilms: React.FC = () => {
                     tags={true}
                     films={films}
                     buttonMore={true}
+                    isLoading={isLoading}
                 />
             </motion.section>
         </>
